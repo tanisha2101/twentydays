@@ -1,0 +1,896 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family: 'Nunito', sans-serif;
+
+    color: #edf2f7;
+
+    background:
+
+        linear-gradient(
+            rgba(20, 29, 47, 0.58),
+            rgba(38, 43, 63, 0.78)
+        ),
+
+        linear-gradient(
+            145deg,
+            #536b86,
+            #303c55,
+            #5d536d
+        );
+
+    position: relative;
+
+}
+
+
+/* =========================
+   RAIN
+========================= */
+
+#rain {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    overflow: hidden;
+
+}
+
+
+.drop {
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 65px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(220,235,255,0.65)
+        );
+
+    transform: rotate(12deg);
+
+    animation: rainFall linear infinite;
+
+}
+
+
+@keyframes rainFall {
+
+    from {
+
+        transform:
+            translateY(-100px)
+            translateX(0)
+            rotate(12deg);
+
+    }
+
+    to {
+
+        transform:
+            translateY(110vh)
+            translateX(-80px)
+            rotate(12deg);
+
+    }
+
+}
+
+
+/* =========================
+   MIST
+========================= */
+
+.mist {
+
+    position: fixed;
+
+    width: 500px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(220,230,240,0.08);
+
+    filter: blur(45px);
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    animation: mistMove 12s ease-in-out infinite alternate;
+
+}
+
+
+.mist-one {
+
+    top: 20%;
+
+    left: -150px;
+
+}
+
+
+.mist-two {
+
+    bottom: 10%;
+
+    right: -150px;
+
+    animation-delay: 3s;
+
+}
+
+
+@keyframes mistMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(180px);
+    }
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 25px;
+
+}
+
+
+.little-heading {
+
+    font-family: 'Allura', cursive;
+
+    font-size: 38px;
+
+    color: #dce8f4;
+
+    margin-bottom: 22px;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,0.3);
+
+}
+
+
+h1 {
+
+    font-family: 'DM Serif Display', serif;
+
+    font-size: clamp(55px, 8vw, 100px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    color: #f4f7fa;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,0.45);
+
+    margin-bottom: 35px;
+
+}
+
+
+.intro {
+
+    font-family: 'Nunito', sans-serif;
+
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    color: #e1e8ef;
+
+    margin-bottom: 30px;
+
+}
+
+
+#countdown {
+
+    padding: 17px 35px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(235,242,250,0.12);
+
+    border: 1px solid
+        rgba(235,242,250,0.35);
+
+    backdrop-filter: blur(12px);
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 28px;
+
+    color: #f3f7fb;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: 'Nunito', sans-serif;
+
+    transition: 0.35s ease;
+
+}
+
+
+#startBtn {
+
+    padding: 17px 38px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #718aa6,
+            #806d8f
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.3);
+
+}
+
+
+#startBtn:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+}
+
+
+.sound-button {
+
+    margin-top: 14px;
+
+    padding: 10px 22px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: #e4ebf2;
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+
+    font-size: 14px;
+
+}
+
+
+.sound-button:hover {
+
+    background:
+        rgba(255,255,255,0.16);
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+#daySection {
+
+    position: relative;
+
+    z-index: 3;
+
+    padding: 100px 20px 120px;
+
+    background:
+        rgba(18,25,41,0.72);
+
+}
+
+
+/* =========================
+   RAIN CARD
+========================= */
+
+.rain-card {
+
+    max-width: 760px;
+
+    margin: auto auto 100px;
+
+    text-align: center;
+
+    padding: 60px 40px;
+
+    background:
+        rgba(72,84,105,0.48);
+
+    border:
+        1px solid rgba(210,225,240,0.25);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.35);
+
+}
+
+
+.rain-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.rain-card h2 {
+
+    font-family: 'DM Serif Display', serif;
+
+    font-size: 48px;
+
+    font-weight: 400;
+
+    color: #e4edf5;
+
+    margin-bottom: 25px;
+
+}
+
+
+.rain-card > p {
+
+    max-width: 620px;
+
+    margin: auto auto 30px;
+
+    font-size: 19px;
+
+    line-height: 1.9;
+
+    color: #dce5ed;
+
+}
+
+
+#cloudBtn {
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(215,226,238,0.13);
+
+    border:
+        1px solid rgba(215,226,238,0.4);
+
+    color: #e8f0f7;
+
+}
+
+
+#cloudBtn:hover {
+
+    background: #dce7f1;
+
+    color: #354257;
+
+}
+
+
+/* =========================
+   CLOUD MESSAGE
+========================= */
+
+#cloudMessage {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition: 1s ease;
+
+}
+
+
+#cloudMessage.open {
+
+    max-height: 250px;
+
+    opacity: 1;
+
+    margin-top: 35px;
+
+}
+
+
+#cloudMessage p {
+
+    font-family: 'Allura', cursive;
+
+    font-size: 34px;
+
+    line-height: 1.5;
+
+    color: #e6eef5;
+
+    margin: 10px auto;
+
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-section {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+
+#letterBtn {
+
+    padding: 17px 35px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #91a9bd,
+            #88799a
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.3);
+
+}
+
+
+#letterBtn:hover {
+
+    transform: translateY(-4px);
+
+}
+
+
+/* LETTER PAPER */
+
+.letter {
+
+    margin-top: 40px;
+
+    padding: 60px 55px;
+
+    text-align: left;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf2f5,
+            #dce5eb
+        );
+
+    color: #354052;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.4);
+
+    animation: letterAppear 1s ease;
+
+}
+
+
+.letter-title {
+
+    text-align: center;
+
+    font-family: 'Allura', cursive;
+
+    font-size: 42px;
+
+    color: #65758a;
+
+    margin-bottom: 30px;
+
+}
+
+
+.letter p {
+
+    font-family: 'DM Serif Display', serif;
+
+    font-size: 21px;
+
+    line-height: 1.85;
+
+    white-space: pre-line;
+
+}
+
+
+.signature {
+
+    margin-top: 30px;
+
+    text-align: right;
+
+    font-family: 'Allura', cursive;
+
+    font-size: 36px;
+
+    color: #65758a;
+
+}
+
+
+@keyframes letterAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   QUESTION
+========================= */
+
+.question-section {
+
+    max-width: 700px;
+
+    margin: 100px auto 0;
+
+    text-align: center;
+
+}
+
+
+.question-card {
+
+    padding: 55px 30px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(72,84,105,0.48);
+
+    border:
+        1px solid rgba(210,225,240,0.25);
+
+    backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.4);
+
+}
+
+
+.tiny-rain {
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.question-card h2 {
+
+    font-family: 'Allura', cursive;
+
+    font-size: 50px;
+
+    font-weight: 400;
+
+    color: #e3edf5;
+
+}
+
+
+.questionText {
+
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    color: #dce5ed;
+
+    margin: 30px auto;
+
+}
+
+
+.buttons {
+
+    position: relative;
+
+    min-height: 70px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+}
+
+
+#yesBtn {
+
+    padding: 15px 35px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #809bb2,
+            #8c7898
+        );
+
+    color: white;
+
+    font-weight: 700;
+
+}
+
+
+#noBtn {
+
+    padding: 15px 35px;
+
+    border-radius: 50px;
+
+    background: #dce2e6;
+
+    color: #3b4655;
+
+    position: absolute;
+
+}
+
+
+#response {
+
+    margin-top: 30px;
+
+    font-family: 'Allura', cursive;
+
+    font-size: 36px;
+
+    color: #e3edf5;
+
+}
+
+
+/* =========================
+   FLOATING DROPS
+========================= */
+
+#effects {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+}
+
+
+.floating {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    font-size: 20px;
+
+    animation:
+        floatUp 5s linear forwards;
+
+}
+
+
+@keyframes floatUp {
+
+    from {
+
+        transform:
+            translateY(0)
+            scale(.7);
+
+        opacity: 0;
+
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+
+        transform:
+            translateY(-110vh)
+            scale(1.2);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .little-heading {
+        font-size: 29px;
+    }
+
+    h1 {
+        font-size: 52px;
+    }
+
+    .intro {
+        font-size: 18px;
+    }
+
+    #countdown {
+        font-size: 16px;
+        padding: 15px 18px;
+    }
+
+    .rain-card {
+        padding: 45px 25px;
+    }
+
+    .rain-card h2 {
+        font-size: 40px;
+    }
+
+    .letter {
+        padding: 40px 25px;
+    }
+
+    .letter-title {
+        font-size: 36px;
+    }
+
+    .letter p {
+        font-size: 19px;
+    }
+
+    .question-card h2 {
+        font-size: 43px;
+    }
+
+}

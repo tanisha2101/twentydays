@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Rainy Little Letter 🌧️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- RAIN -->
+    <div id="rain"></div>
+
+    <!-- MIST -->
+    <div class="mist mist-one"></div>
+    <div class="mist mist-two"></div>
+
+
+    <!-- RAIN SOUND -->
+    <audio id="rainSound" loop>
+        <source src="rain.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="hero">
+
+        <div class="little-heading">
+            A Little Rainy-Day Note ☁️
+        </div>
+
+
+        <h1>
+            Twenty Sunsets,<br>
+            Until Your Birthday
+        </h1>
+
+
+        <p class="intro">
+
+            Some days are bright.<br>
+            Some days are covered in clouds.<br>
+            And some simply need a little rain.
+
+        </p>
+
+
+        <div id="countdown">
+            Loading...
+        </div>
+
+
+        <button id="startBtn">
+
+            ☔ Step Into The Rain
+
+        </button>
+
+
+        <button id="soundBtn" class="sound-button">
+
+            🔊 Play The Rain
+
+        </button>
+
+    </section>
+
+
+
+    <!-- MAIN -->
+
+    <main id="daySection" class="hidden">
+
+
+        <!-- RAINY DAY CARD -->
+
+        <section class="rain-card">
+
+            <div class="rain-icon">
+                ☁️
+            </div>
+
+
+            <h2>
+                Some Days Are Just Rainy
+            </h2>
+
+
+            <p>
+
+                And that's okay.
+
+                Not every day has to be bright.
+                Not every moment has to make sense.
+
+                Sometimes the sky needs to cry a little
+                before it becomes blue again.
+
+            </p>
+
+
+            <button id="cloudBtn">
+
+                🌧️ Listen To The Rain
+
+            </button>
+
+
+            <div id="cloudMessage">
+
+                <span>☔</span>
+
+                <p>
+                    Maybe the nicest thing about rain
+                    is knowing that it never stays forever.
+                </p>
+
+                <span>☔</span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- LETTER -->
+
+        <section class="letter-section">
+
+            <button id="letterBtn">
+
+                💌 Open Today's Letter
+
+            </button>
+
+
+            <div id="letter" class="letter hidden">
+
+                <div class="letter-title">
+
+                    A Little Letter For A Rainy Day
+
+                </div>
+
+
+                <p>
+
+                    My Nushi,
+
+                    There will be gloomy days.
+                    There will be bright ones too.
+
+                    There will be days when everything feels easy,
+                    and days when life feels a little heavier than usual.
+
+                    But however the day looks,
+                    however the weather feels,
+                    I hope you always remember this:
+
+                    You never have to be at your perfect self to be loved.
+
+                    On the shiny days, on the rainy ones,
+                    on the days when everything feels right
+                    and on the days when nothing seems to.
+
+                    I will always want to be there for you,
+                    beside you through all of them.
+
+                    Because life isn't made beautiful
+                    by having perfect days.
+
+                    It's made beautiful by having someone
+                    who makes even the rainy ones worth remembering.
+
+                    ❤️
+
+                </p>
+
+
+                <div class="signature">
+
+                    Always,
+                    <br>
+                    Bui
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- QUESTION -->
+
+        <section id="questionSection" class="question-section hidden">
+
+            <div class="question-card">
+
+                <div class="tiny-rain">
+                    💧 ✦ 💧
+                </div>
+
+
+                <h2>
+                    Before You Go...
+                </h2>
+
+
+                <p class="questionText">
+
+                    If the sky clears up tomorrow,
+                    <br>
+                    would you like to keep making
+                    little memories with me?
+
+                </p>
+
+
+                <div class="buttons">
+
+                    <button id="yesBtn">
+                        Yes ❤️
+                    </button>
+
+
+                    <button id="noBtn">
+                        No
+                    </button>
+
+                </div>
+
+
+                <div id="response"></div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FLOATING EFFECTS -->
+
+    <div id="effects"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

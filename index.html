@@ -1,266 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Thirty Days, One Heart❤️</title>
+<title>Thirty Days, One Heart ❤️</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Allura&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
-    <!-- RAIN -->
-    <div id="rain"></div>
+<!-- Floating background hearts -->
+<div id="hearts"></div>
 
-    <!-- MIST -->
-    <div class="mist mist-one"></div>
-    <div class="mist mist-two"></div>
-
-
-    <!-- RAIN SOUND -->
-    <audio id="rainSound" loop>
-        <source src="rain.mp3" type="audio/mpeg">
-    </audio>
+<!-- Soft glowing background -->
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+<div class="glow glow-three"></div>
 
 
-    <!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-    <section class="hero" id="hero">
+<section class="hero" id="hero">
 
-        <div class="little-heading">
-            A Little Rainy-Day Note ☁️
+    <div class="little-title">
+        A Little Love Letter For You ♡
+    </div>
+
+    <h1>
+        Nineteen Sunsets,<br>
+        Until Your Birthday
+    </h1>
+
+    <p class="quote">
+        Watching you grow, shine, and become everything <br> You're meant to be, makes me so proud. <br>
+        You are the most special person in my life, and I hope you never forget that.
+    </p>
+
+    <div id="countdown">
+        Loading...
+    </div>
+
+    <button id="startBtn">
+        ♡ Open Today's Letter
+    </button>
+
+</section>
+
+
+<!-- =========================
+     LETTER SECTION
+========================= -->
+
+<section id="daySection">
+
+    <div class="letter-card">
+
+        <div class="tiny-flower">✿</div>
+
+        <div class="letter-label">
+            A little something for my favourite person
         </div>
 
+        <h2>
+            To The Girl I Adore
+        </h2>
 
-        <h1>
-            Twenty Sunsets,<br>
-            Until Your Birthday
-        </h1>
+        <div class="divider">
+            ♡
+        </div>
 
+        <p class="letter-text">
 
-        <p class="intro">
+There are so many ways to describe what you are to me, and somehow none of them ever feel enough.
 
-            Some days are bright.<br>
-            Some days are covered in clouds.<br>
-            And some simply need a little rain.
+You are my lover, but you're also my best friend. You're the person I want to tell everything to, laugh with over the smallest things, and come back to after a long day.
+
+I cherish you in all the little ways — in the conversations, the silly moments, the quiet ones, and even in the memories that only make sense to us.
+
+You are incredibly special to me. Not because of one particular thing, but because of all the little things that make you - you.
+
+And if I had to choose again, in every version of my life, I'd still want to find you.
+
+My favourite person.  
+My favourite feeling.  
+My home. ♡
 
         </p>
 
+        <div class="signature">
+            Always, with all my heart
+            <span>♡</span>
+        </div>
 
-        <div id="countdown">
-            Loading...
+        <button id="nextBtn" class="soft-button">
+            There's more ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     REASONS SECTION
+========================= -->
+
+<section id="reasonsSection">
+
+    <div class="section-heading">
+        <span>♡</span>
+        Three little reasons
+        <span>♡</span>
+    </div>
+
+    <h2 class="reasons-title">
+        Why I Adore You
+    </h2>
+
+    <p class="reasons-intro">
+        Although I could probably write an entire book about this...
+    </p>
+
+
+    <div class="reason-container">
+
+        <div class="reason-card">
+
+            <div class="reason-number">01</div>
+
+            <div class="reason-icon">
+                ♡
+            </div>
+
+            <h3>
+                My Lover
+            </h3>
+
+            <p>
+                You're the person who makes my heart feel a little fuller,
+                my ordinary days a little brighter, and my world a little
+                more beautiful.
+            </p>
+
         </div>
 
 
-        <button id="startBtn">
+        <div class="reason-card">
 
-            ☔ Step Into The Rain
+            <div class="reason-number">02</div>
 
-        </button>
-
-
-        <button id="soundBtn" class="sound-button">
-
-            🔊 Play The Rain
-
-        </button>
-
-    </section>
-
-
-
-    <!-- MAIN -->
-
-    <main id="daySection" class="hidden">
-
-
-        <!-- RAINY DAY CARD -->
-
-        <section class="rain-card">
-
-            <div class="rain-icon">
-                ☁️
+            <div class="reason-icon">
+                ✧
             </div>
 
-
-            <h2>
-                Some Days Are Just Rainy
-            </h2>
-
+            <h3>
+                My Best Friend
+            </h3>
 
             <p>
-
-                And that's okay.
-
-                Not every day has to be bright.
-                Not every moment has to make sense.
-
-                Sometimes the sky needs to cry a little
-                before it becomes blue again.
-
+                You're the person I can be completely silly, honest and
+                unapologetically myself with. Somehow, even doing nothing
+                with you feels like something.
             </p>
 
-
-            <button id="cloudBtn">
-
-                🌧️ Listen To The Rain
-
-            </button>
+        </div>
 
 
-            <div id="cloudMessage">
+        <div class="reason-card">
 
-                <span>☔</span>
+            <div class="reason-number">03</div>
 
-                <p>
-                    Maybe the nicest thing about rain
-                    is knowing that it never stays forever.
-                </p>
-
-                <span>☔</span>
-
+            <div class="reason-icon">
+                ♡
             </div>
 
-        </section>
+            <h3>
+                My Soulmate
+            </h3>
+
+            <p>
+                You're someone who feels strangely familiar — like someone
+                my heart had been waiting to find long before I knew it.
+            </p>
+
+        </div>
+
+    </div>
 
 
+    <div class="all-three">
 
-        <!-- LETTER -->
+        <p>
+            And somehow...
+        </p>
 
-        <section class="letter-section">
+        <h3>
+            You're all three.
+        </h3>
 
-            <button id="letterBtn">
+        <button id="secretBtn" class="secret-button">
+            💌 Open One More Little Secret
+        </button>
 
-                💌 Open Today's Letter
+    </div>
 
-            </button>
-
-
-            <div id="letter" class="letter hidden">
-
-                <div class="letter-title">
-
-                    A Little Letter For A Rainy Day
-
-                </div>
+</section>
 
 
-                <p>
+<!-- =========================
+     SECRET
+========================= -->
 
-                    My Nushi,
+<section id="secretSection">
 
-                    There will be gloomy days.
-                    There will be bright ones too.
+    <div class="secret-card">
 
-                    There will be days when everything feels easy,
-                    and days when life feels a little heavier than usual.
+        <div class="secret-heart">
+            ♡
+        </div>
 
-                    But however the day looks,
-                    however the weather feels,
-                    I hope you always remember this:
+        <h2>
+            One Last Thing...
+        </h2>
 
-                    You never have to be at your perfect self to be loved.
+        <div class="divider">
+            ✦
+        </div>
 
-                    On the shiny days, on the rainy ones,
-                    on the days when everything feels right
-                    and on the days when nothing seems to.
+        <p>
+            If I could give you one thing, it would be the ability to see
+            yourself through my eyes — just once.
+        </p>
 
-                    I will always want to be there for you,
-                    beside you through all of them.
+        <p>
+            Maybe then you'd understand how extraordinarily special you are
+            to me.
+        </p>
 
-                    Because life isn't made beautiful
-                    by having perfect days.
+        <div class="final-line">
+            You are loved. More than you know. ♡
+        </div>
 
-                    It's made beautiful by having someone
-                    who makes even the rainy ones worth remembering.
+        <div class="floating-final">
+            ✦ &nbsp; ♡ &nbsp; ✦
+        </div>
 
-                    ❤️
+    </div>
 
-                </p>
-
-
-                <div class="signature">
-
-                    Always,
-                    <br>
-                    Bui
-
-                </div>
-
-            </div>
-
-        </section>
+</section>
 
 
-
-        <!-- QUESTION -->
-
-        <section id="questionSection" class="question-section hidden">
-
-            <div class="question-card">
-
-                <div class="tiny-rain">
-                    💧 ✦ 💧
-                </div>
+<footer>
+    Made with a ridiculous amount of love ♡
+</footer>
 
 
-                <h2>
-                    Before You Go...
-                </h2>
-
-
-                <p class="questionText">
-
-                    If the sky clears up tomorrow,
-                    <br>
-                    would you like to keep making
-                    little memories with me?
-
-                </p>
-
-
-                <div class="buttons">
-
-                    <button id="yesBtn">
-                        Yes ❤️
-                    </button>
-
-
-                    <button id="noBtn">
-                        No
-                    </button>
-
-                </div>
-
-
-                <div id="response"></div>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- FLOATING EFFECTS -->
-
-    <div id="effects"></div>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>

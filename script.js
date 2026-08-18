@@ -9,7 +9,7 @@ const countdown =
     document.getElementById("countdown");
 
 
-function updateCountdown() {
+function updateCountdown(){
 
     const now =
         new Date().getTime();
@@ -18,12 +18,13 @@ function updateCountdown() {
         targetDate - now;
 
 
-    if (distance <= 0) {
+    if(distance <= 0){
 
         countdown.innerHTML =
-            "It's Your Birthday ❤️";
+            "It's finally your birthday! ❤️";
 
         return;
+
     }
 
 
@@ -37,139 +38,41 @@ function updateCountdown() {
     const hours =
         Math.floor(
             (distance %
-                (1000 * 60 * 60 * 24))
-            /
+            (1000 * 60 * 60 * 24)) /
             (1000 * 60 * 60)
         );
 
 
-    const mins =
+    const minutes =
         Math.floor(
             (distance %
-                (1000 * 60 * 60))
-            /
+            (1000 * 60 * 60)) /
             (1000 * 60)
         );
 
 
-    const secs =
+    const seconds =
         Math.floor(
             (distance %
-                (1000 * 60))
-            /
+            (1000 * 60)) /
             1000
         );
 
 
     countdown.innerHTML =
-        `${days} Days · ${hours} Hours · ${mins} Minutes · ${secs} Seconds`;
+        `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
 
 }
 
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 
-
-/* =========================
-   RAIN
-========================= */
-
-const rain =
-    document.getElementById("rain");
-
-
-function createRain() {
-
-    for (let i = 0; i < 120; i++) {
-
-        const drop =
-            document.createElement("div");
-
-        drop.className = "drop";
-
-
-        drop.style.left =
-            Math.random() * 100 + "vw";
-
-
-        drop.style.top =
-            Math.random() * -100 + "vh";
-
-
-        drop.style.opacity =
-            0.15 +
-            Math.random() * 0.45;
-
-
-        drop.style.animationDuration =
-            0.6 +
-            Math.random() * 0.8 +
-            "s";
-
-
-        drop.style.animationDelay =
-            Math.random() * 2 +
-            "s";
-
-
-        rain.appendChild(drop);
-
-    }
-
-}
-
-
-createRain();
 
 
 /* =========================
-   RAIN SOUND
-========================= */
-
-const rainSound =
-    document.getElementById("rainSound");
-
-const soundBtn =
-    document.getElementById("soundBtn");
-
-
-rainSound.volume = 0.28;
-
-
-soundBtn.onclick = () => {
-
-    if (rainSound.paused) {
-
-        rainSound.play()
-            .then(() => {
-
-                soundBtn.innerHTML =
-                    "🔊 Rain is playing";
-
-            })
-            .catch(() => {
-
-                soundBtn.innerHTML =
-                    "⚠️ Tap again to play rain";
-
-            });
-
-    } else {
-
-        rainSound.pause();
-
-        soundBtn.innerHTML =
-            "🔇 Rain is muted";
-
-    }
-
-};
-
-
-/* =========================
-   ENTER PAGE
+   OPEN LETTER
 ========================= */
 
 const startBtn =
@@ -184,244 +87,392 @@ const daySection =
 
 startBtn.onclick = () => {
 
-    /* Start rain automatically
-       because the user has interacted */
-
-    if (rainSound.paused) {
-
-        rainSound.play()
-            .catch(() => {});
-
-        soundBtn.innerHTML =
-            "🔊 Rain is playing";
-
-    }
-
-
     hero.style.transition =
-        "1s ease";
+        "opacity .7s ease, transform .7s ease";
 
-    hero.style.opacity =
-        "0";
+    hero.style.opacity = "0";
+
+    hero.style.transform =
+        "translateY(-30px)";
 
 
     setTimeout(() => {
 
-        hero.style.display =
-            "none";
+        hero.style.display = "none";
 
-        daySection.classList.remove(
-            "hidden"
-        );
+        daySection.style.display = "block";
 
         window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+            top:0,
+            behavior:"smooth"
         });
 
-    }, 900);
+
+        requestAnimationFrame(() => {
+
+            daySection.style.transition =
+                "opacity 1s ease, transform 1s ease";
+
+            daySection.style.opacity = "1";
+
+            daySection.style.transform =
+                "translateY(0)";
+
+        });
+
+    },700);
 
 };
 
 
 /* =========================
-   LISTEN TO RAIN
+   LETTER → REASONS
 ========================= */
 
-const cloudBtn =
-    document.getElementById("cloudBtn");
+const nextBtn =
+    document.getElementById("nextBtn");
 
-const cloudMessage =
-    document.getElementById("cloudMessage");
-
-
-cloudBtn.onclick = () => {
-
-    cloudMessage.classList.toggle(
-        "open"
-    );
+const reasonsSection =
+    document.getElementById("reasonsSection");
 
 
-    if (
-        cloudMessage.classList.contains(
-            "open"
-        )
-    ) {
+nextBtn.onclick = () => {
 
-        cloudBtn.innerHTML =
-            "☁️ Let It Rain";
-
-    } else {
-
-        cloudBtn.innerHTML =
-            "🌧️ Listen To The Rain";
-
-    }
-
-};
-
-
-/* =========================
-   LETTER
-========================= */
-
-const letterBtn =
-    document.getElementById("letterBtn");
-
-const letter =
-    document.getElementById("letter");
-
-const questionSection =
-    document.getElementById(
-        "questionSection"
-    );
-
-
-letterBtn.onclick = () => {
-
-    letter.classList.remove(
-        "hidden"
-    );
-
-
-    letterBtn.innerHTML =
-        "💌 The Letter Is Yours";
-
+    reasonsSection.style.display = "block";
 
     setTimeout(() => {
 
-        letter.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
+        reasonsSection.scrollIntoView({
+            behavior:"smooth"
         });
 
-    }, 100);
+    },100);
 
+    createHeartBurst(15);
+
+};
+
+
+/* =========================
+   SECRET
+========================= */
+
+const secretBtn =
+    document.getElementById("secretBtn");
+
+const secretSection =
+    document.getElementById("secretSection");
+
+
+secretBtn.onclick = () => {
+
+    secretSection.style.display = "block";
 
     setTimeout(() => {
 
-        questionSection.classList.remove(
-            "hidden"
-        );
+        secretSection.scrollIntoView({
+            behavior:"smooth"
+        });
 
-    }, 1500);
+    },100);
 
-};
-
-
-/* =========================
-   NO BUTTON
-========================= */
-
-const noBtn =
-    document.getElementById("noBtn");
-
-
-noBtn.addEventListener(
-    "mouseover",
-    () => {
-
-        const x =
-            Math.random() * 220 - 110;
-
-        const y =
-            Math.random() * 120 - 60;
-
-
-        noBtn.style.transform =
-            `translate(${x}px, ${y}px)`;
-
-    }
-);
-
-
-/* =========================
-   YES BUTTON
-========================= */
-
-const yesBtn =
-    document.getElementById("yesBtn");
-
-const response =
-    document.getElementById("response");
-
-
-yesBtn.onclick = () => {
-
-    response.innerHTML = `
-        ☔ Then let's keep dancing
-        through every kind of weather. ❤️
-    `;
-
-
-    createMagicRain();
+    createHeartBurst(35);
 
 };
 
 
 /* =========================
-   YES EFFECT
+   FLOATING HEARTS
 ========================= */
 
-const effects =
-    document.getElementById("effects");
+const hearts =
+    document.getElementById("hearts");
 
 
-function createMagicRain() {
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
 
     const symbols = [
-        "❤️",
-        "☔",
-        "✨",
-        "💧",
-        "🌧️"
+        "♡",
+        "♥",
+        "❤",
+        "✦",
+        "♡"
     ];
 
 
-    for (let i = 0; i < 35; i++) {
+    heart.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        (14 + Math.random() * 20) + "px";
+
+
+    heart.style.animationDuration =
+        (6 + Math.random() * 5) + "s";
+
+
+    heart.style.animationDelay =
+        Math.random() * 2 + "s";
+
+
+    hearts.appendChild(heart);
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },12000);
+
+}
+
+
+setInterval(createHeart,900);
+
+
+/* =========================
+   HEART BURST
+========================= */
+
+function createHeartBurst(amount){
+
+    for(let i=0;i<amount;i++){
 
         setTimeout(() => {
 
-            const element =
+            const heart =
                 document.createElement("div");
 
-            element.className =
-                "floating";
+            heart.className =
+                "heart";
 
 
-            element.innerHTML =
-                symbols[
+            heart.innerHTML =
+                ["♡","♥","✦","❤"]
+                [
                     Math.floor(
-                        Math.random() *
-                        symbols.length
+                        Math.random()*4
                     )
                 ];
 
 
-            element.style.left =
-                Math.random() * 100 +
-                "vw";
+            heart.style.left =
+                Math.random()*100 + "vw";
 
 
-            element.style.animationDuration =
-                3 +
-                Math.random() * 3 +
-                "s";
+            heart.style.bottom =
+                Math.random()*20 + "vh";
 
 
-            effects.appendChild(
-                element
-            );
+            heart.style.fontSize =
+                (18 + Math.random()*25) + "px";
+
+
+            heart.style.animationDuration =
+                (4 + Math.random()*3) + "s";
+
+
+            hearts.appendChild(heart);
 
 
             setTimeout(() => {
 
-                element.remove();
+                heart.remove();
 
-            }, 6000);
+            },8000);
 
-        }, i * 70);
+        },i*80);
 
     }
 
 }
+
+
+/* =========================
+   LITTLE MAGIC WHEN
+   HOVERING REASONS
+========================= */
+
+const cards =
+    document.querySelectorAll(".reason-card");
+
+
+cards.forEach(card => {
+
+    card.addEventListener("mouseenter", () => {
+
+        createTinySparkles(card);
+
+    });
+
+});
+
+
+function createTinySparkles(card){
+
+    for(let i=0;i<5;i++){
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.innerHTML = "✦";
+
+        sparkle.style.position =
+            "absolute";
+
+        sparkle.style.left =
+            (20 + Math.random()*60) + "%";
+
+        sparkle.style.top =
+            (20 + Math.random()*50) + "%";
+
+        sparkle.style.color =
+            "#d18ba2";
+
+        sparkle.style.pointerEvents =
+            "none";
+
+        sparkle.style.fontSize =
+            "14px";
+
+        sparkle.style.transition =
+            "1s";
+
+        card.appendChild(sparkle);
+
+
+        requestAnimationFrame(() => {
+
+            sparkle.style.transform =
+                "translateY(-25px)";
+
+            sparkle.style.opacity = "0";
+
+        });
+
+
+        setTimeout(() => {
+
+            sparkle.remove();
+
+        },1000);
+
+    }
+
+}
+
+
+/* =========================
+   CLICK ANYWHERE
+   LITTLE HEART
+========================= */
+
+document.addEventListener("click",(event)=>{
+
+    if(
+        event.target.tagName === "BUTTON"
+    ){
+
+        const mini =
+            document.createElement("div");
+
+        mini.innerHTML = "♡";
+
+        mini.style.position =
+            "fixed";
+
+        mini.style.left =
+            event.clientX + "px";
+
+        mini.style.top =
+            event.clientY + "px";
+
+        mini.style.color =
+            "#c15d7e";
+
+        mini.style.fontSize =
+            "24px";
+
+        mini.style.pointerEvents =
+            "none";
+
+        mini.style.zIndex =
+            "9999";
+
+        mini.style.transition =
+            "1s";
+
+
+        document.body.appendChild(mini);
+
+
+        requestAnimationFrame(() => {
+
+            mini.style.transform =
+                "translateY(-50px) scale(1.5)";
+
+            mini.style.opacity = "0";
+
+        });
+
+
+        setTimeout(() => {
+
+            mini.remove();
+
+        },1000);
+
+    }
+
+});
+/* =========================
+   TODAY'S QUESTION
+========================= */
+
+const questionBtn =
+    document.getElementById("questionBtn");
+
+const questionSection =
+    document.getElementById("questionSection");
+
+
+questionBtn.onclick = () => {
+
+    questionSection.style.display = "block";
+
+    setTimeout(() => {
+
+        questionSection.style.transition =
+            "opacity 1s ease, transform 1s ease";
+
+        questionSection.style.opacity = "1";
+
+        questionSection.style.transform =
+            "translateY(0)";
+
+        questionSection.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },100);
+
+    createHeartBurst(20);
+
+};

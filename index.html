@@ -1,272 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thirty Days, One Heart ❤️</title>
+    <title>Thirty Days, One Heart ❤️</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-<!-- Floating background hearts -->
-<div id="hearts"></div>
+    <div class="scanlines"></div>
 
-<!-- Soft glowing background -->
-<div class="glow glow-one"></div>
-<div class="glow glow-two"></div>
-<div class="glow glow-three"></div>
+    <div id="particles"></div>
 
 
-<!-- =========================
-     HERO
-========================= -->
+    <!-- =========================
+         HERO
+    ========================== -->
 
-<section class="hero" id="hero">
+    <section class="hero" id="hero">
 
-    <div class="little-title">
-        A Little Love Letter For You ♡
-    </div>
+        <div class="arcade-top">
 
-    <h1>
-        Nineteen Sunsets,<br>
-        Until Your Birthday
-    </h1>
+            <span>♥ PLAYER 01</span>
 
-    <p class="quote">
-        Watching you grow, shine, and become everything <br> You're meant to be, makes me so proud. <br>
-        You are the most special person in my life, and I hope you never forget that.
-    </p>
+            <span>LOVE MODE</span>
 
-    <div id="countdown">
-        Loading...
-    </div>
+            <span>♥ 2026</span>
 
-    <button id="startBtn">
-        ♡ Open Today's Letter
-    </button>
-
-</section>
-
-
-<!-- =========================
-     LETTER SECTION
-========================= -->
-
-<section id="daySection">
-
-    <div class="letter-card">
-
-        <div class="tiny-flower">✿</div>
-
-        <div class="letter-label">
-            A little something for my favourite person
         </div>
 
-        <h2>
-            To The Girl I Adore
-        </h2>
 
-        <div class="divider">
-            ♡
+        <div class="pixel-heart">
+            ♥
         </div>
 
-        <p class="letter-text">
 
-There are so many ways to describe what you are to me, and somehow none of them ever feel enough.
+        <p class="arcade-label">
+            INSERT HEART TO BEGIN
+        </p>
 
-You are my lover, but you're also my best friend. You're the person I want to tell everything to, laugh with over the smallest things, and come back to after a long day.
 
-I cherish you in all the little ways — in the conversations, the silly moments, the quiet ones, and even in the memories that only make sense to us.
+        <h1>
 
-You are incredibly special to me. Not because of one particular thing, but because of all the little things that make you - you.
+            OUR<br>
+            LOVE<br>
+            STORY
 
-And if I had to choose again, in every version of my life, I'd still want to find you.
+        </h1>
 
-My favourite person.  
-My favourite feeling.  
-My home. ♡
+
+        <div class="pixel-divider">
+            ★ ★ ★ ★ ★
+        </div>
+
+
+        <p class="subtitle">
+
+            A little chapter about two people<br>
+            who somehow became each other's<br>
+            favourite story.
 
         </p>
 
-        <div class="signature">
-            Always, with all my heart
-            <span>♡</span>
+
+        <!-- COUNTDOWN -->
+
+        <div class="timer-box">
+
+            <span class="timer-label">
+                BIRTHDAY COUNTDOWN
+            </span>
+
+            <div id="countdown">
+                18 DAYS
+            </div>
+
         </div>
 
-        <button id="nextBtn" class="soft-button">
-            There's more ♡
+
+        <button id="openLetter" class="arcade-button">
+
+            ▶ START STORY
+
         </button>
 
-    </div>
 
-</section>
+        <div class="coin-text">
+            INSERT COIN ♥
+        </div>
 
-
-<!-- =========================
-     REASONS SECTION
-========================= -->
-
-<section id="reasonsSection">
-
-    <div class="section-heading">
-        <span>♡</span>
-        Three little reasons
-        <span>♡</span>
-    </div>
-
-    <h2 class="reasons-title">
-        Why I Adore You
-    </h2>
-
-    <p class="reasons-intro">
-        Although I could probably write an entire book about this...
-    </p>
+    </section>
 
 
-    <div class="reason-container">
 
-        <div class="reason-card">
+    <!-- =========================
+         LETTER
+    ========================== -->
 
-            <div class="reason-number">01</div>
+    <section class="hidden" id="letterSection">
 
-            <div class="reason-icon">
-                ♡
+        <div class="arcade-screen">
+
+
+            <div class="screen-header">
+
+                <span>
+                    ♥ LOVE.EXE
+                </span>
+
+                <span>
+                    LEVEL 18
+                </span>
+
             </div>
 
-            <h3>
-                My Lover
-            </h3>
 
-            <p>
-                You're the person who makes my heart feel a little fuller,
-                my ordinary days a little brighter, and my world a little
-                more beautiful.
-            </p>
+            <div class="letter-inner">
 
-        </div>
+                <div class="letter-tag">
+                    MESSAGE UNLOCKED
+                </div>
 
 
-        <div class="reason-card">
+                <h2>
+                    Some stories are written.
+                    Ours simply happened.
+                </h2>
 
-            <div class="reason-number">02</div>
 
-            <div class="reason-icon">
-                ✧
+                <p class="letter-text">
+
+Dear Mou,
+
+Today felt a little different.
+
+We talked about us. About how we found each other, how we fell in love, and all the little things that somehow brought us here.
+
+And while we were talking, I kept thinking about how beautiful it is that our story was never just one big moment.
+
+It was hundreds of tiny ones.
+
+The conversations.
+The laughter.
+The silly little things.
+The difficult days.
+The moments where we understood each other without needing to say much.
+
+Somewhere between all of those moments, we fell in love.
+
+And I think that's what makes our story so special.
+
+We didn't simply find someone to love.
+
+We found someone we could keep discovering.
+
+Someone whose story slowly became a part of our own.
+
+And if today reminded me of anything, it's that I wouldn't trade our story for anything.
+
+Because you're still my favourite chapter.
+
+                </p>
+
+
+                <p class="signature">
+
+                    LOVE,<br>
+
+                    <span>
+                        YOUR BUI ♥
+                    </span>
+
+                </p>
+
+
+                <button id="turnPage" class="arcade-button small-button">
+
+                    ▶ NEXT LEVEL
+
+                </button>
+
             </div>
 
-            <h3>
-                My Best Friend
-            </h3>
 
-            <p>
-                You're the person I can be completely silly, honest and
-                unapologetically myself with. Somehow, even doing nothing
-                with you feels like something.
-            </p>
+            <div class="screen-footer">
 
-        </div>
+                ♥ SAVE POINT REACHED ♥
 
-
-        <div class="reason-card">
-
-            <div class="reason-number">03</div>
-
-            <div class="reason-icon">
-                ♡
             </div>
 
-            <h3>
-                My Soulmate
-            </h3>
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         STORY SECTION
+    ========================== -->
+
+    <section class="hidden" id="storySection">
+
+        <div class="game-card">
+
+
+            <div class="level-number">
+                LEVEL 18
+            </div>
+
+
+            <div class="pixel-heart large-heart">
+                ♥
+            </div>
+
+
+            <h2>
+                AND THERE'S<br>
+                SOMETHING ELSE...
+            </h2>
+
+
+            <div class="pixel-divider">
+                ★ ★ ★
+            </div>
+
 
             <p>
-                You're someone who feels strangely familiar — like someone
-                my heart had been waiting to find long before I knew it.
+
+If our story were a book, I don't think I'd ever want to reach the last page.
+
+I'd rather keep filling it with ordinary mornings, ridiculous conversations, unexpected adventures, difficult days we get through, and all the little moments that only make sense because they're ours.
+
+Because maybe that's what love really is.
+
+Not knowing exactly what every chapter will look like...
+
+but wanting to be there when the next one begins.
+
+<strong>
+And there are still so many pages left to write.
+</strong>
+
             </p>
 
+
+            <div class="save-point">
+
+                ♥ SAVE POINT ♥
+
+            </div>
+
+
+            <div class="days-left">
+
+                18 DAYS UNTIL YOUR BIRTHDAY
+
+            </div>
+
+
+            <p class="tiny-note">
+
+                And a whole lot more chapters after that.
+
+            </p>
+
+
+            <button id="lastButton" class="arcade-button">
+
+                ▶ ONE LAST THING
+
+            </button>
+
+
         </div>
 
-    </div>
+    </section>
 
 
-    <div class="all-three">
 
-        <p>
-            And somehow...
-        </p>
+    <!-- =========================
+         QUESTION
+    ========================== -->
 
-        <h3>
-            You're all three.
-        </h3>
+    <section class="hidden" id="questionSection">
 
-        <button id="secretBtn" class="secret-button">
-            💌 Open One More Little Secret
-        </button>
-
-    </div>
-
-</section>
+        <div class="question-screen">
 
 
-<!-- =========================
-     SECRET
-========================= -->
+            <div class="question-top">
 
-<section id="secretSection">
+                <span>
+                    FINAL LEVEL
+                </span>
 
-    <div class="secret-card">
+                <span>
+                    ♥♥♥
+                </span>
 
-        <div class="secret-heart">
-            ♡
+            </div>
+
+
+            <div class="pixel-heart">
+                ♥
+            </div>
+
+
+            <p class="question-label">
+                TODAY'S QUESTION
+            </p>
+
+
+            <h2>
+
+                IF OUR STORY<br>
+                WERE A GAME...
+
+            </h2>
+
+
+            <p class="question-text">
+
+                Would you choose to keep
+                playing it with me? ❤️
+
+            </p>
+
+
+            <div class="answer-buttons">
+
+                <button id="yesBtn" class="arcade-button">
+
+                    YES, ALWAYS ♥
+
+                </button>
+
+
+                <button id="noBtn" class="arcade-button no-button">
+
+                    NO 🙈
+
+                </button>
+
+            </div>
+
+
+            <p id="response"></p>
+
+
         </div>
 
-        <h2>
-            One Last Thing...
-        </h2>
-
-        <div class="divider">
-            ✦
-        </div>
-
-        <p>
-            If I could give you one thing, it would be the ability to see
-            yourself through my eyes — just once.
-        </p>
-
-        <p>
-            Maybe then you'd understand how extraordinarily special you are
-            to me.
-        </p>
-
-        <div class="final-line">
-            You are loved. More than you know. ♡
-        </div>
-
-        <div class="floating-final">
-            ✦ &nbsp; ♡ &nbsp; ✦
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<footer>
-    Made with a ridiculous amount of love ♡
-</footer>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>

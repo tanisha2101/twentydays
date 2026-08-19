@@ -9,7 +9,7 @@ const countdown =
     document.getElementById("countdown");
 
 
-function updateCountdown(){
+function updateCountdown() {
 
     const now =
         new Date().getTime();
@@ -18,10 +18,10 @@ function updateCountdown(){
         targetDate - now;
 
 
-    if(distance <= 0){
+    if (distance <= 0) {
 
         countdown.innerHTML =
-            "It's finally your birthday! ❤️";
+            "HAPPY BIRTHDAY ♥";
 
         return;
 
@@ -60,419 +60,397 @@ function updateCountdown(){
 
 
     countdown.innerHTML =
-        `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
+        `${days}D · ${hours}H · ${minutes}M · ${seconds}S`;
 
 }
 
 
 updateCountdown();
 
-setInterval(updateCountdown,1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
+
+/* =========================
+   SECTION REVEAL
+========================= */
+
+function revealSection(section) {
+
+    section.style.display =
+        "block";
+
+    section.style.opacity =
+        "0";
+
+    section.style.transform =
+        "translateY(45px)";
+
+
+    requestAnimationFrame(() => {
+
+        section.style.transition =
+            "opacity .8s ease, transform .8s ease";
+
+        section.style.opacity =
+            "1";
+
+        section.style.transform =
+            "translateY(0)";
+
+    });
+
+}
 
 
 /* =========================
    OPEN LETTER
 ========================= */
 
-const startBtn =
-    document.getElementById("startBtn");
+const openLetter =
+    document.getElementById("openLetter");
 
 const hero =
     document.getElementById("hero");
 
-const daySection =
-    document.getElementById("daySection");
+const letterSection =
+    document.getElementById("letterSection");
 
 
-startBtn.onclick = () => {
+openLetter.onclick = () => {
 
     hero.style.transition =
-        "opacity .7s ease, transform .7s ease";
+        "opacity .5s ease, transform .5s ease";
 
-    hero.style.opacity = "0";
+    hero.style.opacity =
+        "0";
 
     hero.style.transform =
-        "translateY(-30px)";
+        "scale(.96)";
 
 
     setTimeout(() => {
 
-        hero.style.display = "none";
+        hero.style.display =
+            "none";
 
-        daySection.style.display = "block";
+        revealSection(
+            letterSection
+        );
 
         window.scrollTo({
-            top:0,
-            behavior:"smooth"
+            top: 0,
+            behavior: "smooth"
         });
 
-
-        requestAnimationFrame(() => {
-
-            daySection.style.transition =
-                "opacity 1s ease, transform 1s ease";
-
-            daySection.style.opacity = "1";
-
-            daySection.style.transform =
-                "translateY(0)";
-
-        });
-
-    },700);
+    }, 500);
 
 };
 
 
 /* =========================
-   LETTER → REASONS
+   TURN PAGE
 ========================= */
 
-const nextBtn =
-    document.getElementById("nextBtn");
+const turnPage =
+    document.getElementById("turnPage");
 
-const reasonsSection =
-    document.getElementById("reasonsSection");
+const storySection =
+    document.getElementById("storySection");
 
 
-nextBtn.onclick = () => {
+turnPage.onclick = () => {
 
-    reasonsSection.style.display = "block";
+    revealSection(
+        storySection
+    );
+
 
     setTimeout(() => {
 
-        reasonsSection.scrollIntoView({
-            behavior:"smooth"
+        storySection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
         });
 
-    },100);
-
-    createHeartBurst(15);
+    }, 100);
 
 };
 
 
 /* =========================
-   SECRET
+   ONE LAST THING
 ========================= */
 
-const secretBtn =
-    document.getElementById("secretBtn");
-
-const secretSection =
-    document.getElementById("secretSection");
-
-
-secretBtn.onclick = () => {
-
-    secretSection.style.display = "block";
-
-    setTimeout(() => {
-
-        secretSection.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    },100);
-
-    createHeartBurst(35);
-
-};
-
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-const hearts =
-    document.getElementById("hearts");
-
-
-function createHeart(){
-
-    const heart =
-        document.createElement("div");
-
-    heart.className = "heart";
-
-
-    const symbols = [
-        "♡",
-        "♥",
-        "❤",
-        "✦",
-        "♡"
-    ];
-
-
-    heart.innerHTML =
-        symbols[
-            Math.floor(
-                Math.random() *
-                symbols.length
-            )
-        ];
-
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-
-    heart.style.fontSize =
-        (14 + Math.random() * 20) + "px";
-
-
-    heart.style.animationDuration =
-        (6 + Math.random() * 5) + "s";
-
-
-    heart.style.animationDelay =
-        Math.random() * 2 + "s";
-
-
-    hearts.appendChild(heart);
-
-
-    setTimeout(() => {
-
-        heart.remove();
-
-    },12000);
-
-}
-
-
-setInterval(createHeart,900);
-
-
-/* =========================
-   HEART BURST
-========================= */
-
-function createHeartBurst(amount){
-
-    for(let i=0;i<amount;i++){
-
-        setTimeout(() => {
-
-            const heart =
-                document.createElement("div");
-
-            heart.className =
-                "heart";
-
-
-            heart.innerHTML =
-                ["♡","♥","✦","❤"]
-                [
-                    Math.floor(
-                        Math.random()*4
-                    )
-                ];
-
-
-            heart.style.left =
-                Math.random()*100 + "vw";
-
-
-            heart.style.bottom =
-                Math.random()*20 + "vh";
-
-
-            heart.style.fontSize =
-                (18 + Math.random()*25) + "px";
-
-
-            heart.style.animationDuration =
-                (4 + Math.random()*3) + "s";
-
-
-            hearts.appendChild(heart);
-
-
-            setTimeout(() => {
-
-                heart.remove();
-
-            },8000);
-
-        },i*80);
-
-    }
-
-}
-
-
-/* =========================
-   LITTLE MAGIC WHEN
-   HOVERING REASONS
-========================= */
-
-const cards =
-    document.querySelectorAll(".reason-card");
-
-
-cards.forEach(card => {
-
-    card.addEventListener("mouseenter", () => {
-
-        createTinySparkles(card);
-
-    });
-
-});
-
-
-function createTinySparkles(card){
-
-    for(let i=0;i<5;i++){
-
-        const sparkle =
-            document.createElement("div");
-
-        sparkle.innerHTML = "✦";
-
-        sparkle.style.position =
-            "absolute";
-
-        sparkle.style.left =
-            (20 + Math.random()*60) + "%";
-
-        sparkle.style.top =
-            (20 + Math.random()*50) + "%";
-
-        sparkle.style.color =
-            "#d18ba2";
-
-        sparkle.style.pointerEvents =
-            "none";
-
-        sparkle.style.fontSize =
-            "14px";
-
-        sparkle.style.transition =
-            "1s";
-
-        card.appendChild(sparkle);
-
-
-        requestAnimationFrame(() => {
-
-            sparkle.style.transform =
-                "translateY(-25px)";
-
-            sparkle.style.opacity = "0";
-
-        });
-
-
-        setTimeout(() => {
-
-            sparkle.remove();
-
-        },1000);
-
-    }
-
-}
-
-
-/* =========================
-   CLICK ANYWHERE
-   LITTLE HEART
-========================= */
-
-document.addEventListener("click",(event)=>{
-
-    if(
-        event.target.tagName === "BUTTON"
-    ){
-
-        const mini =
-            document.createElement("div");
-
-        mini.innerHTML = "♡";
-
-        mini.style.position =
-            "fixed";
-
-        mini.style.left =
-            event.clientX + "px";
-
-        mini.style.top =
-            event.clientY + "px";
-
-        mini.style.color =
-            "#c15d7e";
-
-        mini.style.fontSize =
-            "24px";
-
-        mini.style.pointerEvents =
-            "none";
-
-        mini.style.zIndex =
-            "9999";
-
-        mini.style.transition =
-            "1s";
-
-
-        document.body.appendChild(mini);
-
-
-        requestAnimationFrame(() => {
-
-            mini.style.transform =
-                "translateY(-50px) scale(1.5)";
-
-            mini.style.opacity = "0";
-
-        });
-
-
-        setTimeout(() => {
-
-            mini.remove();
-
-        },1000);
-
-    }
-
-});
-/* =========================
-   TODAY'S QUESTION
-========================= */
-
-const questionBtn =
-    document.getElementById("questionBtn");
+const lastButton =
+    document.getElementById("lastButton");
 
 const questionSection =
     document.getElementById("questionSection");
 
 
-questionBtn.onclick = () => {
+lastButton.onclick = () => {
 
-    questionSection.style.display = "block";
+    revealSection(
+        questionSection
+    );
+
 
     setTimeout(() => {
 
-        questionSection.style.transition =
-            "opacity 1s ease, transform 1s ease";
-
-        questionSection.style.opacity = "1";
-
-        questionSection.style.transform =
-            "translateY(0)";
-
         questionSection.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
+            behavior: "smooth",
+            block: "center"
         });
 
-    },100);
-
-    createHeartBurst(20);
+    }, 100);
 
 };
+
+
+/* =========================
+   RUNAWAY NO BUTTON
+========================= */
+
+const noBtn =
+    document.getElementById("noBtn");
+
+
+function runAway() {
+
+    const x =
+        Math.random() * 220 - 110;
+
+    const y =
+        Math.random() * 130 - 65;
+
+
+    noBtn.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+}
+
+
+noBtn.addEventListener(
+    "mouseenter",
+    runAway
+);
+
+
+noBtn.addEventListener(
+    "touchstart",
+    runAway
+);
+
+
+/* =========================
+   YES BUTTON
+========================= */
+
+const yesBtn =
+    document.getElementById("yesBtn");
+
+const response =
+    document.getElementById("response");
+
+
+yesBtn.onclick = () => {
+
+    response.innerHTML = `
+        ♥ PLAYER 01 HAS CHOSEN LOVE ♥
+        <br><br>
+        Then let's not worry about
+        the ending just yet.
+        <br>
+        We still have so many pages
+        left to write together.
+        <br><br>
+        <span>
+            CHAPTER 19 UNLOCKED...
+        </span>
+    `;
+
+
+    celebration();
+
+};
+
+
+/* =========================
+   CELEBRATION
+========================= */
+
+function celebration() {
+
+    const symbols = [
+        "♥",
+        "✦",
+        "★",
+        "♡"
+    ];
+
+
+    for (
+        let i = 0;
+        i < 40;
+        i++
+    ) {
+
+        setTimeout(() => {
+
+            const item =
+                document.createElement("div");
+
+
+            item.innerHTML =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+
+            item.style.position =
+                "fixed";
+
+
+            item.style.left =
+                Math.random() *
+                100 + "vw";
+
+
+            item.style.top =
+                "100vh";
+
+
+            item.style.color =
+                i % 2 === 0
+                    ? "#ff4fc8"
+                    : "#ffe66d";
+
+
+            item.style.fontSize =
+                (12 +
+                Math.random() * 20)
+                + "px";
+
+
+            item.style.textShadow =
+                "0 0 10px currentColor";
+
+
+            item.style.pointerEvents =
+                "none";
+
+
+            item.style.zIndex =
+                "10000";
+
+
+            item.style.transition =
+                "transform 3s ease, opacity 3s ease";
+
+
+            document.body.appendChild(
+                item
+            );
+
+
+            requestAnimationFrame(() => {
+
+                item.style.transform =
+                    `translateY(-${window.innerHeight + 150}px)
+                     rotate(${Math.random() * 360}deg)`;
+
+                item.style.opacity =
+                    "0";
+
+            });
+
+
+            setTimeout(() => {
+
+                item.remove();
+
+            }, 3200);
+
+
+        }, i * 50);
+
+    }
+
+}
+
+
+/* =========================
+   FLOATING ARCADE PARTICLES
+========================= */
+
+const particles =
+    document.getElementById(
+        "particles"
+    );
+
+
+function createParticle() {
+
+    const particle =
+        document.createElement(
+            "div"
+        );
+
+
+    particle.className =
+        "particle";
+
+
+    particle.innerHTML =
+        Math.random() > .5
+            ? "✦"
+            : "♥";
+
+
+    particle.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    particle.style.top =
+        (80 +
+        Math.random() * 20) +
+        "vh";
+
+
+    particle.style.fontSize =
+        (8 +
+        Math.random() * 13) +
+        "px";
+
+
+    particle.style.animationDuration =
+        (6 +
+        Math.random() * 6) +
+        "s";
+
+
+    particles.appendChild(
+        particle
+    );
+
+
+    setTimeout(() => {
+
+        particle.remove();
+
+    }, 13000);
+
+}
+
+
+setInterval(
+    createParticle,
+    800
+);

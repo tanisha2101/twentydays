@@ -21,7 +21,7 @@ function updateCountdown() {
     if (distance <= 0) {
 
         countdown.innerHTML =
-            "HAPPY BIRTHDAY ♥";
+            "HAPPY BIRTHDAY ❤️";
 
         return;
 
@@ -60,7 +60,7 @@ function updateCountdown() {
 
 
     countdown.innerHTML =
-        `${days}D · ${hours}H · ${minutes}M · ${seconds}S`;
+        `${days} Days · ${hours} Hours · ${minutes} Minutes · ${seconds} Seconds`;
 
 }
 
@@ -77,7 +77,7 @@ setInterval(
    SECTION REVEAL
 ========================= */
 
-function revealSection(section) {
+function reveal(section) {
 
     section.style.display =
         "block";
@@ -86,7 +86,7 @@ function revealSection(section) {
         "0";
 
     section.style.transform =
-        "translateY(45px)";
+        "translateY(35px)";
 
 
     requestAnimationFrame(() => {
@@ -106,46 +106,44 @@ function revealSection(section) {
 
 
 /* =========================
-   OPEN LETTER
+   OPEN BOOK
 ========================= */
 
-const openLetter =
-    document.getElementById("openLetter");
+const openBook =
+    document.getElementById("openBook");
 
-const hero =
-    document.getElementById("hero");
+const cover =
+    document.getElementById("cover");
 
 const letterSection =
     document.getElementById("letterSection");
 
 
-openLetter.onclick = () => {
+openBook.onclick = () => {
 
-    hero.style.transition =
-        "opacity .5s ease, transform .5s ease";
+    cover.style.transition =
+        "opacity .6s ease, transform .6s ease";
 
-    hero.style.opacity =
+    cover.style.opacity =
         "0";
 
-    hero.style.transform =
+    cover.style.transform =
         "scale(.96)";
 
 
     setTimeout(() => {
 
-        hero.style.display =
+        cover.style.display =
             "none";
 
-        revealSection(
-            letterSection
-        );
+        reveal(letterSection);
 
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
 
-    }, 500);
+    }, 600);
 
 };
 
@@ -157,20 +155,18 @@ openLetter.onclick = () => {
 const turnPage =
     document.getElementById("turnPage");
 
-const storySection =
-    document.getElementById("storySection");
+const secondSection =
+    document.getElementById("secondSection");
 
 
 turnPage.onclick = () => {
 
-    revealSection(
-        storySection
-    );
+    reveal(secondSection);
 
 
     setTimeout(() => {
 
-        storySection.scrollIntoView({
+        secondSection.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
@@ -181,21 +177,19 @@ turnPage.onclick = () => {
 
 
 /* =========================
-   ONE LAST THING
+   LAST PAGE
 ========================= */
 
-const lastButton =
-    document.getElementById("lastButton");
+const questionButton =
+    document.getElementById("questionButton");
 
 const questionSection =
     document.getElementById("questionSection");
 
 
-lastButton.onclick = () => {
+questionButton.onclick = () => {
 
-    revealSection(
-        questionSection
-    );
+    reveal(questionSection);
 
 
     setTimeout(() => {
@@ -218,13 +212,13 @@ const noBtn =
     document.getElementById("noBtn");
 
 
-function runAway() {
+function moveNoButton() {
 
     const x =
-        Math.random() * 220 - 110;
+        Math.random() * 180 - 90;
 
     const y =
-        Math.random() * 130 - 65;
+        Math.random() * 100 - 50;
 
 
     noBtn.style.transform =
@@ -235,13 +229,13 @@ function runAway() {
 
 noBtn.addEventListener(
     "mouseenter",
-    runAway
+    moveNoButton
 );
 
 
 noBtn.addEventListener(
     "touchstart",
-    runAway
+    moveNoButton
 );
 
 
@@ -259,52 +253,46 @@ const response =
 yesBtn.onclick = () => {
 
     response.innerHTML = `
-        ♥ PLAYER 01 HAS CHOSEN LOVE ♥
+        Then maybe this story
+        isn't finished yet. ❤️
         <br><br>
-        Then let's not worry about
-        the ending just yet.
-        <br>
-        We still have so many pages
-        left to write together.
-        <br><br>
-        <span>
-            CHAPTER 19 UNLOCKED...
-        </span>
+        Some pages simply take
+        a little longer to turn.
     `;
 
 
-    celebration();
+    createFallingPetals();
 
 };
 
 
 /* =========================
-   CELEBRATION
+   SOFT PETAL ANIMATION
 ========================= */
 
-function celebration() {
+function createFallingPetals() {
 
     const symbols = [
-        "♥",
+        "❦",
         "✦",
-        "★",
-        "♡"
+        "♡",
+        "·"
     ];
 
 
     for (
         let i = 0;
-        i < 40;
+        i < 30;
         i++
     ) {
 
         setTimeout(() => {
 
-            const item =
+            const petal =
                 document.createElement("div");
 
 
-            item.innerHTML =
+            petal.innerHTML =
                 symbols[
                     Math.floor(
                         Math.random() *
@@ -313,59 +301,53 @@ function celebration() {
                 ];
 
 
-            item.style.position =
+            petal.style.position =
                 "fixed";
 
 
-            item.style.left =
+            petal.style.left =
                 Math.random() *
                 100 + "vw";
 
 
-            item.style.top =
-                "100vh";
+            petal.style.top =
+                "-30px";
 
 
-            item.style.color =
-                i % 2 === 0
-                    ? "#ff4fc8"
-                    : "#ffe66d";
-
-
-            item.style.fontSize =
-                (12 +
+            petal.style.fontSize =
+                (18 +
                 Math.random() * 20)
                 + "px";
 
 
-            item.style.textShadow =
-                "0 0 10px currentColor";
+            petal.style.color =
+                "#b77b82";
 
 
-            item.style.pointerEvents =
+            petal.style.pointerEvents =
                 "none";
 
 
-            item.style.zIndex =
-                "10000";
+            petal.style.zIndex =
+                "9999";
 
 
-            item.style.transition =
-                "transform 3s ease, opacity 3s ease";
+            petal.style.transition =
+                "transform 4s ease, opacity 4s ease";
 
 
             document.body.appendChild(
-                item
+                petal
             );
 
 
             requestAnimationFrame(() => {
 
-                item.style.transform =
-                    `translateY(-${window.innerHeight + 150}px)
+                petal.style.transform =
+                    `translateY(${window.innerHeight + 100}px)
                      rotate(${Math.random() * 360}deg)`;
 
-                item.style.opacity =
+                petal.style.opacity =
                     "0";
 
             });
@@ -373,12 +355,11 @@ function celebration() {
 
             setTimeout(() => {
 
-                item.remove();
+                petal.remove();
 
-            }, 3200);
+            }, 4500);
 
-
-        }, i * 50);
+        }, i * 80);
 
     }
 
@@ -386,21 +367,17 @@ function celebration() {
 
 
 /* =========================
-   FLOATING ARCADE PARTICLES
+   FLOATING BOOK PARTICLES
 ========================= */
 
 const particles =
-    document.getElementById(
-        "particles"
-    );
+    document.getElementById("particles");
 
 
 function createParticle() {
 
     const particle =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
 
     particle.className =
@@ -409,31 +386,27 @@ function createParticle() {
 
     particle.innerHTML =
         Math.random() > .5
-            ? "✦"
-            : "♥";
+            ? "·"
+            : "❦";
 
 
     particle.style.left =
-        Math.random() * 100 +
-        "vw";
+        Math.random() * 100 + "vw";
 
 
     particle.style.top =
         (80 +
-        Math.random() * 20) +
-        "vh";
+        Math.random() * 20) + "vh";
 
 
     particle.style.fontSize =
-        (8 +
-        Math.random() * 13) +
-        "px";
+        (12 +
+        Math.random() * 15) + "px";
 
 
     particle.style.animationDuration =
-        (6 +
-        Math.random() * 6) +
-        "s";
+        (8 +
+        Math.random() * 7) + "s";
 
 
     particles.appendChild(
@@ -445,12 +418,12 @@ function createParticle() {
 
         particle.remove();
 
-    }, 13000);
+    }, 15000);
 
 }
 
 
 setInterval(
     createParticle,
-    800
+    900
 );

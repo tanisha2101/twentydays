@@ -7,515 +7,841 @@
 
 body {
 
-    background:
-        radial-gradient(
-            circle at top,
-            #4b2630 0%,
-            #24151a 45%,
-            #120c0e 100%
-        );
+    font-family: 'Nunito', sans-serif;
 
-    color: #33221e;
-
-    min-height: 100vh;
+    background: #111;
 
     overflow-x: hidden;
 
-    font-family: 'Cormorant Garamond', serif;
-
 }
 
 
-/* =========================
-   PAPER TEXTURE
-========================= */
-
-.paper-texture {
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    opacity: .12;
-
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 3px,
-            rgba(255,255,255,.2) 4px
-        );
-
-    z-index: 1;
-
+.hidden {
+    display: none !important;
 }
 
 
-/* =========================
-   PARTICLES
-========================= */
-
-#particles {
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 2;
-
-}
-
-
-.particle {
-
-    position: absolute;
-
-    color: #d9b89c;
-
-    opacity: 0;
-
-    animation: drift linear forwards;
-
-}
-
-
-@keyframes drift {
-
-    0% {
-
-        transform:
-            translateY(30px)
-            rotate(0deg);
-
-        opacity: 0;
-
-    }
-
-    20% {
-
-        opacity: .6;
-
-    }
-
-    100% {
-
-        transform:
-            translateY(-100vh)
-            rotate(180deg);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-/* =========================
-   COVER
-========================= */
-
-.cover {
+.screen {
 
     min-height: 100vh;
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 30px 20px;
+    width: 100%;
 
     position: relative;
 
-    z-index: 3;
+    overflow: hidden;
 
 }
 
 
-.book {
+/* =========================
+   START SCREEN
+========================= */
 
-    width: min(680px, 94vw);
-
-    min-height: 760px;
-
-    padding: 65px 45px;
-
-    text-align: center;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    position: relative;
+.start-screen {
 
     background:
         linear-gradient(
-            135deg,
-            #f5e7c9,
-            #e8d2a9
+            #65c7f7 0%,
+            #b6edff 70%,
+            #79c96b 70%,
+            #55a84f 100%
         );
 
-    border: 10px solid #3b1d22;
+    display: flex;
 
-    outline: 2px solid #b99363;
+    justify-content: center;
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.55),
-        inset 0 0 50px rgba(99,58,31,.15);
+    align-items: center;
 
-}
-
-
-.book::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 16px;
-
-    border: 1px solid rgba(105,65,35,.5);
-
-    pointer-events: none;
+    text-align: center;
 
 }
 
 
-.book-decoration {
+.start-content {
 
-    font-size: 45px;
+    position: relative;
 
-    color: #7b3947;
+    z-index: 5;
+
+}
+
+
+.small-game-text {
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 11px;
+
+    color: #fff;
+
+    text-shadow: 3px 3px #7b2d35;
 
     margin-bottom: 20px;
 
 }
 
 
-.small-title {
+.start-content h1 {
 
-    font-size: 15px;
+    font-family: 'Press Start 2P', cursive;
 
-    letter-spacing: 5px;
+    font-size: clamp(35px, 8vw, 70px);
 
-    color: #67433b;
+    line-height: 1.5;
 
-}
+    color: #fff;
 
-
-.book h1 {
-
-    font-family: 'IM Fell English', serif;
-
-    font-size: clamp(48px, 9vw, 76px);
-
-    line-height: 1.05;
-
-    font-weight: 400;
-
-    color: #4a242b;
-
-    margin: 25px 0;
+    text-shadow:
+        5px 5px #e52535,
+        8px 8px #64202a;
 
 }
 
 
-.ornament {
+.heart-title {
 
-    font-family: 'Parisienne', cursive;
+    font-size: 55px;
 
-    color: #914d59;
+    margin: 15px;
 
-    font-size: 48px;
-
-    margin: 10px 0 20px;
+    animation: bounce 1s infinite alternate;
 
 }
 
 
-.cover-line {
+@keyframes bounce {
 
-    font-size: 24px;
+    from {
+        transform: translateY(0);
+    }
 
-    line-height: 1.55;
-
-    color: #59413b;
-
-}
-
-
-.countdown-box {
-
-    margin: 35px 0;
-
-    padding: 13px 35px;
-
-    border-radius: 60px;
-
-    border: 1px solid #8e6260;
-
-    background: rgba(255,248,230,.35);
+    to {
+        transform: translateY(-10px);
+    }
 
 }
 
 
-.countdown-box span {
+.subtitle {
 
-    display: block;
+    font-family: 'Press Start 2P', cursive;
 
     font-size: 12px;
 
-    letter-spacing: 3px;
+    color: #fff;
 
-    color: #70504b;
+    text-shadow: 2px 2px #333;
 
 }
 
 
-#countdown {
+.pixel-line {
+
+    color: #ffd83d;
 
     font-size: 28px;
 
-    color: #7b3947;
-
-    font-weight: 600;
-
-    margin-top: 4px;
+    margin: 25px;
 
 }
 
 
-.book-button,
-.turn-button,
-.answer-buttons button {
+#startGame {
 
-    font-family: 'IM Fell English', serif;
+    font-family: 'Press Start 2P', cursive;
 
-    font-size: 19px;
+    font-size: 14px;
 
-    padding: 14px 32px;
+    padding: 20px 28px;
 
-    border-radius: 3px;
+    border: 5px solid #fff;
 
-    border: 1px solid #70404a;
+    background: #e52535;
 
-    background: #713744;
-
-    color: #f9ecd0;
+    color: white;
 
     cursor: pointer;
 
-    transition: .3s ease;
+    box-shadow:
+        6px 6px #6b2028;
+
+    transition: .2s;
+
+}
+
+
+#startGame:hover {
+
+    transform: translateY(-5px);
 
     box-shadow:
-        0 8px 20px rgba(63,30,35,.2);
+        6px 11px #6b2028;
 
 }
 
 
-.book-button:hover,
-.turn-button:hover,
-.answer-buttons button:hover {
+.press {
 
-    transform: translateY(-3px);
+    font-family: 'Press Start 2P', cursive;
 
-    background: #8b4a58;
+    color: #fff;
 
-}
+    font-size: 9px;
 
-
-.hidden {
-
-    display: none;
+    margin-top: 20px;
 
 }
 
 
 /* =========================
-   PAGE
+   CLOUDS
 ========================= */
 
-#letterSection,
-#secondSection,
-#questionSection {
-
-    min-height: 100vh;
-
-    padding: 70px 20px;
-
-    position: relative;
-
-    z-index: 3;
-
-}
-
-
-.page {
-
-    max-width: 820px;
-
-    margin: auto;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f8edcf,
-            #ead8b3
-        );
-
-    padding: 70px 65px;
-
-    position: relative;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5);
-
-    border-left: 10px solid #4a252b;
-
-    border-right: 2px solid #b89b70;
-
-    animation: pageOpen .9s ease;
-
-}
-
-
-.page::before {
-
-    content: "";
+.cloud {
 
     position: absolute;
 
-    inset: 18px;
+    font-size: 70px;
 
-    border: 1px solid rgba(117,75,48,.35);
-
-    pointer-events: none;
+    opacity: .9;
 
 }
 
 
-@keyframes pageOpen {
+.cloud1 {
 
-    from {
+    top: 10%;
 
-        opacity: 0;
+    left: 8%;
 
-        transform:
-            perspective(1000px)
-            rotateY(-12deg)
-            translateY(40px);
+    animation: cloudMove 12s linear infinite;
 
+}
+
+
+.cloud2 {
+
+    top: 20%;
+
+    right: 8%;
+
+    animation: cloudMove 16s linear infinite reverse;
+
+}
+
+
+.cloud3 {
+
+    top: 13%;
+
+    left: 10%;
+
+}
+
+
+.cloud4 {
+
+    top: 22%;
+
+    right: 12%;
+
+}
+
+
+@keyframes cloudMove {
+
+    0% {
+        transform: translateX(-30px);
     }
 
-    to {
+    50% {
+        transform: translateX(30px);
+    }
 
-        opacity: 1;
-
-        transform:
-            rotateY(0)
-            translateY(0);
-
+    100% {
+        transform: translateX(-30px);
     }
 
 }
 
 
-.page-number {
+/* =========================
+   HUD
+========================= */
 
-    text-align: right;
+.hud {
 
-    font-size: 13px;
+    position: absolute;
 
-    letter-spacing: 3px;
+    top: 20px;
 
-    color: #86645b;
+    left: 20px;
 
-    margin-bottom: 35px;
-
-}
-
-
-.chapter-title {
-
-    text-align: center;
-
-    font-family: 'IM Fell English', serif;
-
-    font-size: 25px;
-
-    color: #6f3540;
+    right: 20px;
 
     display: flex;
 
+    justify-content: space-between;
+
     align-items: center;
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 9px;
+
+    color: white;
+
+    text-shadow: 2px 2px #333;
+
+    z-index: 20;
+
+}
+
+
+.hud span {
+
+    color: #ffd83d;
+
+}
+
+
+/* =========================
+   LEVEL SCREEN
+========================= */
+
+.level-screen {
+
+    background:
+        linear-gradient(
+            #59c8f5 0%,
+            #b7efff 72%,
+            #69c65c 72%,
+            #479c43 100%
+        );
+
+}
+
+
+.level-title {
+
+    font-family: 'Press Start 2P', cursive;
+
+    color: #fff;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    padding-top: 85px;
+
+    text-shadow:
+        3px 3px #333;
+
+}
+
+
+.game-world {
+
+    height: 350px;
+
+    position: relative;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+}
+
+
+.ground {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 70px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #8b542f 0px,
+            #8b542f 35px,
+            #704127 35px,
+            #704127 40px
+        );
+
+    border-top: 8px solid #4f942f;
+
+}
+
+
+.brick {
+
+    position: absolute;
+
+    width: 60px;
+
+    height: 60px;
+
+    background: #c96d35;
+
+    border: 5px solid #713b25;
+
+    color: #ffe58a;
+
+    font-family: 'Press Start 2P', cursive;
+
+    display: flex;
 
     justify-content: center;
 
-    gap: 15px;
+    align-items: center;
 
-    margin-bottom: 45px;
+    font-size: 18px;
+
+    box-shadow:
+        inset 4px 4px rgba(255,255,255,.2);
 
 }
 
 
-.chapter-title span {
+.brick1 {
 
-    font-family: 'Parisienne', cursive;
+    left: 30%;
+
+    top: 100px;
+
+}
+
+
+.brick2 {
+
+    left: 42%;
+
+    top: 100px;
+
+}
+
+
+.brick3 {
+
+    left: 54%;
+
+    top: 100px;
+
+}
+
+
+.coin {
+
+    position: absolute;
 
     font-size: 35px;
 
+    animation: coinFloat 1s infinite alternate;
+
 }
 
 
-.letter {
+.coin1 {
+
+    left: 32%;
+
+    top: 35px;
+
+}
+
+
+.coin2 {
+
+    left: 48%;
+
+    top: 35px;
+
+}
+
+
+.coin3 {
+
+    left: 64%;
+
+    top: 35px;
+
+}
+
+
+@keyframes coinFloat {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+.character {
+
+    position: absolute;
+
+    bottom: 55px;
+
+    left: 10%;
+
+    font-size: 65px;
+
+    z-index: 5;
+
+    transition:
+        left 1.5s ease;
+
+}
+
+
+.level-message {
+
+    background: rgba(255,255,255,.94);
+
+    max-width: 650px;
+
+    margin: 20px auto;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border: 6px solid #d33b3b;
+
+    box-shadow:
+        8px 8px rgba(0,0,0,.2);
+
+}
+
+
+.level-message h2 {
+
+    font-family: 'Press Start 2P', cursive;
+
+    color: #d32f3b;
+
+    font-size: 17px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.level-message p {
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+}
+
+
+.game-button {
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 11px;
+
+    padding: 17px 22px;
+
+    border: 4px solid #333;
+
+    background: #ffd83d;
+
+    color: #3b2a1f;
+
+    cursor: pointer;
+
+    box-shadow:
+        5px 5px #333;
+
+    transition: .2s;
+
+    margin-top: 20px;
+
+}
+
+
+.game-button:hover {
+
+    transform: translate(3px,3px);
+
+    box-shadow:
+        2px 2px #333;
+
+}
+
+
+/* =========================
+   MEMORY
+========================= */
+
+.memory-screen {
+
+    background:
+        linear-gradient(
+            #713bc1,
+            #38205e
+        );
+
+    color: white;
+
+    text-align: center;
+
+    padding-bottom: 60px;
+
+}
+
+
+.memory-heading {
+
+    font-family: 'Press Start 2P', cursive;
 
     font-size: 21px;
 
-    line-height: 1.85;
+    padding-top: 35px;
 
-    color: #3f2d29;
+    color: #ffd83d;
 
-}
-
-
-.letter p {
-
-    margin-bottom: 28px;
+    text-shadow:
+        3px 3px #111;
 
 }
 
 
-.dropcap {
+.memory-intro {
 
-    font-family: 'Parisienne', cursive;
+    margin-top: 20px;
 
-    font-size: 43px;
-
-    color: #743844;
+    font-size: 19px;
 
 }
 
 
-.final-lines {
+.memory-grid {
 
-    font-family: 'IM Fell English', serif;
+    display: flex;
 
-    font-style: italic;
+    justify-content: center;
 
-    font-size: 24px;
+    gap: 25px;
 
-    color: #5b3735;
+    flex-wrap: wrap;
+
+    max-width: 900px;
+
+    margin: 45px auto 25px;
+
+}
+
+
+.memory-card {
+
+    width: 220px;
+
+    min-height: 190px;
+
+    background: #fff;
+
+    border: 6px solid #222;
+
+    box-shadow:
+        8px 8px rgba(0,0,0,.4);
+
+    cursor: pointer;
+
+    font-size: 55px;
+
+    transition: .3s;
+
+}
+
+
+.memory-card:hover {
+
+    transform:
+        translateY(-10px)
+        rotate(-2deg);
+
+}
+
+
+.memory-card span {
+
+    display: block;
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 10px;
+
+    margin-top: 20px;
+
+    color: #333;
+
+}
+
+
+.memory-card.collected {
+
+    background: #ffd83d;
+
+    transform:
+        translateY(-10px)
+        scale(1.04);
+
+}
+
+
+#memoryMessage {
+
+    min-height: 65px;
+
+    max-width: 650px;
+
+    margin: 25px auto;
+
+    font-size: 21px;
+
+    line-height: 1.5;
+
+    color: #fff6bd;
+
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-screen {
+
+    background:
+        linear-gradient(
+            #f7d58a,
+            #f4a45b
+        );
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+}
+
+
+.pixel-stars {
+
+    font-size: 35px;
+
+    color: #fff;
+
+    letter-spacing: 20px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.game-window {
+
+    max-width: 780px;
+
+    margin: auto;
+
+    background: #fff8df;
+
+    border: 8px solid #44304f;
+
+    box-shadow:
+        12px 12px rgba(0,0,0,.3);
+
+    text-align: left;
+
+}
+
+
+.window-top {
+
+    background: #44304f;
+
+    color: #fff;
+
+    padding: 15px;
+
+    text-align: center;
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 10px;
+
+}
+
+
+.letter-content {
+
+    padding: 45px;
+
+}
+
+
+.pixel-heart {
+
+    text-align: center;
+
+    font-size: 50px;
+
+}
+
+
+.letter-content h2 {
+
+    font-family: 'Press Start 2P', cursive;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    color: #d33b5b;
+
+    margin: 20px 0 35px;
+
+}
+
+
+.letter-content p {
+
+    font-family: 'Patrick Hand', cursive;
+
+    font-size: 23px;
+
+    line-height: 1.7;
+
+    color: #49383a;
+
+    margin-bottom: 24px;
+
+    white-space: pre-line;
+
+}
+
+
+.letter-content strong {
+
+    color: #d33b5b;
 
 }
 
@@ -524,157 +850,326 @@ body {
 
     text-align: right;
 
-    font-family: 'Parisienne', cursive;
+    font-size: 27px !important;
 
-    font-size: 31px;
-
-    color: #713744;
-
-    margin-top: 40px;
+    color: #7d3851 !important;
 
 }
 
 
-.signature span {
+#castleButton {
 
-    font-size: 38px;
+    background: #e33e4f;
 
-}
+    color: white;
 
-
-.turn-button {
-
-    display: block;
-
-    margin: 45px auto 0;
+    margin-top: 35px;
 
 }
 
 
 /* =========================
-   SECOND PAGE
+   CASTLE
 ========================= */
 
-.smaller-page {
-
-    max-width: 700px;
-
-    text-align: center;
-
-}
-
-
-.smaller-page h2 {
-
-    font-family: 'IM Fell English', serif;
-
-    font-size: 42px;
-
-    line-height: 1.2;
-
-    color: #61313a;
-
-    margin-bottom: 30px;
-
-}
-
-
-.second-text {
-
-    font-size: 23px;
-
-    line-height: 1.8;
-
-    color: #3f2d29;
-
-}
-
-
-.second-text strong {
-
-    display: block;
-
-    font-family: 'IM Fell English', serif;
-
-    font-style: italic;
-
-    color: #763c47;
-
-    font-size: 27px;
-
-    margin: 30px 0;
-
-}
-
-
-.pressed-flower {
-
-    font-family: 'Parisienne', cursive;
-
-    font-size: 50px;
-
-    color: #a26c6b;
-
-    margin: 30px;
-
-}
-
-
-/* =========================
-   QUESTION
-========================= */
-
-.question-page {
-
-    max-width: 700px;
-
-    margin: auto;
-
-    padding: 70px 45px;
-
-    text-align: center;
+.castle-screen {
 
     background:
         linear-gradient(
-            135deg,
-            #f8edcf,
-            #ead8b3
+            #151334 0%,
+            #24215a 65%,
+            #3c6a42 65%,
+            #28512f 100%
         );
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5);
+    color: white;
 
-    border: 7px double #573037;
-
-    animation: pageOpen .9s ease;
+    text-align: center;
 
 }
 
 
-.question-page h2 {
+.moon {
 
-    font-family: 'IM Fell English', serif;
+    position: absolute;
 
-    font-size: 42px;
+    top: 60px;
 
-    color: #61313a;
+    right: 12%;
 
-    margin: 20px 0 35px;
+    font-size: 75px;
 
 }
 
 
-.question {
+.stars {
 
-    font-family: 'IM Fell English', serif;
+    position: absolute;
 
-    font-style: italic;
+    top: 100px;
 
-    font-size: 27px;
+    left: 10%;
+
+    color: #ffe98b;
+
+    font-size: 25px;
+
+}
+
+
+.castle {
+
+    position: relative;
+
+    width: 300px;
+
+    height: 250px;
+
+    margin: 100px auto 20px;
+
+}
+
+
+.castle-roof {
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 90px solid transparent;
+
+    border-right: 90px solid transparent;
+
+    border-bottom: 120px solid #a7354d;
+
+    position: absolute;
+
+    left: 60px;
+
+    top: 0;
+
+}
+
+
+.castle-body {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 40px;
+
+    width: 220px;
+
+    height: 150px;
+
+    background: #e9c9a1;
+
+    border: 7px solid #522b3d;
+
+}
+
+
+.castle-window {
+
+    margin: 25px auto;
+
+    width: 45px;
+
+    height: 45px;
+
+    background: #ffd83d;
+
+    border: 5px solid #522b3d;
+
+    padding-top: 5px;
+
+}
+
+
+.castle-door {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 78px;
+
+    width: 55px;
+
+    height: 75px;
+
+    background: #522b3d;
+
+    padding-top: 25px;
+
+}
+
+
+.castle-text {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+.castle-text h2 {
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 28px;
+
+    color: #ffd83d;
+
+    margin: 25px;
+
+}
+
+
+.castle-text p {
+
+    font-size: 21px;
 
     line-height: 1.6;
 
-    color: #49322f;
+}
+
+
+.final-line {
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 12px !important;
+
+    color: #fff;
+
+    margin: 25px;
+
+}
+
+
+.princess {
+
+    font-size: 65px;
+
+    margin: 20px;
+
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.question-screen {
+
+    background:
+        linear-gradient(
+            #ff6b81,
+            #c72f62
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+}
+
+
+.final-stars {
+
+    position: absolute;
+
+    top: 30px;
+
+    font-size: 30px;
+
+    color: #ffe36e;
+
+}
+
+
+.final-box {
+
+    background: #fff7dc;
+
+    max-width: 760px;
+
+    padding: 50px 35px;
+
+    border: 10px solid #49284c;
+
+    box-shadow:
+        12px 12px rgba(0,0,0,.3);
+
+}
+
+
+.final-box .level-title {
+
+    padding: 0;
+
+    color: #d23951;
+
+    font-size: 12px;
+
+}
+
+
+.final-box h1 {
+
+    font-family: 'Press Start 2P', cursive;
+
+    color: #d23951;
+
+    font-size: clamp(20px, 5vw, 30px);
+
+    line-height: 1.8;
+
+    margin: 25px 0;
+
+}
+
+
+.princess-big {
+
+    font-size: 75px;
+
+}
+
+
+.question-text {
+
+    font-family: 'Patrick Hand', cursive;
+
+    font-size: 23px;
+
+    line-height: 1.6;
+
+    color: #4b3739;
+
+    margin: 25px 0;
+
+}
+
+
+.final-box h2 {
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: #71334c;
 
 }
 
@@ -687,31 +1182,47 @@ body {
 
     gap: 25px;
 
-    margin-top: 40px;
-
-    min-height: 70px;
+    margin-top: 35px;
 
     position: relative;
+
+    min-height: 80px;
+
+}
+
+
+.answer-buttons button {
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 11px;
+
+    padding: 18px 20px;
+
+    cursor: pointer;
+
+    border: 5px solid #333;
+
+    box-shadow:
+        5px 5px #333;
 
 }
 
 
 #yesBtn {
 
-    background: #713744;
+    background: #4caf50;
 
-    color: #f9ecd0;
+    color: white;
 
 }
 
 
 #noBtn {
 
-    background: #c9bba1;
+    background: #ddd;
 
-    color: #493b37;
-
-    border-color: #8c776f;
+    color: #333;
 
 }
 
@@ -720,28 +1231,13 @@ body {
 
     margin-top: 35px;
 
-    min-height: 70px;
+    font-family: 'Press Start 2P', cursive;
 
-    font-family: 'Parisienne', cursive;
+    font-size: 12px;
 
-    font-size: 31px;
+    line-height: 2;
 
-    color: #743844;
-
-    line-height: 1.5;
-
-}
-
-
-.closing {
-
-    font-family: 'Parisienne', cursive;
-
-    color: #914d59;
-
-    font-size: 45px;
-
-    margin-top: 35px;
+    color: #d23951;
 
 }
 
@@ -750,95 +1246,98 @@ body {
    MOBILE
 ========================= */
 
-@media (max-width: 600px) {
+@media(max-width:600px) {
 
-    .book {
+    .hud {
 
-        min-height: 680px;
-
-        padding: 50px 28px;
+        font-size: 7px;
 
     }
 
 
-    .small-title {
+    .level-title {
 
-        font-size: 11px;
-
-        letter-spacing: 3px;
+        font-size: 15px;
 
     }
 
 
-    .book h1 {
+    .game-world {
 
-        font-size: 48px;
+        height: 300px;
 
     }
 
 
-    .cover-line {
+    .brick {
+
+        width: 45px;
+
+        height: 45px;
+
+    }
+
+
+    .character {
+
+        font-size: 50px;
+
+    }
+
+
+    .level-message {
+
+        margin: 15px;
+
+    }
+
+
+    .memory-grid {
+
+        gap: 15px;
+
+        padding: 0 15px;
+
+    }
+
+
+    .memory-card {
+
+        width: 145px;
+
+        min-height: 150px;
+
+        font-size: 40px;
+
+    }
+
+
+    .memory-card span {
+
+        font-size: 8px;
+
+    }
+
+
+    .letter-content {
+
+        padding: 28px 22px;
+
+    }
+
+
+    .letter-content p {
 
         font-size: 21px;
 
     }
 
 
-    .page {
+    .castle {
 
-        padding: 55px 30px;
+        transform: scale(.8);
 
-    }
-
-
-    .chapter-title {
-
-        font-size: 20px;
-
-    }
-
-
-    .letter {
-
-        font-size: 19px;
-
-        line-height: 1.8;
-
-    }
-
-
-    .final-lines {
-
-        font-size: 21px;
-
-    }
-
-
-    .signature {
-
-        font-size: 28px;
-
-    }
-
-
-    .smaller-page h2,
-    .question-page h2 {
-
-        font-size: 34px;
-
-    }
-
-
-    .second-text {
-
-        font-size: 21px;
-
-    }
-
-
-    .question {
-
-        font-size: 23px;
+        margin-top: 80px;
 
     }
 

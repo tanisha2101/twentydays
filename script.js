@@ -1,147 +1,76 @@
-/* =========================
-   COUNTDOWN
-========================= */
-
-const targetDate =
-    new Date("September 6, 2026 00:00:00").getTime();
-
-const countdown =
-    document.getElementById("countdown");
-
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-    const distance =
-        targetDate - now;
-
-
-    if (distance <= 0) {
-
-        countdown.innerHTML =
-            "HAPPY BIRTHDAY ❤️";
-
-        return;
-
-    }
-
-
-    const days =
-        Math.floor(
-            distance /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (distance %
-            (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (distance %
-            (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (distance %
-            (1000 * 60)) /
-            1000
-        );
-
-
-    countdown.innerHTML =
-        `${days} Days · ${hours} Hours · ${minutes} Minutes · ${seconds} Seconds`;
-
-}
-
-
-updateCountdown();
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
 
 /* =========================
-   SECTION REVEAL
+   SECTION SWITCH
 ========================= */
 
-function reveal(section) {
+function showSection(section) {
 
-    section.style.display =
-        "block";
+    section.classList.remove("hidden");
 
-    section.style.opacity =
-        "0";
+    section.style.opacity = "0";
 
     section.style.transform =
-        "translateY(35px)";
-
+        "translateY(30px)";
 
     requestAnimationFrame(() => {
 
         section.style.transition =
-            "opacity .8s ease, transform .8s ease";
+            "opacity .7s ease, transform .7s ease";
 
-        section.style.opacity =
-            "1";
+        section.style.opacity = "1";
 
         section.style.transform =
             "translateY(0)";
 
     });
 
+    setTimeout(() => {
+
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 100);
+
 }
 
 
 /* =========================
-   OPEN BOOK
+   START GAME
 ========================= */
 
-const openBook =
-    document.getElementById("openBook");
+const startGame =
+    document.getElementById("startGame");
 
-const cover =
-    document.getElementById("cover");
+const startScreen =
+    document.getElementById("startScreen");
 
-const letterSection =
-    document.getElementById("letterSection");
+const levelOne =
+    document.getElementById("levelOne");
 
 
-openBook.onclick = () => {
+startGame.onclick = () => {
 
-    cover.style.transition =
-        "opacity .6s ease, transform .6s ease";
+    startScreen.style.transition =
+        "opacity .6s ease";
 
-    cover.style.opacity =
+    startScreen.style.opacity =
         "0";
-
-    cover.style.transform =
-        "scale(.96)";
-
 
     setTimeout(() => {
 
-        cover.style.display =
-            "none";
+        startScreen.classList.add("hidden");
 
-        reveal(letterSection);
+        showSection(levelOne);
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        setTimeout(() => {
+
+            document
+                .getElementById("character")
+                .style.left = "42%";
+
+        }, 300);
 
     }, 600);
 
@@ -149,63 +78,163 @@ openBook.onclick = () => {
 
 
 /* =========================
-   TURN PAGE
+   MEMORY LEVEL
 ========================= */
 
-const turnPage =
-    document.getElementById("turnPage");
+const memoryButton =
+    document.getElementById("memoryButton");
 
-const secondSection =
-    document.getElementById("secondSection");
+const memoryScreen =
+    document.getElementById("memoryScreen");
+
+const heartScore =
+    document.getElementById("heartScore");
+
+const memoryScore =
+    document.getElementById("memoryScore");
+
+let collected = 0;
 
 
-turnPage.onclick = () => {
+memoryButton.onclick = () => {
 
-    reveal(secondSection);
+    levelOne.classList.add("hidden");
 
-
-    setTimeout(() => {
-
-        secondSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    }, 100);
+    showSection(memoryScreen);
 
 };
 
 
 /* =========================
-   LAST PAGE
+   MEMORY CARDS
+========================= */
+
+const memoryCards =
+    document.querySelectorAll(".memory-card");
+
+const memoryMessage =
+    document.getElementById("memoryMessage");
+
+const levelComplete =
+    document.getElementById("levelComplete");
+
+
+memoryCards.forEach(card => {
+
+    card.onclick = () => {
+
+        if (
+            card.classList.contains(
+                "collected"
+            )
+        ) {
+            return;
+        }
+
+
+        card.classList.add(
+            "collected"
+        );
+
+
+        collected++;
+
+        heartScore.innerHTML =
+            collected;
+
+        memoryScore.innerHTML =
+            collected;
+
+
+        memoryMessage.innerHTML =
+            card.dataset.message;
+
+
+        createCoins();
+
+
+        if (collected === 3) {
+
+            setTimeout(() => {
+
+                levelComplete.classList.remove(
+                    "hidden"
+                );
+
+            }, 500);
+
+        }
+
+    };
+
+});
+
+
+/* =========================
+   LEVEL COMPLETE
+========================= */
+
+const letterScreen =
+    document.getElementById("letterScreen");
+
+
+levelComplete.onclick = () => {
+
+    memoryScreen.classList.add(
+        "hidden"
+    );
+
+    showSection(letterScreen);
+
+};
+
+
+/* =========================
+   CASTLE
+========================= */
+
+const castleButton =
+    document.getElementById("castleButton");
+
+const castleScreen =
+    document.getElementById("castleScreen");
+
+
+castleButton.onclick = () => {
+
+    letterScreen.classList.add(
+        "hidden"
+    );
+
+    showSection(castleScreen);
+
+};
+
+
+/* =========================
+   FINAL QUESTION
 ========================= */
 
 const questionButton =
     document.getElementById("questionButton");
 
-const questionSection =
-    document.getElementById("questionSection");
+const questionScreen =
+    document.getElementById("questionScreen");
 
 
 questionButton.onclick = () => {
 
-    reveal(questionSection);
+    castleScreen.classList.add(
+        "hidden"
+    );
 
-
-    setTimeout(() => {
-
-        questionSection.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-    }, 100);
+    showSection(questionScreen);
 
 };
 
 
 /* =========================
-   RUNAWAY NO BUTTON
+   NO BUTTON
 ========================= */
 
 const noBtn =
@@ -215,10 +244,10 @@ const noBtn =
 function moveNoButton() {
 
     const x =
-        Math.random() * 180 - 90;
+        Math.random() * 220 - 110;
 
     const y =
-        Math.random() * 100 - 50;
+        Math.random() * 120 - 60;
 
 
     noBtn.style.transform =
@@ -253,113 +282,80 @@ const response =
 yesBtn.onclick = () => {
 
     response.innerHTML = `
-        Then maybe this story
-        isn't finished yet. ❤️
+        ⭐ LEVEL COMPLETE ⭐
         <br><br>
-        Some pages simply take
-        a little longer to turn.
+        PLAYER 1 + PLAYER 2
+        <br><br>
+        ADVENTURE CONTINUES ❤️
     `;
 
 
-    createFallingPetals();
+    createCelebration();
 
 };
 
 
 /* =========================
-   SOFT PETAL ANIMATION
+   COIN EFFECT
 ========================= */
 
-function createFallingPetals() {
-
-    const symbols = [
-        "❦",
-        "✦",
-        "♡",
-        "·"
-    ];
-
+function createCoins() {
 
     for (
         let i = 0;
-        i < 30;
+        i < 8;
         i++
     ) {
 
+        const coin =
+            document.createElement("div");
+
+        coin.innerHTML = "🪙";
+
+        coin.style.position =
+            "fixed";
+
+        coin.style.left =
+            Math.random() * 100 + "vw";
+
+        coin.style.top =
+            "70vh";
+
+        coin.style.fontSize =
+            "25px";
+
+        coin.style.zIndex =
+            "9999";
+
+        coin.style.pointerEvents =
+            "none";
+
+        coin.style.transition =
+            "1s ease";
+
+        document.body.appendChild(
+            coin
+        );
+
+
+        requestAnimationFrame(() => {
+
+            coin.style.transform =
+                `translateY(-${150 +
+                Math.random() * 200}px)
+                 rotate(360deg)`;
+
+            coin.style.opacity =
+                "0";
+
+        });
+
+
         setTimeout(() => {
 
-            const petal =
-                document.createElement("div");
+            coin.remove();
 
-
-            petal.innerHTML =
-                symbols[
-                    Math.floor(
-                        Math.random() *
-                        symbols.length
-                    )
-                ];
-
-
-            petal.style.position =
-                "fixed";
-
-
-            petal.style.left =
-                Math.random() *
-                100 + "vw";
-
-
-            petal.style.top =
-                "-30px";
-
-
-            petal.style.fontSize =
-                (18 +
-                Math.random() * 20)
-                + "px";
-
-
-            petal.style.color =
-                "#b77b82";
-
-
-            petal.style.pointerEvents =
-                "none";
-
-
-            petal.style.zIndex =
-                "9999";
-
-
-            petal.style.transition =
-                "transform 4s ease, opacity 4s ease";
-
-
-            document.body.appendChild(
-                petal
-            );
-
-
-            requestAnimationFrame(() => {
-
-                petal.style.transform =
-                    `translateY(${window.innerHeight + 100}px)
-                     rotate(${Math.random() * 360}deg)`;
-
-                petal.style.opacity =
-                    "0";
-
-            });
-
-
-            setTimeout(() => {
-
-                petal.remove();
-
-            }, 4500);
-
-        }, i * 80);
+        }, 1200);
 
     }
 
@@ -367,63 +363,90 @@ function createFallingPetals() {
 
 
 /* =========================
-   FLOATING BOOK PARTICLES
+   FINAL CELEBRATION
 ========================= */
 
-const particles =
-    document.getElementById("particles");
+function createCelebration() {
+
+    const items = [
+        "❤️",
+        "⭐",
+        "✨",
+        "🪙",
+        "🌸",
+        "🎉"
+    ];
 
 
-function createParticle() {
+    for (
+        let i = 0;
+        i < 60;
+        i++
+    ) {
 
-    const particle =
-        document.createElement("div");
+        setTimeout(() => {
 
+            const item =
+                document.createElement("div");
 
-    particle.className =
-        "particle";
-
-
-    particle.innerHTML =
-        Math.random() > .5
-            ? "·"
-            : "❦";
-
-
-    particle.style.left =
-        Math.random() * 100 + "vw";
-
-
-    particle.style.top =
-        (80 +
-        Math.random() * 20) + "vh";
+            item.innerHTML =
+                items[
+                    Math.floor(
+                        Math.random() *
+                        items.length
+                    )
+                ];
 
 
-    particle.style.fontSize =
-        (12 +
-        Math.random() * 15) + "px";
+            item.style.position =
+                "fixed";
+
+            item.style.left =
+                Math.random() * 100 + "vw";
+
+            item.style.top =
+                "-30px";
+
+            item.style.fontSize =
+                (18 +
+                Math.random() * 22) +
+                "px";
+
+            item.style.zIndex =
+                "9999";
+
+            item.style.pointerEvents =
+                "none";
+
+            item.style.transition =
+                "transform 3s ease, opacity 3s ease";
 
 
-    particle.style.animationDuration =
-        (8 +
-        Math.random() * 7) + "s";
+            document.body.appendChild(
+                item
+            );
 
 
-    particles.appendChild(
-        particle
-    );
+            requestAnimationFrame(() => {
+
+                item.style.transform =
+                    `translateY(${window.innerHeight + 80}px)
+                     rotate(${Math.random() * 720}deg)`;
+
+                item.style.opacity =
+                    "0";
+
+            });
 
 
-    setTimeout(() => {
+            setTimeout(() => {
 
-        particle.remove();
+                item.remove();
 
-    }, 15000);
+            }, 3200);
+
+        }, i * 50);
+
+    }
 
 }
-
-
-setInterval(
-    createParticle,
-    900
-);

@@ -3,361 +3,485 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Thirty Days, One Heart ❤️</title>
+<title>Super Bui Bros. ❤️</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-    <div class="paper-texture"></div>
-    <div id="particles"></div>
+<div id="game">
 
 
-    <!-- =========================
-         COVER
-    ========================== -->
+<!-- =========================
+     START SCREEN
+========================= -->
 
-    <section class="cover" id="cover">
+<section class="screen start-screen" id="startScreen">
 
-        <div class="book">
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
 
-            <div class="book-decoration">
-                ✦
-            </div>
+    <div class="start-content">
 
-            <p class="small-title">
-                A STORY WITHOUT AN END
-            </p>
+        <div class="small-game-text">
+            A SPECIAL ADVENTURE
+        </div>
 
-            <h1>
-                Seventeen Sunsets,<br>
-                Until Your Birthday
-            </h1>
+        <h1>
+            SUPER<br>
+            BUI BROS.
+        </h1>
 
-            <div class="ornament">
-                ❦
-            </div>
+        <div class="heart-title">
+            ❤️
+        </div>
 
-            <p class="cover-line">
-                A page written for<br>
-                the person who became<br>
-                one of the most beautiful<br>
-                parts of my life.
-            </p>
+        <p class="subtitle">
+            The Anniversary Adventure
+        </p>
 
-            <div class="countdown-box">
+        <div class="pixel-line">
+            ★ ★ ★ ★ ★
+        </div>
 
-                <span>
-                    UNTIL YOUR BIRTHDAY
-                </span>
+        <button id="startGame">
+            START GAME
+        </button>
 
-                <div id="countdown">
-                    17 DAYS
-                </div>
+        <p class="press">
+            PRESS TO BEGIN
+        </p>
 
-            </div>
+    </div>
 
-            <button id="openBook" class="book-button">
-                OPEN THE BOOK
-            </button>
+</section>
+
+
+
+<!-- =========================
+     WORLD 1-1
+========================= -->
+
+<section class="screen level-screen hidden" id="levelOne">
+
+    <div class="hud">
+
+        <div>
+            PLAYER 1<br>
+            <span>BUI</span>
+        </div>
+
+        <div>
+            ❤️ × <span id="heartScore">0</span>
+        </div>
+
+        <div>
+            WORLD<br>
+            <span>21-08</span>
+        </div>
+
+    </div>
+
+
+    <div class="level-title">
+        WORLD 1-1
+    </div>
+
+
+    <div class="game-world">
+
+        <div class="cloud cloud3">☁️</div>
+        <div class="cloud cloud4">☁️</div>
+
+        <div class="coin coin1">🪙</div>
+        <div class="coin coin2">🪙</div>
+        <div class="coin coin3">🪙</div>
+
+        <div class="brick brick1">?</div>
+        <div class="brick brick2">?</div>
+        <div class="brick brick3">?</div>
+
+
+        <div class="character" id="character">
+            🧑🏻
+        </div>
+
+
+        <div class="ground"></div>
+
+    </div>
+
+
+    <div class="level-message">
+
+        <h2>
+            TODAY'S ADVENTURE
+        </h2>
+
+        <p>
+            Every good adventure has a beginning.
+            <br>
+            Ours had another beautiful chapter today.
+        </p>
+
+        <button class="game-button" id="memoryButton">
+            COLLECT MEMORY ⭐
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MEMORY LEVEL
+========================= -->
+
+<section class="screen memory-screen hidden" id="memoryScreen">
+
+    <div class="hud">
+
+        <div>
+            PLAYER 1<br>
+            <span>BUI</span>
+        </div>
+
+        <div>
+            ⭐ × <span id="memoryScore">0</span>
+        </div>
+
+        <div>
+            LEVEL<br>
+            <span>COMPLETE?</span>
+        </div>
+
+    </div>
+
+
+    <div class="level-title">
+        BONUS LEVEL
+    </div>
+
+
+    <h2 class="memory-heading">
+        TODAY'S POWER-UPS
+    </h2>
+
+
+    <p class="memory-intro">
+        Tap each one to unlock today's memories.
+    </p>
+
+
+    <div class="memory-grid">
+
+        <button class="memory-card" data-message="A little café, two people, good food and the kind of conversation I never want to forget.">
+            ☕
+            <span>CAFÉ DATE</span>
+        </button>
+
+
+        <button class="memory-card" data-message="Walking around the city with you somehow made familiar streets feel completely new.">
+            🚶
+            <span>THE CITY</span>
+        </button>
+
+
+        <button class="memory-card" data-message="After everything, we found our way back to each other today. And that made this 21st feel even more special.">
+            ❤️
+            <span>US</span>
+        </button>
+
+    </div>
+
+
+    <div id="memoryMessage"></div>
+
+
+    <button class="game-button hidden" id="levelComplete">
+        LEVEL COMPLETE ✨
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     ADVENTURE LETTER
+========================= -->
+
+<section class="screen letter-screen hidden" id="letterScreen">
+
+    <div class="pixel-stars">
+        ✦ ✧ ★ ✦ ✧
+    </div>
+
+
+    <div class="game-window">
+
+        <div class="window-top">
+
+            <span>
+                ★ MESSAGE UNLOCKED ★
+            </span>
 
         </div>
 
-    </section>
 
+        <div class="letter-content">
 
-
-    <!-- =========================
-         LETTER
-    ========================== -->
-
-    <section class="hidden" id="letterSection">
-
-        <div class="page">
-
-            <div class="page-number">
-                CHAPTER XVIII
-            </div>
-
-            <div class="chapter-title">
-                <span>❦</span>
-                A LETTER I COULD NEVER FINISH
-                <span>❦</span>
-            </div>
-
-
-            <div class="letter">
-
-                <p class="dropcap">
-                    My Mou,
-                </p>
-
-                <p>
-
-There are some things I don't know how to say when you're standing in front of me.
-
-So tonight, I am leaving them here instead.
-
-I don't know when we will talk again.
-
-I don't know what tomorrow will feel like.
-
-And I don't know what this particular chapter of our story is going to look like.
-
-But there is one thing I have never been confused about.
-
-I love you.
-
-I have loved you through the easy days, through the ridiculous ones, through the days where everything felt effortless, and through the days where understanding each other felt impossibly difficult.
-
-And somewhere along the way, loving you stopped being just one part of my life.
-
-It became woven into it.
-
-You became a thousand little things I didn't know I would miss until they weren't there.
-
-A person I could tell everything to.
-
-A person whose happiness could change the entire mood of my day.
-
-A person I could look at and think, somehow, I got lucky enough to know her.
-
-                </p>
-
-
-                <p>
-
-I don't think I have ever properly thanked you for everything you have been in my life.
-
-For the memories you gave me.
-
-For the laughter.
-
-For the ordinary days that became special simply because you were there.
-
-For letting me know a version of you that the rest of the world doesn't get to know.
-
-For becoming my person in ways neither of us probably planned.
-
-You gave me pieces of your life, and without even realizing it, you left pieces of yourself in mine.
-
-And I will always be grateful for that.
-
-                </p>
-
-
-                <p>
-
-Maybe that's why today hurts so much.
-
-Because when someone means this much to you, even a little distance can feel enormous.
-
-But I don't want this letter to ask anything from you.
-
-You don't have to answer it.
-
-You don't have to fix anything tonight.
-
-You don't even have to know what you feel right now.
-
-I just wanted one place where I could be completely honest.
-
-I loved you.
-
-I love you.
-
-And whatever happens from here, that love will always be one of the truest things I have ever felt.
-
-                </p>
-
-
-                <p>
-
-And if life ever takes us somewhere far away from this moment, I hope it is kind enough to leave a little road between us.
-
-Because no matter how many chapters life writes after this one, some part of me will always hope that somewhere, somehow, we find our way back to the same page.
-
-Not because I expect it.
-
-Not because I am asking for it.
-
-Just because if there is one person in this enormous world I would always want to find my way back to...
-
-it would be you.
-
-                </p>
-
-
-                <p class="final-lines">
-
-I don't know what the ending of our story is.
-
-Maybe neither of us is supposed to know yet.
-
-But I know this much:
-
-I will always be grateful that, for a while, our lives found each other.
-
-And if I could go back and read the beginning again,
-
-I would still choose every page that led me to you.
-
-                </p>
-
-
-                <p class="signature">
-
-                    Always with love,<br>
-
-                    <span>Your Bui</span>
-
-                </p>
-
-            </div>
-
-
-            <button id="turnPage" class="turn-button">
-
-                Turn the page ❦
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         SECOND PAGE
-    ========================== -->
-
-    <section class="hidden" id="secondSection">
-
-        <div class="page smaller-page">
-
-            <div class="page-number">
-                ANOTHER PAGE
-            </div>
-
-            <div class="ornament">
-                ❦
+            <div class="pixel-heart">
+                ❤️
             </div>
 
             <h2>
-                Some stories<br>
-                deserve another chapter.
+                PLAYER 2 HAS JOINED
             </h2>
 
-            <p class="second-text">
 
-I don't know what tomorrow brings.
+            <p>
+                My Nushi,
+            </p>
 
-Maybe tomorrow will be easier.
-Maybe it won't.
 
-But tonight, I wanted you to know that the gratitude I have for having known you isn't dependent on how perfect things are.
+            <p>
+                I think today was one of those days I will remember for a very long time.
+            </p>
 
-You mattered to me on the happiest days.
 
-You matter to me on the difficult ones too.
+            <p>
+                Not because we did anything extraordinary.
 
-And somewhere in this very strange, beautiful life of ours, I hope there is always a little possibility that our paths cross again.
+                We went to a café.
+                We walked around.
+                We explored the city.
+                We spent time together.
+
+                But somehow, being beside you made all of it feel like an adventure worth remembering.
+            </p>
+
+
+            <p>
+                And maybe that's what I love most about us.
+
+                We don't need some enormous, perfect moment to make a day special.
+
+                Sometimes it's just you beside me, talking about random things, walking somewhere without really knowing where we're going, and me quietly thinking,
 
                 <strong>
-                    Some people become memories.
-                    Some become home.
+                    "I really love this girl."
                 </strong>
-
-You will always be something much more precious than a passing chapter to me.
-
             </p>
 
 
-            <div class="pressed-flower">
-                ❦
+            <p>
+                Today was our 21st.
+
+                And after everything we've been through, getting to spend it together felt incredibly precious to me.
+
+                We found our way back to each other.
+
+                And honestly, I'd choose that over any perfect fairytale ending.
+            </p>
+
+
+            <p>
+                So here's to another level.
+
+                Another adventure.
+
+                Another ridiculous amount of memories waiting for us somewhere ahead.
+
+                And hopefully, a very, very long game.
+            </p>
+
+
+            <p class="signature">
+                Player 1,<br>
+                Your Bui ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button class="game-button" id="castleButton">
+        CONTINUE TO THE CASTLE 🏰
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     CASTLE
+========================= -->
+
+<section class="screen castle-screen hidden" id="castleScreen">
+
+    <div class="moon">
+        🌙
+    </div>
+
+    <div class="stars">
+        ✦　★　✧　✦　★　✧
+    </div>
+
+
+    <div class="castle">
+
+        <div class="castle-flag">
+            ❤️
+        </div>
+
+        <div class="castle-roof"></div>
+
+        <div class="castle-body">
+
+            <div class="castle-window">
+                ❤️
             </div>
 
+            <div class="castle-door">
+                🚪
+            </div>
 
-            <button id="questionButton" class="turn-button">
+        </div>
 
-                One Last Page
+    </div>
 
+
+    <div class="castle-text">
+
+        <div class="level-title">
+            FINAL LEVEL
+        </div>
+
+        <h2>
+            THE CASTLE
+        </h2>
+
+        <p>
+            After every jump,<br>
+            every obstacle,<br>
+            every difficult level...
+        </p>
+
+        <p class="final-line">
+            Bui finally reaches the castle.
+        </p>
+
+        <p>
+            And there she is.
+        </p>
+
+        <div class="princess">
+            👸🏻 ❤️
+        </div>
+
+        <button class="game-button" id="questionButton">
+            APPROACH THE PRINCESS
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL QUESTION
+========================= -->
+
+<section class="screen question-screen hidden" id="questionScreen">
+
+    <div class="final-stars">
+        ✦ ★ ✧ ★ ✦
+    </div>
+
+
+    <div class="final-box">
+
+        <div class="level-title">
+            FINAL BOSS DEFEATED
+        </div>
+
+
+        <h1>
+            PRINCESS NUSHI
+            <br>
+            HAS BEEN FOUND ❤️
+        </h1>
+
+
+        <div class="princess-big">
+            👸🏻
+        </div>
+
+
+        <p class="question-text">
+
+            Every adventure has a destination.
+
+            <br><br>
+
+            But if I could choose,
+            I'd rather keep exploring
+            the whole world with you.
+
+            <br><br>
+
+            So...
+
+        </p>
+
+
+        <h2>
+            WILL YOU GO ON
+            <br>
+            ANOTHER ADVENTURE
+            <br>
+            WITH ME?
+        </h2>
+
+
+        <div class="answer-buttons">
+
+            <button id="yesBtn">
+                YES ❤️
+            </button>
+
+            <button id="noBtn">
+                NO 🙈
             </button>
 
         </div>
 
-    </section>
+
+        <div id="response"></div>
+
+    </div>
+
+</section>
 
 
-
-    <!-- =========================
-         QUESTION
-    ========================== -->
-
-    <section class="hidden" id="questionSection">
-
-        <div class="question-page">
-
-            <div class="page-number">
-                THE LAST PAGE FOR TODAY
-            </div>
-
-            <div class="ornament">
-                ❦
-            </div>
-
-            <h2>
-                Before you close the book...
-            </h2>
-
-            <p class="question">
-
-                If life ever gave our story<br>
-                another chapter,
-
-                <br><br>
-
-                would you read it with me?
-
-            </p>
+</div>
 
 
-            <div class="answer-buttons">
-
-                <button id="yesBtn">
-                    I WOULD ❤️
-                </button>
-
-                <button id="noBtn">
-                    Maybe... 🙈
-                </button>
-
-            </div>
-
-
-            <p id="response"></p>
-
-            <div class="closing">
-                ❦
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 

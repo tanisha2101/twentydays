@@ -1,271 +1,109 @@
-
 /* =========================
-   SECTION SWITCH
+   COUNTDOWN
 ========================= */
 
-function showSection(section) {
+const targetDate = new Date("September 6, 2026 00:00:00").getTime();
 
-    section.classList.remove("hidden");
+const countdown = document.getElementById("countdown");
 
-    section.style.opacity = "0";
 
-    section.style.transform =
-        "translateY(30px)";
+function updateCountdown() {
 
-    requestAnimationFrame(() => {
+    const now = new Date().getTime();
 
-        section.style.transition =
-            "opacity .7s ease, transform .7s ease";
+    const distance = targetDate - now;
 
-        section.style.opacity = "1";
 
-        section.style.transform =
-            "translateY(0)";
+    if (distance <= 0) {
 
-    });
+        countdown.innerHTML = "Happy Birthday, my favourite person! 🎂❤️";
 
-    setTimeout(() => {
+        return;
 
-        section.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+    }
 
-    }, 100);
+
+    const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+    );
+
+
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+
+    countdown.innerHTML =
+        `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
 
 }
 
 
-/* =========================
-   START GAME
-========================= */
+updateCountdown();
 
-const startGame =
-    document.getElementById("startGame");
+setInterval(updateCountdown, 1000);
 
-const startScreen =
-    document.getElementById("startScreen");
-
-const levelOne =
-    document.getElementById("levelOne");
-
-
-startGame.onclick = () => {
-
-    startScreen.style.transition =
-        "opacity .6s ease";
-
-    startScreen.style.opacity =
-        "0";
-
-    setTimeout(() => {
-
-        startScreen.classList.add("hidden");
-
-        showSection(levelOne);
-
-        setTimeout(() => {
-
-            document
-                .getElementById("character")
-                .style.left = "42%";
-
-        }, 300);
-
-    }, 600);
-
-};
 
 
 /* =========================
-   MEMORY LEVEL
+   OPEN LETTER
 ========================= */
 
-const memoryButton =
-    document.getElementById("memoryButton");
+const openLetter = document.getElementById("openLetter");
 
-const memoryScreen =
-    document.getElementById("memoryScreen");
-
-const heartScore =
-    document.getElementById("heartScore");
-
-const memoryScore =
-    document.getElementById("memoryScore");
-
-let collected = 0;
+const letterSection = document.getElementById("letterSection");
 
 
-memoryButton.onclick = () => {
+openLetter.addEventListener("click", function () {
 
-    levelOne.classList.add("hidden");
+    letterSection.classList.remove("hidden");
 
-    showSection(memoryScreen);
+    letterSection.scrollIntoView({
+        behavior: "smooth"
+    });
 
-};
-
-
-/* =========================
-   MEMORY CARDS
-========================= */
-
-const memoryCards =
-    document.querySelectorAll(".memory-card");
-
-const memoryMessage =
-    document.getElementById("memoryMessage");
-
-const levelComplete =
-    document.getElementById("levelComplete");
-
-
-memoryCards.forEach(card => {
-
-    card.onclick = () => {
-
-        if (
-            card.classList.contains(
-                "collected"
-            )
-        ) {
-            return;
-        }
-
-
-        card.classList.add(
-            "collected"
-        );
-
-
-        collected++;
-
-        heartScore.innerHTML =
-            collected;
-
-        memoryScore.innerHTML =
-            collected;
-
-
-        memoryMessage.innerHTML =
-            card.dataset.message;
-
-
-        createCoins();
-
-
-        if (collected === 3) {
-
-            setTimeout(() => {
-
-                levelComplete.classList.remove(
-                    "hidden"
-                );
-
-            }, 500);
-
-        }
-
-    };
+    createHearts(12);
 
 });
 
 
-/* =========================
-   LEVEL COMPLETE
-========================= */
-
-const letterScreen =
-    document.getElementById("letterScreen");
-
-
-levelComplete.onclick = () => {
-
-    memoryScreen.classList.add(
-        "hidden"
-    );
-
-    showSection(letterScreen);
-
-};
-
 
 /* =========================
-   CASTLE
+   ONE LAST THING
 ========================= */
 
-const castleButton =
-    document.getElementById("castleButton");
+const oneLastThing =
+    document.getElementById("oneLastThing");
 
-const castleScreen =
-    document.getElementById("castleScreen");
-
-
-castleButton.onclick = () => {
-
-    letterScreen.classList.add(
-        "hidden"
-    );
-
-    showSection(castleScreen);
-
-};
+const questionSection =
+    document.getElementById("questionSection");
 
 
-/* =========================
-   FINAL QUESTION
-========================= */
+oneLastThing.addEventListener("click", function () {
 
-const questionButton =
-    document.getElementById("questionButton");
+    questionSection.classList.remove("hidden");
 
-const questionScreen =
-    document.getElementById("questionScreen");
+    questionSection.scrollIntoView({
+        behavior: "smooth"
+    });
 
+    createHearts(18);
 
-questionButton.onclick = () => {
+});
 
-    castleScreen.classList.add(
-        "hidden"
-    );
-
-    showSection(questionScreen);
-
-};
-
-
-/* =========================
-   NO BUTTON
-========================= */
-
-const noBtn =
-    document.getElementById("noBtn");
-
-
-function moveNoButton() {
-
-    const x =
-        Math.random() * 220 - 110;
-
-    const y =
-        Math.random() * 120 - 60;
-
-
-    noBtn.style.transform =
-        `translate(${x}px, ${y}px)`;
-
-}
-
-
-noBtn.addEventListener(
-    "mouseenter",
-    moveNoButton
-);
-
-
-noBtn.addEventListener(
-    "touchstart",
-    moveNoButton
-);
 
 
 /* =========================
@@ -279,83 +117,105 @@ const response =
     document.getElementById("response");
 
 
-yesBtn.onclick = () => {
+yesBtn.addEventListener("click", function () {
 
-    response.innerHTML = `
-        ⭐ LEVEL COMPLETE ⭐
-        <br><br>
-        PLAYER 1 + PLAYER 2
-        <br><br>
-        ADVENTURE CONTINUES ❤️
-    `;
+    response.innerHTML =
+        "Good. Because I plan on being proud of you forever. ☁️❤️";
 
+    createHearts(25);
 
-    createCelebration();
+});
 
-};
 
 
 /* =========================
-   COIN EFFECT
+   PLAYFUL NO BUTTON
 ========================= */
 
-function createCoins() {
+const noBtn =
+    document.getElementById("noBtn");
 
-    for (
-        let i = 0;
-        i < 8;
-        i++
-    ) {
 
-        const coin =
+function moveNoButton() {
+
+    const card =
+        document.querySelector(".questionCard");
+
+    const maxX =
+        card.offsetWidth - noBtn.offsetWidth - 20;
+
+    const maxY = 100;
+
+
+    const randomX =
+        Math.random() * Math.max(maxX, 20);
+
+    const randomY =
+        Math.random() * maxY;
+
+
+    noBtn.style.left =
+        randomX + "px";
+
+    noBtn.style.top =
+        randomY + "px";
+
+}
+
+
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+noBtn.addEventListener("touchstart", function(e) {
+
+    e.preventDefault();
+
+    moveNoButton();
+
+});
+
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHearts(amount) {
+
+    const container =
+        document.getElementById("hearts");
+
+
+    for (let i = 0; i < amount; i++) {
+
+        const heart =
             document.createElement("div");
 
-        coin.innerHTML = "🪙";
+        heart.classList.add("heart");
 
-        coin.style.position =
-            "fixed";
-
-        coin.style.left =
-            Math.random() * 100 + "vw";
-
-        coin.style.top =
-            "70vh";
-
-        coin.style.fontSize =
-            "25px";
-
-        coin.style.zIndex =
-            "9999";
-
-        coin.style.pointerEvents =
-            "none";
-
-        coin.style.transition =
-            "1s ease";
-
-        document.body.appendChild(
-            coin
-        );
+        heart.innerHTML =
+            Math.random() > .5 ? "♡" : "♥";
 
 
-        requestAnimationFrame(() => {
+        heart.style.left =
+            Math.random() * 100 + "%";
 
-            coin.style.transform =
-                `translateY(-${150 +
-                Math.random() * 200}px)
-                 rotate(360deg)`;
 
-            coin.style.opacity =
-                "0";
+        heart.style.animationDuration =
+            (4 + Math.random() * 4) + "s";
 
-        });
+
+        heart.style.fontSize =
+            (12 + Math.random() * 14) + "px";
+
+
+        container.appendChild(heart);
 
 
         setTimeout(() => {
 
-            coin.remove();
+            heart.remove();
 
-        }, 1200);
+        }, 8000);
 
     }
 
@@ -363,90 +223,11 @@ function createCoins() {
 
 
 /* =========================
-   FINAL CELEBRATION
+   AUTOMATIC SOFT HEARTS
 ========================= */
 
-function createCelebration() {
+setInterval(() => {
 
-    const items = [
-        "❤️",
-        "⭐",
-        "✨",
-        "🪙",
-        "🌸",
-        "🎉"
-    ];
+    createHearts(1);
 
-
-    for (
-        let i = 0;
-        i < 60;
-        i++
-    ) {
-
-        setTimeout(() => {
-
-            const item =
-                document.createElement("div");
-
-            item.innerHTML =
-                items[
-                    Math.floor(
-                        Math.random() *
-                        items.length
-                    )
-                ];
-
-
-            item.style.position =
-                "fixed";
-
-            item.style.left =
-                Math.random() * 100 + "vw";
-
-            item.style.top =
-                "-30px";
-
-            item.style.fontSize =
-                (18 +
-                Math.random() * 22) +
-                "px";
-
-            item.style.zIndex =
-                "9999";
-
-            item.style.pointerEvents =
-                "none";
-
-            item.style.transition =
-                "transform 3s ease, opacity 3s ease";
-
-
-            document.body.appendChild(
-                item
-            );
-
-
-            requestAnimationFrame(() => {
-
-                item.style.transform =
-                    `translateY(${window.innerHeight + 80}px)
-                     rotate(${Math.random() * 720}deg)`;
-
-                item.style.opacity =
-                    "0";
-
-            });
-
-
-            setTimeout(() => {
-
-                item.remove();
-
-            }, 3200);
-
-        }, i * 50);
-
-    }
-
-}
+}, 2500);

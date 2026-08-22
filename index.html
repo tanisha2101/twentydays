@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Super Bui Bros. ❤️</title>
+<title>Thirty Days, One Heart ❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -20,380 +20,99 @@
 
 <body>
 
-<div id="game">
+<!-- FLOATING CLOUDS -->
+
+<div class="cloud cloud1">☁️</div>
+<div class="cloud cloud2">☁️</div>
+<div class="cloud cloud3">☁️</div>
+<div class="cloud cloud4">☁️</div>
 
 
-<!-- =========================
-     START SCREEN
-========================= -->
+<!-- SOFT FLOATING HEARTS -->
 
-<section class="screen start-screen" id="startScreen">
+<div id="hearts"></div>
 
-    <div class="cloud cloud1">☁️</div>
-    <div class="cloud cloud2">☁️</div>
 
-    <div class="start-content">
+<!-- MAIN HERO -->
 
-        <div class="small-game-text">
-            A SPECIAL ADVENTURE
-        </div>
+<section class="hero">
 
-        <h1>
-            SUPER<br>
-            BUI BROS.
-        </h1>
-
-        <div class="heart-title">
-            ❤️
-        </div>
-
-        <p class="subtitle">
-            The Anniversary Adventure
-        </p>
-
-        <div class="pixel-line">
-            ★ ★ ★ ★ ★
-        </div>
-
-        <button id="startGame">
-            START GAME
-        </button>
-
-        <p class="press">
-            PRESS TO BEGIN
-        </p>
-
+    <div class="littleTitle">
+        A little reminder for you ☁️
     </div>
 
-</section>
+    <h1>
+        Fifteen Sunsets,<br>
+        Until Your Birthday
+    </h1>
 
-
-
-<!-- =========================
-     WORLD 1-1
-========================= -->
-
-<section class="screen level-screen hidden" id="levelOne">
-
-    <div class="hud">
-
-        <div>
-            PLAYER 1<br>
-            <span>BUI</span>
-        </div>
-
-        <div>
-            ❤️ × <span id="heartScore">0</span>
-        </div>
-
-        <div>
-            WORLD<br>
-            <span>21-08</span>
-        </div>
-
-    </div>
-
-
-    <div class="level-title">
-        WORLD 1-1
-    </div>
-
-
-    <div class="game-world">
-
-        <div class="cloud cloud3">☁️</div>
-        <div class="cloud cloud4">☁️</div>
-
-        <div class="coin coin1">🪙</div>
-        <div class="coin coin2">🪙</div>
-        <div class="coin coin3">🪙</div>
-
-        <div class="brick brick1">?</div>
-        <div class="brick brick2">?</div>
-        <div class="brick brick3">?</div>
-
-
-        <div class="character" id="character">
-            🧑🏻
-        </div>
-
-
-        <div class="ground"></div>
-
-    </div>
-
-
-    <div class="level-message">
-
-        <h2>
-            TODAY'S ADVENTURE
-        </h2>
-
-        <p>
-            Every good adventure has a beginning.
-            <br>
-            Ours had another beautiful chapter today.
-        </p>
-
-        <button class="game-button" id="memoryButton">
-            COLLECT MEMORY ⭐
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     MEMORY LEVEL
-========================= -->
-
-<section class="screen memory-screen hidden" id="memoryScreen">
-
-    <div class="hud">
-
-        <div>
-            PLAYER 1<br>
-            <span>BUI</span>
-        </div>
-
-        <div>
-            ⭐ × <span id="memoryScore">0</span>
-        </div>
-
-        <div>
-            LEVEL<br>
-            <span>COMPLETE?</span>
-        </div>
-
-    </div>
-
-
-    <div class="level-title">
-        BONUS LEVEL
-    </div>
-
-
-    <h2 class="memory-heading">
-        TODAY'S POWER-UPS
-    </h2>
-
-
-    <p class="memory-intro">
-        Tap each one to unlock today's memories.
+    <p class="quote">
+        Some people make the world brighter.<br>
+        You make mine softer.
     </p>
 
 
-    <div class="memory-grid">
+    <!-- COUNTDOWN -->
 
-        <button class="memory-card" data-message="A little café, two people, good food and the kind of conversation I never want to forget.">
-            ☕
-            <span>CAFÉ DATE</span>
-        </button>
-
-
-        <button class="memory-card" data-message="Walking around the city with you somehow made familiar streets feel completely new.">
-            🚶
-            <span>THE CITY</span>
-        </button>
-
-
-        <button class="memory-card" data-message="After everything, we found our way back to each other today. And that made this 21st feel even more special.">
-            ❤️
-            <span>US</span>
-        </button>
-
+    <div id="countdown">
+        15 days · 0 hours · 0 minutes · 0 seconds
     </div>
 
 
-    <div id="memoryMessage"></div>
-
-
-    <button class="game-button hidden" id="levelComplete">
-        LEVEL COMPLETE ✨
+    <button id="openLetter">
+        ☁️ Open Today's Letter
     </button>
 
 </section>
 
 
 
-<!-- =========================
-     ADVENTURE LETTER
-========================= -->
+<!-- LETTER SECTION -->
 
-<section class="screen letter-screen hidden" id="letterScreen">
+<section id="letterSection" class="hidden">
 
-    <div class="pixel-stars">
-        ✦ ✧ ★ ✦ ✧
-    </div>
+    <div class="cloudCard">
 
-
-    <div class="game-window">
-
-        <div class="window-top">
-
-            <span>
-                ★ MESSAGE UNLOCKED ★
-            </span>
-
-        </div>
-
-
-        <div class="letter-content">
-
-            <div class="pixel-heart">
-                ❤️
-            </div>
-
-            <h2>
-                PLAYER 2 HAS JOINED
-            </h2>
-
-
-            <p>
-                My Nushi,
-            </p>
-
-
-            <p>
-                I think today was one of those days I will remember for a very long time.
-            </p>
-
-
-            <p>
-                Not because we did anything extraordinary.
-
-                We went to a café.
-                We walked around.
-                We explored the city.
-                We spent time together.
-
-                But somehow, being beside you made all of it feel like an adventure worth remembering.
-            </p>
-
-
-            <p>
-                And maybe that's what I love most about us.
-
-                We don't need some enormous, perfect moment to make a day special.
-
-                Sometimes it's just you beside me, talking about random things, walking somewhere without really knowing where we're going, and me quietly thinking,
-
-                <strong>
-                    "I really love this girl."
-                </strong>
-            </p>
-
-
-            <p>
-                Today was our 21st.
-
-                And after everything we've been through, getting to spend it together felt incredibly precious to me.
-
-                We found our way back to each other.
-
-                And honestly, I'd choose that over any perfect fairytale ending.
-            </p>
-
-
-            <p>
-                So here's to another level.
-
-                Another adventure.
-
-                Another ridiculous amount of memories waiting for us somewhere ahead.
-
-                And hopefully, a very, very long game.
-            </p>
-
-
-            <p class="signature">
-                Player 1,<br>
-                Your Bui ❤️
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <button class="game-button" id="castleButton">
-        CONTINUE TO THE CASTLE 🏰
-    </button>
-
-</section>
-
-
-
-<!-- =========================
-     CASTLE
-========================= -->
-
-<section class="screen castle-screen hidden" id="castleScreen">
-
-    <div class="moon">
-        🌙
-    </div>
-
-    <div class="stars">
-        ✦　★　✧　✦　★　✧
-    </div>
-
-
-    <div class="castle">
-
-        <div class="castle-flag">
-            ❤️
-        </div>
-
-        <div class="castle-roof"></div>
-
-        <div class="castle-body">
-
-            <div class="castle-window">
-                ❤️
-            </div>
-
-            <div class="castle-door">
-                🚪
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="castle-text">
-
-        <div class="level-title">
-            FINAL LEVEL
+        <div class="cloudBadge">
+            ☁️ For My Favourite Person
         </div>
 
         <h2>
-            THE CASTLE
+            I Am So Proud of You
         </h2>
 
-        <p>
-            After every jump,<br>
-            every obstacle,<br>
-            every difficult level...
+        <div class="divider">♡</div>
+
+        <p class="letterText">
+
+There are so many things I admire about you, but one of them has always been the way you keep moving forward.
+
+You handle things, you learn, you grow, you figure things out — and even when something is difficult, you somehow find your way through it.
+
+I hope you know how incredibly proud I am of the person you are becoming.
+
+I genuinely believe you are going to be an amazing leader someday. Not just because you are capable, but because you care. You notice things. You understand people. You have a strength in you that I don't think you always realise.
+
+And honestly, I love watching you become more and more yourself.
+
+I love you, and I am endlessly grateful that somehow, in this huge world, I get to have you in my life.
+
+So whenever you doubt yourself, I hope you remember this:
+
+Someone out here believes in you completely.
+
+And I always will.
+
         </p>
 
-        <p class="final-line">
-            Bui finally reaches the castle.
-        </p>
 
-        <p>
-            And there she is.
-        </p>
-
-        <div class="princess">
-            👸🏻 ❤️
+        <div class="signature">
+            Always cheering for you ♡
         </div>
 
-        <button class="game-button" id="questionButton">
-            APPROACH THE PRINCESS
+
+        <button id="oneLastThing">
+            ☁️ One Last Thing...
         </button>
 
     </div>
@@ -402,87 +121,47 @@
 
 
 
-<!-- =========================
-     FINAL QUESTION
-========================= -->
+<!-- QUESTION -->
 
-<section class="screen question-screen hidden" id="questionScreen">
+<section id="questionSection" class="hidden">
 
-    <div class="final-stars">
-        ✦ ★ ✧ ★ ✦
-    </div>
+    <div class="questionCard">
 
-
-    <div class="final-box">
-
-        <div class="level-title">
-            FINAL BOSS DEFEATED
+        <div class="questionCloud">
+            ☁️
         </div>
 
+        <h2>
+            One Little Question
+        </h2>
 
-        <h1>
-            PRINCESS NUSHI
-            <br>
-            HAS BEEN FOUND ❤️
-        </h1>
-
-
-        <div class="princess-big">
-            👸🏻
-        </div>
-
-
-        <p class="question-text">
-
-            Every adventure has a destination.
-
-            <br><br>
-
-            But if I could choose,
-            I'd rather keep exploring
-            the whole world with you.
-
-            <br><br>
-
-            So...
-
+        <p class="questionText">
+            Will you let me keep being<br>
+            ridiculously proud of you? ♡
         </p>
 
 
-        <h2>
-            WILL YOU GO ON
-            <br>
-            ANOTHER ADVENTURE
-            <br>
-            WITH ME?
-        </h2>
-
-
-        <div class="answer-buttons">
+        <div class="buttons">
 
             <button id="yesBtn">
-                YES ❤️
+                Yes, obviously ♡
             </button>
 
             <button id="noBtn">
-                NO 🙈
+                No 🙈
             </button>
 
         </div>
 
-
-        <div id="response"></div>
+        <p id="response"></p>
 
     </div>
 
 </section>
 
-
-</div>
 
 
 <script src="script.js"></script>
 
 </body>
-
 </html>

@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thirty Days, One Heart ❤️</title>
+<title>Thirty Days, One Heart❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -20,99 +20,202 @@
 
 <body>
 
-<!-- FLOATING CLOUDS -->
+<!-- =========================
+     ARCADE SCREEN
+========================= -->
 
-<div class="cloud cloud1">☁️</div>
-<div class="cloud cloud2">☁️</div>
-<div class="cloud cloud3">☁️</div>
-<div class="cloud cloud4">☁️</div>
+<main class="gameScreen">
+
+    <div class="scanlines"></div>
+
+    <header class="arcadeHeader">
+
+        <div class="gameTitle">
+            LOVE ARCADE
+        </div>
+
+        <div class="level">
+            LEVEL 14
+        </div>
+
+    </header>
 
 
-<!-- SOFT FLOATING HEARTS -->
+    <!-- SCORE -->
 
-<div id="hearts"></div>
+    <div class="scoreBoard">
 
+        <div>
+            SCORE
+            <span id="score">000000</span>
+        </div>
 
-<!-- MAIN HERO -->
+        <div>
+            LIVES
+            <span>♥ ♥ ♥</span>
+        </div>
 
-<section class="hero">
-
-    <div class="littleTitle">
-        A little reminder for you ☁️
     </div>
 
-    <h1>
-        Fifteen Sunsets,<br>
-        Until Your Birthday
-    </h1>
 
-    <p class="quote">
-        Some people make the world brighter.<br>
-        You make mine softer.
-    </p>
+    <!-- =========================
+         GAME AREA
+    ========================= -->
+
+    <section class="maze">
+
+        <div class="mazeLine line1"></div>
+        <div class="mazeLine line2"></div>
+        <div class="mazeLine line3"></div>
+        <div class="mazeLine line4"></div>
+        <div class="mazeLine line5"></div>
+
+        <!-- DOTS -->
+
+        <div class="dot d1"></div>
+        <div class="dot d2"></div>
+        <div class="dot d3"></div>
+        <div class="dot d4"></div>
+        <div class="dot d5"></div>
+        <div class="dot d6"></div>
+        <div class="dot d7"></div>
+        <div class="dot d8"></div>
 
 
-    <!-- COUNTDOWN -->
+        <!-- PLAYER -->
 
-    <div id="countdown">
-        15 days · 0 hours · 0 minutes · 0 seconds
-    </div>
+        <div id="player">◕</div>
 
 
-    <button id="openLetter">
-        ☁️ Open Today's Letter
-    </button>
+        <!-- GHOSTS -->
 
-</section>
-
+        <div class="ghost ghostPink">♥</div>
+        <div class="ghost ghostBlue">♥</div>
 
 
-<!-- LETTER SECTION -->
+        <div class="gameMessage">
+
+            <div class="pixelSmall">
+                PLAYER 1
+            </div>
+
+            <h1>
+                FIND THE<br>
+                HEARTS
+            </h1>
+
+            <p>
+                Some levels are about winning.<br>
+                Some are about finding somewhere safe to rest.
+            </p>
+
+            <button id="startBtn">
+                ▶ START GAME
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GAME COMPLETE
+    ========================= -->
+
+    <section id="gameComplete" class="hidden">
+
+        <div class="completeBox">
+
+            <div class="pixelSmall">
+                LEVEL COMPLETE
+            </div>
+
+            <h2>
+                YOU FOUND<br>
+                SOMETHING SPECIAL
+            </h2>
+
+            <p>
+                +999 LOVE
+            </p>
+
+            <button id="letterBtn">
+                💗 UNLOCK TODAY'S LETTER
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     LETTER
+========================= -->
 
 <section id="letterSection" class="hidden">
 
-    <div class="cloudCard">
+    <div class="letterCard">
 
-        <div class="cloudBadge">
-            ☁️ For My Favourite Person
+        <div class="pixelHeart">
+            ♥
+        </div>
+
+        <div class="letterLabel">
+            MESSAGE UNLOCKED
         </div>
 
         <h2>
-            I Am So Proud of You
+            To my <br>
+            Warrior Princess
         </h2>
 
-        <div class="divider">♡</div>
+        <div class="pinkDivider">
+            ✦ ♥ ✦
+        </div>
 
         <p class="letterText">
 
-There are so many things I admire about you, but one of them has always been the way you keep moving forward.
+I know how strong you are.
 
-You handle things, you learn, you grow, you figure things out — and even when something is difficult, you somehow find your way through it.
+I've seen the way you keep going even when things get difficult. I've seen you handle things, figure things out, and somehow keep moving even on the days when you probably just wanted everything to stop for a while.
 
-I hope you know how incredibly proud I am of the person you are becoming.
+And I am so, so proud of you for that.
 
-I genuinely believe you are going to be an amazing leader someday. Not just because you are capable, but because you care. You notice things. You understand people. You have a strength in you that I don't think you always realise.
+But there is something I want you to remember too.
 
-And honestly, I love watching you become more and more yourself.
+You don't have to be strong every second.
 
-I love you, and I am endlessly grateful that somehow, in this huge world, I get to have you in my life.
+You don't have to have everything figured out.
 
-So whenever you doubt yourself, I hope you remember this:
+And you don't have to carry the whole world by yourself.
 
-Someone out here believes in you completely.
+When life gets too heavy, you can put it down for a little while.
 
-And I always will.
+You can come to me, melt into my arms, and just breathe.
+
+You can tell me everything that hurts, everything that scares you, everything that made your day difficult — even the things you don't know how to explain.
+
+Sometimes you can simply rest.
+
+Let the world wait.
+
+I'll be here.
+
+And if all you need that day is somewhere soft to land, I hope you'll always know that you have that with me. ❤️
 
         </p>
 
 
         <div class="signature">
-            Always cheering for you ♡
+            Your safe place, always ♡
         </div>
 
 
-        <button id="oneLastThing">
-            ☁️ One Last Thing...
+        <button id="questionBtn">
+            💗 ONE LAST LEVEL
         </button>
 
     </div>
@@ -121,39 +224,43 @@ And I always will.
 
 
 
-<!-- QUESTION -->
+<!-- =========================
+     QUESTION
+========================= -->
 
 <section id="questionSection" class="hidden">
 
     <div class="questionCard">
 
-        <div class="questionCloud">
-            ☁️
+        <div class="pixelSmall">
+            FINAL LEVEL
         </div>
 
         <h2>
-            One Little Question
+            PLAYER 1,
+            <br>
+            WILL YOU REST HERE?
         </h2>
 
-        <p class="questionText">
-            Will you let me keep being<br>
-            ridiculously proud of you? ♡
+        <p>
+            Can I be your soft place to land? ♡
         </p>
 
 
         <div class="buttons">
 
             <button id="yesBtn">
-                Yes, obviously ♡
+                YES ♥
             </button>
 
             <button id="noBtn">
-                No 🙈
+                NO
             </button>
 
         </div>
 
-        <p id="response"></p>
+
+        <div id="response"></div>
 
     </div>
 
@@ -164,4 +271,5 @@ And I always will.
 <script src="script.js"></script>
 
 </body>
+
 </html>

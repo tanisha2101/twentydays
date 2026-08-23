@@ -1,60 +1,98 @@
 /* =========================
-   COUNTDOWN
+   ELEMENTS
 ========================= */
 
-const targetDate = new Date("September 6, 2026 00:00:00").getTime();
+const startBtn = document.getElementById("startBtn");
 
-const countdown = document.getElementById("countdown");
+const gameComplete =
+    document.getElementById("gameComplete");
 
+const letterBtn =
+    document.getElementById("letterBtn");
 
-function updateCountdown() {
+const letterSection =
+    document.getElementById("letterSection");
 
-    const now = new Date().getTime();
+const questionBtn =
+    document.getElementById("questionBtn");
 
-    const distance = targetDate - now;
+const questionSection =
+    document.getElementById("questionSection");
 
+const yesBtn =
+    document.getElementById("yesBtn");
 
-    if (distance <= 0) {
+const noBtn =
+    document.getElementById("noBtn");
 
-        countdown.innerHTML = "Happy Birthday, my favourite person! 🎂❤️";
+const response =
+    document.getElementById("response");
 
-        return;
+const player =
+    document.getElementById("player");
 
-    }
-
-
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-    );
-
-
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
-    );
-
-
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
-    );
+const score =
+    document.getElementById("score");
 
 
-    const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
-    );
+
+/* =========================
+   START GAME
+========================= */
+
+startBtn.addEventListener("click", function () {
+
+    startBtn.innerHTML = "♥ PLAYING...";
+
+    startBtn.disabled = true;
+
+    let currentScore = 0;
+
+    const scoreInterval = setInterval(function () {
+
+        currentScore += 100;
+
+        score.innerText =
+            String(currentScore).padStart(6, "0");
 
 
-    countdown.innerHTML =
-        `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
+        if (currentScore >= 800) {
+
+            clearInterval(scoreInterval);
+
+            finishGame();
+
+        }
+
+    }, 400);
+
+});
+
+
+
+/* =========================
+   FINISH GAME
+========================= */
+
+function finishGame() {
+
+    player.style.animation =
+        "none";
+
+    player.style.left =
+        "50%";
+
+    document.querySelector(".gameMessage")
+        .style.display = "none";
+
+
+    gameComplete.classList.remove("hidden");
+
+    gameComplete.scrollIntoView({
+        behavior: "smooth"
+    });
 
 }
-
-
-updateCountdown();
-
-setInterval(updateCountdown, 1000);
 
 
 
@@ -62,12 +100,7 @@ setInterval(updateCountdown, 1000);
    OPEN LETTER
 ========================= */
 
-const openLetter = document.getElementById("openLetter");
-
-const letterSection = document.getElementById("letterSection");
-
-
-openLetter.addEventListener("click", function () {
+letterBtn.addEventListener("click", function () {
 
     letterSection.classList.remove("hidden");
 
@@ -75,24 +108,15 @@ openLetter.addEventListener("click", function () {
         behavior: "smooth"
     });
 
-    createHearts(12);
-
 });
 
 
 
 /* =========================
-   ONE LAST THING
+   QUESTION
 ========================= */
 
-const oneLastThing =
-    document.getElementById("oneLastThing");
-
-const questionSection =
-    document.getElementById("questionSection");
-
-
-oneLastThing.addEventListener("click", function () {
+questionBtn.addEventListener("click", function () {
 
     questionSection.classList.remove("hidden");
 
@@ -100,29 +124,24 @@ oneLastThing.addEventListener("click", function () {
         behavior: "smooth"
     });
 
-    createHearts(18);
-
 });
 
 
 
 /* =========================
-   YES BUTTON
+   YES
 ========================= */
-
-const yesBtn =
-    document.getElementById("yesBtn");
-
-const response =
-    document.getElementById("response");
-
 
 yesBtn.addEventListener("click", function () {
 
     response.innerHTML =
-        "Good. Because I plan on being proud of you forever. ☁️❤️";
+        "LEVEL COMPLETE ♥<br><br>" +
+        "You can rest here whenever you need.";
 
-    createHearts(25);
+    yesBtn.innerHTML =
+        "♥ SAFE PLACE UNLOCKED";
+
+    createHearts(20);
 
 });
 
@@ -132,102 +151,120 @@ yesBtn.addEventListener("click", function () {
    PLAYFUL NO BUTTON
 ========================= */
 
-const noBtn =
-    document.getElementById("noBtn");
-
-
 function moveNoButton() {
 
     const card =
         document.querySelector(".questionCard");
 
     const maxX =
-        card.offsetWidth - noBtn.offsetWidth - 20;
+        card.clientWidth -
+        noBtn.offsetWidth -
+        20;
 
-    const maxY = 100;
+    const maxY = 120;
 
 
-    const randomX =
-        Math.random() * Math.max(maxX, 20);
+    const x =
+        Math.random() *
+        Math.max(maxX, 50);
 
-    const randomY =
-        Math.random() * maxY;
+    const y =
+        Math.random() *
+        maxY;
 
 
     noBtn.style.left =
-        randomX + "px";
+        x + "px";
 
     noBtn.style.top =
-        randomY + "px";
+        y + "px";
 
 }
 
 
-noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener(
+    "mouseenter",
+    moveNoButton
+);
 
-noBtn.addEventListener("touchstart", function(e) {
 
-    e.preventDefault();
+noBtn.addEventListener(
+    "touchstart",
+    function(event) {
 
-    moveNoButton();
+        event.preventDefault();
 
-});
+        moveNoButton();
+
+    }
+);
 
 
 
 /* =========================
-   FLOATING HEARTS
+   HEARTS
 ========================= */
 
 function createHearts(amount) {
-
-    const container =
-        document.getElementById("hearts");
-
 
     for (let i = 0; i < amount; i++) {
 
         const heart =
             document.createElement("div");
 
-        heart.classList.add("heart");
-
         heart.innerHTML =
-            Math.random() > .5 ? "♡" : "♥";
+            Math.random() > .5
+                ? "♥"
+                : "♡";
 
+
+        heart.style.position =
+            "fixed";
 
         heart.style.left =
-            Math.random() * 100 + "%";
+            Math.random() * 100 + "vw";
 
-
-        heart.style.animationDuration =
-            (4 + Math.random() * 4) + "s";
-
+        heart.style.bottom =
+            "-20px";
 
         heart.style.fontSize =
-            (12 + Math.random() * 14) + "px";
+            15 + Math.random() * 20 + "px";
+
+        heart.style.color =
+            Math.random() > .5
+                ? "#ff5c98"
+                : "#ffdc4d";
+
+        heart.style.zIndex =
+            "50";
+
+        heart.style.pointerEvents =
+            "none";
+
+        heart.style.transition =
+            "transform 5s linear, opacity 5s linear";
 
 
-        container.appendChild(heart);
+        document.body.appendChild(heart);
 
 
-        setTimeout(() => {
+        setTimeout(function () {
+
+            heart.style.transform =
+                `translateY(-100vh) translateX(${Math.random() * 100 - 50}px)`;
+
+            heart.style.opacity =
+                "0";
+
+        }, 50);
+
+
+        setTimeout(function () {
 
             heart.remove();
 
-        }, 8000);
+        }, 5500);
 
     }
 
 }
-
-
-/* =========================
-   AUTOMATIC SOFT HEARTS
-========================= */
-
-setInterval(() => {
-
-    createHearts(1);
-
-}, 2500);

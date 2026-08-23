@@ -7,367 +7,603 @@
 
 body {
 
-    font-family: 'DM Sans', sans-serif;
+    background: #090714;
 
-    color: #6f4057;
+    color: #fff;
+
+    font-family: 'DM Sans', sans-serif;
 
     min-height: 100vh;
 
     overflow-x: hidden;
+}
+
+
+/* =========================
+   ARCADE SCREEN
+========================= */
+
+.gameScreen {
+
+    min-height: 100vh;
 
     background:
-        linear-gradient(
-            180deg,
-            #ffdce9 0%,
-            #ffe8f0 35%,
-            #fff1f5 70%,
-            #ffe4ed 100%
-        );
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(99, 44, 122, .25),
+            transparent 40%
+        ),
+        #090714;
 
     position: relative;
+
+    padding: 25px;
+
+    overflow: hidden;
 }
 
 
-/* =========================
-   SOFT SKY GLOW
-========================= */
+/* CRT EFFECT */
 
-body::before {
-
-    content: "";
+.scanlines {
 
     position: fixed;
 
     inset: 0;
 
     pointer-events: none;
+
+    z-index: 20;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.025) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    opacity: .35;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.arcadeHeader {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-family: 'Press Start 2P', monospace;
+
+    color: #ffdf4d;
+
+    font-size: 14px;
+
+    padding: 10px 0 20px;
+}
+
+
+.gameTitle {
+
+    text-shadow:
+        3px 3px 0 #c43d74;
+}
+
+
+.level {
+
+    color: #ff8fc4;
+
+}
+
+
+/* =========================
+   SCORE
+========================= */
+
+.scoreBoard {
+
+    max-width: 850px;
+
+    margin: 10px auto 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family: 'Press Start 2P', monospace;
+
+    font-size: 11px;
+
+    color: #aaa4c8;
+
+}
+
+
+.scoreBoard span {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #fff;
+
+}
+
+
+/* =========================
+   MAZE
+========================= */
+
+.maze {
+
+    width: min(900px, 95vw);
+
+    height: 600px;
+
+    margin: auto;
+
+    position: relative;
+
+    border: 4px solid #5847b8;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 15px rgba(102,75,255,.7),
+        inset 0 0 30px rgba(72,47,151,.25);
 
     background:
         radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,.8),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(255,255,255,.65),
-            transparent 25%
+            circle,
+            rgba(255,255,255,.03) 1px,
+            transparent 1px
         );
 
-    z-index: -1;
-}
-
-
-/* =========================
-   CLOUDS
-========================= */
-
-.cloud {
-
-    position: fixed;
-
-    font-size: 110px;
-
-    opacity: .55;
-
-    filter: blur(.3px);
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    animation: cloudFloat 12s ease-in-out infinite alternate;
-}
-
-
-.cloud1 {
-
-    top: 8%;
-
-    left: -20px;
-
-}
-
-
-.cloud2 {
-
-    top: 25%;
-
-    right: -30px;
-
-    font-size: 150px;
-
-    animation-delay: 2s;
-
-}
-
-
-.cloud3 {
-
-    bottom: 18%;
-
-    left: 5%;
-
-    font-size: 90px;
-
-    animation-delay: 4s;
-
-}
-
-
-.cloud4 {
-
-    bottom: 5%;
-
-    right: 8%;
-
-    font-size: 120px;
-
-    animation-delay: 1s;
-
-}
-
-
-@keyframes cloudFloat {
-
-    from {
-
-        transform: translateX(0) translateY(0);
-
-    }
-
-    to {
-
-        transform: translateX(35px) translateY(-12px);
-
-    }
-
-}
-
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-#hearts {
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
+    background-size: 35px 35px;
 
     overflow: hidden;
-
-    z-index: 2;
 }
 
 
-.heart {
+/* MAZE WALLS */
+
+.mazeLine {
 
     position: absolute;
 
-    bottom: -30px;
+    border: 3px solid #4f43b5;
 
-    font-size: 16px;
-
-    opacity: 0;
-
-    animation: heartFloat 6s linear forwards;
+    box-shadow:
+        0 0 8px rgba(98,72,255,.7);
 
 }
 
 
-@keyframes heartFloat {
+.line1 {
 
-    0% {
+    width: 65%;
 
-        transform: translateY(0) scale(.7);
+    height: 90px;
 
-        opacity: 0;
+    top: 60px;
 
-    }
+    left: 17%;
 
-    15% {
+    border-radius: 10px;
+}
 
-        opacity: .7;
 
-    }
+.line2 {
 
-    80% {
+    width: 55%;
 
-        opacity: .5;
+    height: 100px;
 
-    }
+    bottom: 65px;
 
-    100% {
+    left: 22%;
 
-        transform: translateY(-100vh) translateX(40px) scale(1.2);
+    border-radius: 10px;
+}
 
-        opacity: 0;
 
-    }
+.line3 {
 
+    width: 100px;
+
+    height: 330px;
+
+    top: 135px;
+
+    left: 80px;
+
+    border-radius: 10px;
+}
+
+
+.line4 {
+
+    width: 100px;
+
+    height: 330px;
+
+    top: 135px;
+
+    right: 80px;
+
+    border-radius: 10px;
+}
+
+
+.line5 {
+
+    width: 45%;
+
+    height: 60px;
+
+    top: 270px;
+
+    left: 27%;
+
+    border-radius: 10px;
 }
 
 
 /* =========================
-   HERO
+   DOTS
 ========================= */
 
-.hero {
+.dot {
 
-    min-height: 100vh;
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #ffe9a6;
+
+    box-shadow:
+        0 0 8px #ffe9a6;
+
+    position: absolute;
+
+    animation: dotPulse 1.5s infinite alternate;
+}
+
+
+.d1 { top: 30px; left: 12%; }
+.d2 { top: 30px; right: 12%; }
+.d3 { top: 48%; left: 13%; }
+.d4 { top: 48%; right: 13%; }
+.d5 { bottom: 35px; left: 13%; }
+.d6 { bottom: 35px; right: 13%; }
+.d7 { top: 43%; left: 48%; }
+.d8 { bottom: 22%; left: 48%; }
+
+
+@keyframes dotPulse {
+
+    from {
+        opacity: .35;
+        transform: scale(.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+
+/* =========================
+   PLAYER
+========================= */
+
+#player {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 125px;
+
+    font-size: 58px;
+
+    color: #ffd83d;
+
+    text-shadow:
+        0 0 10px #ffd83d;
+
+    z-index: 4;
+
+    animation:
+        chomp .45s infinite alternate,
+        playerMove 6s ease-in-out infinite;
+}
+
+
+@keyframes chomp {
+
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(.7);
+    }
+}
+
+
+@keyframes playerMove {
+
+    0% {
+        left: 25%;
+    }
+
+    50% {
+        left: 70%;
+    }
+
+    100% {
+        left: 25%;
+    }
+}
+
+
+/* =========================
+   HEART GHOSTS
+========================= */
+
+.ghost {
+
+    position: absolute;
+
+    font-size: 32px;
+
+    animation: ghostMove 4s ease-in-out infinite alternate;
+
+}
+
+
+.ghostPink {
+
+    top: 145px;
+
+    left: 38%;
+
+    color: #ff6fae;
+
+    text-shadow: 0 0 12px #ff4f9a;
+}
+
+
+.ghostBlue {
+
+    bottom: 135px;
+
+    right: 35%;
+
+    color: #69c9ff;
+
+    text-shadow: 0 0 12px #4bbcff;
+
+    animation-delay: 1s;
+}
+
+
+@keyframes ghostMove {
+
+    from {
+        transform: translateX(-25px);
+    }
+
+    to {
+        transform: translateX(25px);
+    }
+}
+
+
+/* =========================
+   GAME MESSAGE
+========================= */
+
+.gameMessage {
+
+    position: absolute;
+
+    inset: 0;
 
     display: flex;
 
     flex-direction: column;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 
     text-align: center;
 
-    padding: 40px 20px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(9,7,20,.72),
+            rgba(9,7,20,.25)
+        );
 
-    position: relative;
-
-    z-index: 3;
+    z-index: 5;
 }
 
 
-.littleTitle {
+.pixelSmall {
 
-    font-family: 'Pacifico', cursive;
+    font-family: 'Press Start 2P', monospace;
 
-    font-size: 28px;
+    font-size: 11px;
 
-    color: #b75b7c;
+    color: #ffdf4d;
 
-    margin-bottom: 28px;
+    letter-spacing: 1px;
 
-    animation: softAppear 1.2s ease;
+    margin-bottom: 22px;
 }
 
 
-h1 {
+.gameMessage h1 {
 
-    font-family: 'Playfair Display', serif;
+    font-family: 'Press Start 2P', monospace;
 
-    font-size: clamp(48px, 7vw, 82px);
+    font-size: clamp(25px, 5vw, 48px);
 
-    line-height: 1.08;
+    line-height: 1.5;
 
-    color: #743c58;
-
-    margin-bottom: 30px;
+    color: #fff;
 
     text-shadow:
-        0 5px 0 rgba(255,255,255,.5);
+        4px 4px 0 #d74778,
+        0 0 15px rgba(255,100,160,.5);
 
-    animation: titleAppear 1.2s ease;
+    margin-bottom: 25px;
 }
 
 
-.quote {
+.gameMessage p {
 
-    font-size: 21px;
+    max-width: 600px;
+
+    color: #ddd8ed;
 
     line-height: 1.8;
 
-    color: #9b536e;
+    font-size: 16px;
 
-    margin-bottom: 38px;
-
-    font-weight: 500;
-
-    animation: softAppear 1.5s ease;
+    margin-bottom: 30px;
 }
 
 
 /* =========================
-   COUNTDOWN
-========================= */
-
-#countdown {
-
-    min-width: 470px;
-
-    padding: 18px 35px;
-
-    border-radius: 60px;
-
-    background: rgba(255,255,255,.65);
-
-    border: 2px solid rgba(255,255,255,.9);
-
-    box-shadow:
-        0 12px 35px rgba(173,86,117,.12);
-
-    color: #753f59;
-
-    font-size: 21px;
-
-    font-weight: 600;
-
-    letter-spacing: .5px;
-
-    margin-bottom: 35px;
-
-    backdrop-filter: blur(8px);
-}
-
-
-/* =========================
-   BUTTONS
+   BUTTON
 ========================= */
 
 button {
 
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Press Start 2P', monospace;
 
     cursor: pointer;
 
     border: none;
 
-    transition: .3s ease;
-
 }
 
 
-#openLetter {
+#startBtn {
 
-    padding: 17px 38px;
-
-    border-radius: 50px;
-
-    font-size: 18px;
-
-    font-weight: 600;
+    background: #ff4f8b;
 
     color: white;
 
-    background:
-        linear-gradient(
-            135deg,
-            #e783a4,
-            #c96c91
-        );
+    padding: 18px 25px;
+
+    border-radius: 6px;
+
+    font-size: 12px;
 
     box-shadow:
-        0 12px 30px rgba(188,86,121,.25);
+        5px 5px 0 #8e2854,
+        0 0 20px rgba(255,79,139,.5);
 
+    transition: .2s;
 }
 
 
-#openLetter:hover {
+#startBtn:hover {
 
-    transform: translateY(-5px) scale(1.03);
+    transform: translate(3px, 3px);
 
     box-shadow:
-        0 18px 40px rgba(188,86,121,.35);
+        2px 2px 0 #8e2854,
+        0 0 25px rgba(255,79,139,.7);
+}
 
+
+/* =========================
+   COMPLETE
+========================= */
+
+#gameComplete {
+
+    width: min(700px, 92vw);
+
+    margin: 40px auto;
+
+    text-align: center;
+}
+
+
+.completeBox {
+
+    padding: 45px 25px;
+
+    border: 3px solid #ff4f8b;
+
+    border-radius: 12px;
+
+    background: rgba(22,15,39,.95);
+
+    box-shadow:
+        0 0 30px rgba(255,79,139,.3);
+}
+
+
+.completeBox h2 {
+
+    font-family: 'Press Start 2P', monospace;
+
+    font-size: clamp(20px, 4vw, 32px);
+
+    line-height: 1.7;
+
+    color: #fff;
+
+    margin-bottom: 25px;
+}
+
+
+.completeBox p {
+
+    font-family: 'Press Start 2P', monospace;
+
+    color: #ffe35c;
+
+    margin-bottom: 30px;
+}
+
+
+#letterBtn {
+
+    padding: 17px 20px;
+
+    background: #ff4f8b;
+
+    color: white;
+
+    font-size: 11px;
+
+    border-radius: 5px;
+
+    box-shadow: 4px 4px 0 #8e2854;
 }
 
 
@@ -377,141 +613,140 @@ button {
 
 #letterSection {
 
-    padding: 80px 20px;
+    padding: 90px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #160d27,
+            #26112e
+        );
+
+    min-height: 100vh;
 
     position: relative;
-
-    z-index: 5;
 }
 
 
-.hidden {
+.letterCard {
 
-    display: none;
-}
-
-
-.cloudCard {
-
-    max-width: 780px;
+    max-width: 760px;
 
     margin: auto;
 
     padding: 55px;
 
-    border-radius: 38px;
-
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.95),
-            rgba(255,239,245,.95)
+            #fff6fa,
+            #ffe8f1
         );
 
-    box-shadow:
-        0 30px 80px rgba(161,72,105,.18);
+    color: #633b51;
 
-    border: 2px solid rgba(255,255,255,.9);
+    border-radius: 25px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.4);
 
     text-align: center;
 
-    animation: cardAppear 1s ease;
+    border: 3px solid #ff9fc1;
+
+    animation: letterAppear 1s ease;
 }
 
 
-.cloudBadge {
+.pixelHeart {
 
-    display: inline-block;
+    font-size: 45px;
 
-    padding: 9px 20px;
+    color: #f25c92;
 
-    border-radius: 30px;
+    text-shadow: 0 0 15px rgba(242,92,146,.5);
 
-    background: #ffe0eb;
+    margin-bottom: 10px;
+}
 
-    color: #a24e70;
 
-    font-size: 14px;
+.letterLabel {
 
-    font-weight: 600;
+    font-family: 'Press Start 2P', monospace;
+
+    font-size: 9px;
+
+    color: #a95b7c;
 
     margin-bottom: 25px;
 }
 
 
-.cloudCard h2 {
+.letterCard h2 {
 
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Sans', sans-serif;
 
-    font-size: 42px;
+    font-size: 40px;
 
-    color: #743c58;
+    line-height: 1.25;
+
+    color: #713d58;
+
+    margin-bottom: 15px;
 
 }
 
 
-.divider {
+.pinkDivider {
 
-    margin: 20px 0;
+    color: #ed709d;
 
-    font-size: 25px;
+    letter-spacing: 8px;
 
-    color: #d87598;
+    margin: 20px 0 30px;
 }
 
 
 .letterText {
 
-    font-size: 18px;
-
-    line-height: 2.05;
-
-    color: #70465a;
-
     text-align: left;
 
     white-space: pre-line;
 
+    font-size: 18px;
+
+    line-height: 2;
+
+    color: #70485b;
 }
 
 
 .signature {
 
-    font-family: 'Pacifico', cursive;
+    font-family: 'DM Sans', sans-serif;
 
-    color: #b75b7c;
+    font-weight: 700;
 
-    font-size: 22px;
+    color: #d85d8a;
 
-    margin: 30px 0;
+    margin: 35px 0 25px;
+
 }
 
 
-#oneLastThing {
+#questionBtn {
 
-    margin-top: 15px;
+    padding: 16px 22px;
 
-    padding: 15px 30px;
-
-    border-radius: 40px;
-
-    background: #f5b4c9;
+    background: #e96998;
 
     color: white;
 
-    font-size: 17px;
+    border-radius: 6px;
 
-    font-weight: 600;
+    font-size: 10px;
 
-}
-
-
-#oneLastThing:hover {
-
-    transform: translateY(-3px);
-
-    background: #e795b1;
-
+    box-shadow: 4px 4px 0 #963b60;
 }
 
 
@@ -521,121 +756,113 @@ button {
 
 #questionSection {
 
-    padding: 40px 20px 100px;
+    min-height: 100vh;
 
-    position: relative;
+    padding: 80px 20px;
 
-    z-index: 5;
-}
-
-
-.questionCard {
-
-    max-width: 650px;
-
-    margin: auto;
-
-    padding: 50px 35px;
-
-    text-align: center;
-
-    border-radius: 35px;
-
-    background: rgba(255,255,255,.88);
-
-    box-shadow:
-        0 25px 70px rgba(161,72,105,.15);
-
-    animation: cardAppear 1s ease;
-}
-
-
-.questionCloud {
-
-    font-size: 55px;
-
-    margin-bottom: 15px;
-
-}
-
-
-.questionCard h2 {
-
-    font-family: 'Playfair Display', serif;
-
-    font-size: 36px;
-
-    color: #743c58;
-
-}
-
-
-.questionText {
-
-    font-size: 22px;
-
-    line-height: 1.8;
-
-    margin: 30px 0;
-
-    color: #825169;
-
-}
-
-
-.buttons {
+    background: #090714;
 
     display: flex;
 
     justify-content: center;
 
-    gap: 20px;
+    align-items: center;
+}
+
+
+.questionCard {
+
+    width: min(650px, 95vw);
+
+    text-align: center;
+
+    padding: 55px 25px;
+
+    border: 3px solid #5543b7;
+
+    border-radius: 12px;
+
+    background: #120c22;
+
+    box-shadow:
+        0 0 40px rgba(84,67,183,.35);
+}
+
+
+.questionCard h2 {
+
+    font-family: 'Press Start 2P', monospace;
+
+    color: #fff;
+
+    font-size: clamp(19px, 4vw, 28px);
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+.questionCard > p {
+
+    color: #c8c1db;
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+}
+
+
+.buttons {
+
+    height: 80px;
 
     position: relative;
 
-    min-height: 65px;
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
 }
 
 
 #yesBtn {
 
-    padding: 15px 30px;
-
-    border-radius: 40px;
-
-    background: #df779d;
+    background: #ff4f8b;
 
     color: white;
 
-    font-size: 17px;
+    height: 52px;
 
-    font-weight: 600;
+    padding: 0 25px;
 
-}
+    font-size: 11px;
 
+    border-radius: 5px;
 
-#yesBtn:hover {
-
-    transform: scale(1.05);
+    box-shadow: 4px 4px 0 #8e2854;
 
 }
 
 
 #noBtn {
 
-    padding: 15px 30px;
-
-    border-radius: 40px;
-
-    background: #f1dce4;
-
-    color: #87536b;
-
-    font-size: 17px;
-
-    font-weight: 600;
-
     position: absolute;
+
+    background: #312b40;
+
+    color: #aaa2bb;
+
+    height: 52px;
+
+    padding: 0 25px;
+
+    font-size: 11px;
+
+    border-radius: 5px;
+
+    left: 55%;
 
 }
 
@@ -644,11 +871,13 @@ button {
 
     margin-top: 25px;
 
-    font-family: 'Pacifico', cursive;
+    color: #ff8fba;
 
-    font-size: 24px;
+    font-family: 'Press Start 2P', monospace;
 
-    color: #c45d83;
+    font-size: 11px;
+
+    line-height: 2;
 }
 
 
@@ -656,49 +885,13 @@ button {
    ANIMATIONS
 ========================= */
 
-@keyframes titleAppear {
+.hidden {
 
-    from {
-
-        opacity: 0;
-
-        transform: translateY(30px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
-    }
-
+    display: none;
 }
 
 
-@keyframes softAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform: translateY(20px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
-    }
-
-}
-
-
-@keyframes cardAppear {
+@keyframes letterAppear {
 
     from {
 
@@ -715,7 +908,6 @@ button {
         transform: translateY(0) scale(1);
 
     }
-
 }
 
 
@@ -725,50 +917,89 @@ button {
 
 @media (max-width: 600px) {
 
-    .littleTitle {
+    .gameScreen {
 
-        font-size: 21px;
-
-    }
-
-
-    h1 {
-
-        font-size: 43px;
+        padding: 15px;
 
     }
 
 
-    .quote {
+    .arcadeHeader {
 
-        font-size: 17px;
-
-    }
-
-
-    #countdown {
-
-        min-width: auto;
-
-        width: 90%;
-
-        font-size: 16px;
-
-        padding: 16px 12px;
+        font-size: 9px;
 
     }
 
 
-    .cloudCard {
+    .scoreBoard {
 
-        padding: 35px 25px;
+        font-size: 8px;
 
     }
 
 
-    .cloudCard h2 {
+    .maze {
 
-        font-size: 32px;
+        height: 540px;
+
+    }
+
+
+    .line3,
+    .line4 {
+
+        width: 65px;
+
+    }
+
+
+    .line3 {
+
+        left: 35px;
+
+    }
+
+
+    .line4 {
+
+        right: 35px;
+
+    }
+
+
+    .gameMessage h1 {
+
+        font-size: 22px;
+
+    }
+
+
+    .gameMessage p {
+
+        font-size: 14px;
+
+        padding: 0 25px;
+
+    }
+
+
+    #startBtn {
+
+        font-size: 9px;
+
+    }
+
+
+    .letterCard {
+
+        padding: 35px 23px;
+
+    }
+
+
+    .letterCard h2 {
+
+        font-size: 31px;
 
     }
 
@@ -782,9 +1013,9 @@ button {
     }
 
 
-    .questionText {
+    #noBtn {
 
-        font-size: 19px;
+        left: 58%;
 
     }
 

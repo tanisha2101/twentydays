@@ -1,11 +1,82 @@
 /* =========================
-   ELEMENTS
+   COUNTDOWN
 ========================= */
 
-const startBtn = document.getElementById("startBtn");
+const targetDate =
+    new Date("September 6, 2026 00:00:00").getTime();
 
-const gameComplete =
-    document.getElementById("gameComplete");
+const countdown = document.getElementById("countdown");
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+
+    const distance = targetDate - now;
+
+    if(distance <= 0){
+
+        countdown.innerHTML =
+            "🎂 IT'S YOUR BIRTHDAY! 🎂";
+
+        return;
+    }
+
+    const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours =
+        Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
+
+    const minutes =
+        Math.floor(
+            (distance % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
+
+    const seconds =
+        Math.floor(
+            (distance % (1000 * 60))
+            / 1000
+        );
+
+    countdown.innerHTML =
+        `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =========================
+   START GAME
+========================= */
+
+const startBtn =
+    document.getElementById("startBtn");
+
+const mainContent =
+    document.getElementById("mainContent");
+
+startBtn.addEventListener("click",function(){
+
+    mainContent.classList.remove("hidden");
+
+    mainContent.scrollIntoView({
+        behavior:"smooth"
+    });
+
+    startBtn.style.display="none";
+
+});
+
+
+/* =========================
+   LETTER
+========================= */
 
 const letterBtn =
     document.getElementById("letterBtn");
@@ -13,11 +84,60 @@ const letterBtn =
 const letterSection =
     document.getElementById("letterSection");
 
-const questionBtn =
-    document.getElementById("questionBtn");
+letterBtn.addEventListener("click",function(){
 
-const questionSection =
-    document.getElementById("questionSection");
+    letterSection.classList.remove("hidden");
+
+    letterSection.scrollIntoView({
+        behavior:"smooth"
+    });
+
+});
+
+
+/* =========================
+   FORTUNE COOKIE
+========================= */
+
+const fortuneBtn =
+    document.getElementById("fortuneBtn");
+
+const fortuneSection =
+    document.getElementById("fortuneSection");
+
+const revealFortune =
+    document.getElementById("revealFortune");
+
+const fortuneText =
+    document.getElementById("fortuneText");
+
+fortuneBtn.addEventListener("click",function(){
+
+    fortuneSection.classList.remove("hidden");
+
+    fortuneSection.scrollIntoView({
+        behavior:"smooth"
+    });
+
+});
+
+revealFortune.addEventListener("click",function(){
+
+    fortuneText.innerHTML =
+        "🥟 Your fortune says: There are many meals ahead, many places to discover, and someone who would happily share every single one with you. ❤️";
+
+    revealFortune.innerHTML =
+        "✨ Fortune Revealed ✨";
+
+    document.getElementById("questionSection")
+        .classList.remove("hidden");
+
+});
+
+
+/* =========================
+   YES / NO QUESTION
+========================= */
 
 const yesBtn =
     document.getElementById("yesBtn");
@@ -28,243 +148,103 @@ const noBtn =
 const response =
     document.getElementById("response");
 
-const player =
-    document.getElementById("player");
 
-const score =
-    document.getElementById("score");
-
-
-
-/* =========================
-   START GAME
-========================= */
-
-startBtn.addEventListener("click", function () {
-
-    startBtn.innerHTML = "♥ PLAYING...";
-
-    startBtn.disabled = true;
-
-    let currentScore = 0;
-
-    const scoreInterval = setInterval(function () {
-
-        currentScore += 100;
-
-        score.innerText =
-            String(currentScore).padStart(6, "0");
-
-
-        if (currentScore >= 800) {
-
-            clearInterval(scoreInterval);
-
-            finishGame();
-
-        }
-
-    }, 400);
-
-});
-
-
-
-/* =========================
-   FINISH GAME
-========================= */
-
-function finishGame() {
-
-    player.style.animation =
-        "none";
-
-    player.style.left =
-        "50%";
-
-    document.querySelector(".gameMessage")
-        .style.display = "none";
-
-
-    gameComplete.classList.remove("hidden");
-
-    gameComplete.scrollIntoView({
-        behavior: "smooth"
-    });
-
-}
-
-
-
-/* =========================
-   OPEN LETTER
-========================= */
-
-letterBtn.addEventListener("click", function () {
-
-    letterSection.classList.remove("hidden");
-
-    letterSection.scrollIntoView({
-        behavior: "smooth"
-    });
-
-});
-
-
-
-/* =========================
-   QUESTION
-========================= */
-
-questionBtn.addEventListener("click", function () {
-
-    questionSection.classList.remove("hidden");
-
-    questionSection.scrollIntoView({
-        behavior: "smooth"
-    });
-
-});
-
-
-
-/* =========================
-   YES
-========================= */
-
-yesBtn.addEventListener("click", function () {
+yesBtn.addEventListener("click",function(){
 
     response.innerHTML =
-        "LEVEL COMPLETE ♥<br><br>" +
-        "You can rest here whenever you need.";
+        "🥟❤️ Then it is officially a food date. No take-backs.";
 
-    yesBtn.innerHTML =
-        "♥ SAFE PLACE UNLOCKED";
+    createSteam();
+});
 
-    createHearts(20);
+
+/* NO BUTTON RUNS AWAY */
+
+noBtn.addEventListener("mouseenter",function(){
+
+    const x =
+        Math.random() * 180 - 90;
+
+    const y =
+        Math.random() * 100 - 50;
+
+    noBtn.style.transform =
+        `translate(${x}px,${y}px)`;
 
 });
 
 
-
 /* =========================
-   PLAYFUL NO BUTTON
+   FLOATING STEAM
 ========================= */
 
-function moveNoButton() {
+function createSteam(){
 
-    const card =
-        document.querySelector(".questionCard");
+    const steam =
+        document.createElement("div");
 
-    const maxX =
-        card.clientWidth -
-        noBtn.offsetWidth -
-        20;
+    steam.className="steam";
 
-    const maxY = 120;
+    steam.innerHTML =
+        ["♨️","☁️","〰️","♨️"][Math.floor(Math.random()*4)];
 
+    steam.style.left =
+        Math.random()*100+"vw";
 
-    const x =
-        Math.random() *
-        Math.max(maxX, 50);
+    steam.style.animationDuration =
+        (5 + Math.random()*4)+"s";
 
-    const y =
-        Math.random() *
-        maxY;
+    document.body.appendChild(steam);
 
-
-    noBtn.style.left =
-        x + "px";
-
-    noBtn.style.top =
-        y + "px";
-
+    setTimeout(()=>{
+        steam.remove();
+    },9000);
 }
 
 
-noBtn.addEventListener(
-    "mouseenter",
-    moveNoButton
-);
+/* CONSTANT STEAM */
 
-
-noBtn.addEventListener(
-    "touchstart",
-    function(event) {
-
-        event.preventDefault();
-
-        moveNoButton();
-
-    }
-);
-
+setInterval(createSteam,900);
 
 
 /* =========================
-   HEARTS
+   EXTRA FOOD FLOATIES
 ========================= */
 
-function createHearts(amount) {
+const foods =
+    ["🥟","🥢","🍜","❤️","🥠"];
 
-    for (let i = 0; i < amount; i++) {
+function foodFloat(){
 
-        const heart =
-            document.createElement("div");
+    const item =
+        document.createElement("div");
 
-        heart.innerHTML =
-            Math.random() > .5
-                ? "♥"
-                : "♡";
+    item.style.position="fixed";
+    item.style.left=Math.random()*100+"vw";
+    item.style.bottom="-30px";
+    item.style.fontSize="20px";
+    item.style.opacity=".22";
+    item.style.pointerEvents="none";
+    item.style.zIndex="0";
 
+    item.innerHTML =
+        foods[Math.floor(Math.random()*foods.length)];
 
-        heart.style.position =
-            "fixed";
+    item.style.transition="transform 8s linear, opacity 8s";
 
-        heart.style.left =
-            Math.random() * 100 + "vw";
+    document.body.appendChild(item);
 
-        heart.style.bottom =
-            "-20px";
+    requestAnimationFrame(()=>{
 
-        heart.style.fontSize =
-            15 + Math.random() * 20 + "px";
+        item.style.transform =
+            `translateY(-110vh) rotate(${Math.random()*360}deg)`;
 
-        heart.style.color =
-            Math.random() > .5
-                ? "#ff5c98"
-                : "#ffdc4d";
+        item.style.opacity="0";
+    });
 
-        heart.style.zIndex =
-            "50";
-
-        heart.style.pointerEvents =
-            "none";
-
-        heart.style.transition =
-            "transform 5s linear, opacity 5s linear";
-
-
-        document.body.appendChild(heart);
-
-
-        setTimeout(function () {
-
-            heart.style.transform =
-                `translateY(-100vh) translateX(${Math.random() * 100 - 50}px)`;
-
-            heart.style.opacity =
-                "0";
-
-        }, 50);
-
-
-        setTimeout(function () {
-
-            heart.remove();
-
-        }, 5500);
-
-    }
-
+    setTimeout(()=>{
+        item.remove();
+    },8000);
 }
+
+setInterval(foodFloat,1400);

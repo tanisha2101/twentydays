@@ -1,275 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thirty Days, One Heart❤️</title>
+<title>Thirty Days, One Heart 🥟❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-<!-- =========================
-     ARCADE SCREEN
-========================= -->
+<!-- FLOATING DECOR -->
+<div class="lantern lantern1">🏮</div>
+<div class="lantern lantern2">🏮</div>
+<div class="lantern lantern3">🏮</div>
 
-<main class="gameScreen">
+<div id="steam"></div>
 
-    <div class="scanlines"></div>
+<!-- HERO -->
+<section class="hero">
 
-    <header class="arcadeHeader">
-
-        <div class="gameTitle">
-            LOVE ARCADE
-        </div>
-
-        <div class="level">
-            LEVEL 14
-        </div>
-
-    </header>
-
-
-    <!-- SCORE -->
-
-    <div class="scoreBoard">
-
-        <div>
-            SCORE
-            <span id="score">000000</span>
-        </div>
-
-        <div>
-            LIVES
-            <span>♥ ♥ ♥</span>
-        </div>
-
+    <div class="tiny-title">
+        🥟 A Little Foodie Reminder For You 🍜
     </div>
 
+    <h1>
+        Thirteen Sunsets,<br>
+        Until Your Birthday
+    </h1>
 
-    <!-- =========================
-         GAME AREA
-    ========================= -->
+    <p class="intro">
+        Some people share meals.<br>
+        We somehow turned food into one of our love languages.
+    </p>
 
-    <section class="maze">
+    <div id="countdown">
+        Loading...
+    </div>
 
-        <div class="mazeLine line1"></div>
-        <div class="mazeLine line2"></div>
-        <div class="mazeLine line3"></div>
-        <div class="mazeLine line4"></div>
-        <div class="mazeLine line5"></div>
+    <button id="startBtn">
+        🥢 Enter Our Little Food Street
+    </button>
 
-        <!-- DOTS -->
-
-        <div class="dot d1"></div>
-        <div class="dot d2"></div>
-        <div class="dot d3"></div>
-        <div class="dot d4"></div>
-        <div class="dot d5"></div>
-        <div class="dot d6"></div>
-        <div class="dot d7"></div>
-        <div class="dot d8"></div>
+</section>
 
 
-        <!-- PLAYER -->
+<!-- MAIN CONTENT -->
+<section id="mainContent" class="hidden">
 
-        <div id="player">◕</div>
+    <!-- MENU -->
+    <div class="menu-card">
 
-
-        <!-- GHOSTS -->
-
-        <div class="ghost ghostPink">♥</div>
-        <div class="ghost ghostBlue">♥</div>
-
-
-        <div class="gameMessage">
-
-            <div class="pixelSmall">
-                PLAYER 1
-            </div>
-
-            <h1>
-                FIND THE<br>
-                HEARTS
-            </h1>
-
-            <p>
-                Some levels are about winning.<br>
-                Some are about finding somewhere safe to rest.
-            </p>
-
-            <button id="startBtn">
-                ▶ START GAME
-            </button>
-
+        <div class="restaurant-sign">
+            <span>✦</span>
+            OUR LITTLE FOOD STREET
+            <span>✦</span>
         </div>
 
-    </section>
+        <h2>Tonight's Special Menu 🥟</h2>
 
-
-    <!-- =========================
-         GAME COMPLETE
-    ========================= -->
-
-    <section id="gameComplete" class="hidden">
-
-        <div class="completeBox">
-
-            <div class="pixelSmall">
-                LEVEL COMPLETE
-            </div>
-
-            <h2>
-                YOU FOUND<br>
-                SOMETHING SPECIAL
-            </h2>
-
-            <p>
-                +999 LOVE
-            </p>
-
-            <button id="letterBtn">
-                💗 UNLOCK TODAY'S LETTER
-            </button>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-
-<!-- =========================
-     LETTER
-========================= -->
-
-<section id="letterSection" class="hidden">
-
-    <div class="letterCard">
-
-        <div class="pixelHeart">
-            ♥
-        </div>
-
-        <div class="letterLabel">
-            MESSAGE UNLOCKED
-        </div>
-
-        <h2>
-            To my <br>
-            Warrior Princess
-        </h2>
-
-        <div class="pinkDivider">
-            ✦ ♥ ✦
-        </div>
-
-        <p class="letterText">
-
-I know how strong you are.
-
-I've seen the way you keep going even when things get difficult. I've seen you handle things, figure things out, and somehow keep moving even on the days when you probably just wanted everything to stop for a while.
-
-And I am so, so proud of you for that.
-
-But there is something I want you to remember too.
-
-You don't have to be strong every second.
-
-You don't have to have everything figured out.
-
-And you don't have to carry the whole world by yourself.
-
-When life gets too heavy, you can put it down for a little while.
-
-You can come to me, melt into my arms, and just breathe.
-
-You can tell me everything that hurts, everything that scares you, everything that made your day difficult — even the things you don't know how to explain.
-
-Sometimes you can simply rest.
-
-Let the world wait.
-
-I'll be here.
-
-And if all you need that day is somewhere soft to land, I hope you'll always know that you have that with me. ❤️
-
+        <p class="menu-subtitle">
+            Carefully prepared for two very serious foodies.
         </p>
 
+        <div class="food-grid">
 
-        <div class="signature">
-            Your safe place, always ♡
+            <div class="food-item">
+                <div class="food-icon">🥟</div>
+                <h3>Momos</h3>
+                <p>Because obviously.</p>
+            </div>
+
+            <div class="food-item">
+                <div class="food-icon">🍜</div>
+                <h3>Noodles</h3>
+                <p>Extra slurpy, please.</p>
+            </div>
+
+            <div class="food-item">
+                <div class="food-icon">🥢</div>
+                <h3>Shared Bites</h3>
+                <p>One plate. Two people.</p>
+            </div>
+
+            <div class="food-item">
+                <div class="food-icon">🧋</div>
+                <h3>Something Sweet</h3>
+                <p>Because we deserve it.</p>
+            </div>
+
         </div>
 
+        <div class="divider">🥢 ✦ 🥢</div>
 
-        <button id="questionBtn">
-            💗 ONE LAST LEVEL
+        <button id="letterBtn">
+            🥟 Open Today's Little Note
         </button>
 
     </div>
 
-</section>
 
+    <!-- LETTER -->
+    <div id="letterSection" class="hidden">
 
+        <div class="letter-card">
 
-<!-- =========================
-     QUESTION
-========================= -->
+            <div class="letter-stamp">今日 · TODAY</div>
 
-<section id="questionSection" class="hidden">
+            <h2>A Note Between Two Foodies ❤️</h2>
 
-    <div class="questionCard">
+            <p>
+                I think one of my favourite things about us is how easily
+                something as simple as food becomes a memory with you.
 
-        <div class="pixelSmall">
-            FINAL LEVEL
-        </div>
+                A plate of momos. A random café. Walking around looking for
+                something we both want to eat. Arguing over what to order.
+                Stealing a bite from each other's plate.
 
-        <h2>
-            PLAYER 1,
-            <br>
-            WILL YOU REST HERE?
-        </h2>
+                Somehow, those little things become some of my favourite
+                parts of us.
 
-        <p>
-            Can I be your soft place to land? ♡
-        </p>
+                I don't just love the big moments with you.
 
+                I love the ordinary ones too.
 
-        <div class="buttons">
+                The silly ones. The hungry ones. The “let's just try this
+                place” ones.
 
-            <button id="yesBtn">
-                YES ♥
+                Because when it is with you, even a simple meal feels like
+                something I want to remember.
+
+                So here's to all the food we haven't eaten yet,
+                all the places we haven't discovered,
+                and all the little meals that are still waiting to become
+                memories.
+
+                ❤️
+            </p>
+
+            <div class="signature">
+                — Your forever food partner 🥢
+            </div>
+
+            <button id="fortuneBtn">
+                🥠 Open Your Fortune Cookie
             </button>
 
-            <button id="noBtn">
-                NO
+        </div>
+
+    </div>
+
+
+    <!-- FORTUNE -->
+    <div id="fortuneSection" class="hidden">
+
+        <div class="fortune-card">
+
+            <div class="fortune-cookie">🥠</div>
+
+            <h2>Your Fortune</h2>
+
+            <p id="fortuneText">
+                Click the cookie to find out...
+            </p>
+
+            <button id="revealFortune">
+                ✨ Crack It Open
             </button>
 
         </div>
 
+    </div>
 
-        <div id="response"></div>
+
+    <!-- QUESTION -->
+    <div id="questionSection" class="hidden">
+
+        <div class="question-card">
+
+            <div class="question-decoration">
+                🥟 ❤️ 🥟
+            </div>
+
+            <h2>And Before You Leave...</h2>
+
+            <p class="questionText">
+                If we had an unlimited food budget<br>
+                and an entire day together...
+                <br><br>
+                Would you go on a food adventure with me?
+            </p>
+
+            <div class="buttons">
+
+                <button id="yesBtn">
+                    YES 🥟❤️
+                </button>
+
+                <button id="noBtn">
+                    NO 🙈
+                </button>
+
+            </div>
+
+            <div id="response"></div>
+
+        </div>
 
     </div>
 
 </section>
-
 
 
 <script src="script.js"></script>
 
 </body>
-
 </html>

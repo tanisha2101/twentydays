@@ -1,609 +1,309 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
+body{
+    font-family:'DM Sans',sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,210,170,.45),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(150,190,160,.25),transparent 30%),
+        #fff7e8;
 
-body {
-
-    background: #090714;
-
-    color: #fff;
-
-    font-family: 'DM Sans', sans-serif;
-
-    min-height: 100vh;
-
-    overflow-x: hidden;
+    color:#35251f;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
 
 /* =========================
-   ARCADE SCREEN
+   FLOATING LANTERNS
 ========================= */
 
-.gameScreen {
-
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(99, 44, 122, .25),
-            transparent 40%
-        ),
-        #090714;
-
-    position: relative;
-
-    padding: 25px;
-
-    overflow: hidden;
+.lantern{
+    position:fixed;
+    font-size:45px;
+    z-index:0;
+    opacity:.5;
+    animation:floatLantern 5s ease-in-out infinite;
 }
 
+.lantern1{
+    top:8%;
+    left:5%;
+}
 
-/* CRT EFFECT */
+.lantern2{
+    top:18%;
+    right:7%;
+    animation-delay:1.5s;
+}
 
-.scanlines {
+.lantern3{
+    bottom:12%;
+    left:8%;
+    animation-delay:3s;
+}
 
-    position: fixed;
+@keyframes floatLantern{
 
-    inset: 0;
+    0%,100%{
+        transform:translateY(0) rotate(-3deg);
+    }
 
-    pointer-events: none;
-
-    z-index: 20;
-
-    background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,.025),
-            rgba(255,255,255,.025) 1px,
-            transparent 1px,
-            transparent 4px
-        );
-
-    opacity: .35;
+    50%{
+        transform:translateY(-15px) rotate(3deg);
+    }
 }
 
 
 /* =========================
-   HEADER
+   HERO
 ========================= */
 
-.arcadeHeader {
+.hero{
+    min-height:100vh;
 
-    max-width: 1000px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-    margin: auto;
+    text-align:center;
 
-    display: flex;
+    padding:30px;
 
-    justify-content: space-between;
-
-    align-items: center;
-
-    font-family: 'Press Start 2P', monospace;
-
-    color: #ffdf4d;
-
-    font-size: 14px;
-
-    padding: 10px 0 20px;
+    position:relative;
+    z-index:1;
 }
 
+.tiny-title{
+    font-family:'Patrick Hand',cursive;
+    font-size:27px;
+    color:#9b3d35;
+    margin-bottom:20px;
+}
 
-.gameTitle {
+h1{
+    font-family:'Playfair Display',serif;
+
+    font-size:clamp(45px,7vw,82px);
+
+    line-height:1.05;
+
+    color:#7f2929;
 
     text-shadow:
-        3px 3px 0 #c43d74;
+        3px 3px 0 #f4d6ad;
+
+    margin-bottom:28px;
 }
 
-
-.level {
-
-    color: #ff8fc4;
-
-}
-
-
-/* =========================
-   SCORE
-========================= */
-
-.scoreBoard {
-
-    max-width: 850px;
-
-    margin: 10px auto 20px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    font-family: 'Press Start 2P', monospace;
-
-    font-size: 11px;
-
-    color: #aaa4c8;
-
-}
-
-
-.scoreBoard span {
-
-    display: block;
-
-    margin-top: 10px;
-
-    color: #fff;
-
+.intro{
+    font-size:20px;
+    line-height:1.8;
+    color:#72534a;
+    margin-bottom:35px;
 }
 
 
 /* =========================
-   MAZE
+   COUNTDOWN
 ========================= */
 
-.maze {
+#countdown{
 
-    width: min(900px, 95vw);
+    background:rgba(255,255,255,.8);
 
-    height: 600px;
+    border:2px solid #e8c99e;
 
-    margin: auto;
+    border-radius:60px;
 
-    position: relative;
+    padding:18px 38px;
 
-    border: 4px solid #5847b8;
+    font-size:22px;
+    font-weight:700;
 
-    border-radius: 12px;
+    color:#6d3430;
 
     box-shadow:
-        0 0 15px rgba(102,75,255,.7),
-        inset 0 0 30px rgba(72,47,151,.25);
+        0 12px 30px rgba(100,50,30,.12);
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.03) 1px,
-            transparent 1px
-        );
-
-    background-size: 35px 35px;
-
-    overflow: hidden;
+    margin-bottom:30px;
 }
 
 
-/* MAZE WALLS */
+/* =========================
+   BUTTONS
+========================= */
 
-.mazeLine {
+button{
 
-    position: absolute;
+    border:none;
 
-    border: 3px solid #4f43b5;
+    font-family:'DM Sans',sans-serif;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#startBtn{
+
+    padding:17px 35px;
+
+    border-radius:50px;
+
+    background:#a53f36;
+
+    color:white;
+
+    font-size:18px;
 
     box-shadow:
-        0 0 8px rgba(98,72,255,.7);
-
+        0 12px 30px rgba(165,63,54,.25);
 }
 
-
-.line1 {
-
-    width: 65%;
-
-    height: 90px;
-
-    top: 60px;
-
-    left: 17%;
-
-    border-radius: 10px;
-}
-
-
-.line2 {
-
-    width: 55%;
-
-    height: 100px;
-
-    bottom: 65px;
-
-    left: 22%;
-
-    border-radius: 10px;
-}
-
-
-.line3 {
-
-    width: 100px;
-
-    height: 330px;
-
-    top: 135px;
-
-    left: 80px;
-
-    border-radius: 10px;
-}
-
-
-.line4 {
-
-    width: 100px;
-
-    height: 330px;
-
-    top: 135px;
-
-    right: 80px;
-
-    border-radius: 10px;
-}
-
-
-.line5 {
-
-    width: 45%;
-
-    height: 60px;
-
-    top: 270px;
-
-    left: 27%;
-
-    border-radius: 10px;
+#startBtn:hover{
+    transform:translateY(-5px);
+    background:#873029;
 }
 
 
 /* =========================
-   DOTS
+   MAIN
 ========================= */
 
-.dot {
+#mainContent{
+    position:relative;
+    z-index:2;
+    padding:60px 20px 100px;
+}
 
-    width: 9px;
+.hidden{
+    display:none !important;
+}
 
-    height: 9px;
 
-    border-radius: 50%;
+/* =========================
+   MENU CARD
+========================= */
 
-    background: #ffe9a6;
+.menu-card{
+
+    max-width:850px;
+
+    margin:auto;
+
+    background:#fffdf7;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    border:2px solid #e4c49b;
 
     box-shadow:
-        0 0 8px #ffe9a6;
+        0 25px 70px rgba(80,40,20,.15);
 
-    position: absolute;
-
-    animation: dotPulse 1.5s infinite alternate;
+    text-align:center;
 }
 
+.restaurant-sign{
 
-.d1 { top: 30px; left: 12%; }
-.d2 { top: 30px; right: 12%; }
-.d3 { top: 48%; left: 13%; }
-.d4 { top: 48%; right: 13%; }
-.d5 { bottom: 35px; left: 13%; }
-.d6 { bottom: 35px; right: 13%; }
-.d7 { top: 43%; left: 48%; }
-.d8 { bottom: 22%; left: 48%; }
+    display:inline-block;
 
+    background:#a53f36;
 
-@keyframes dotPulse {
+    color:#fff8e8;
 
-    from {
-        opacity: .35;
-        transform: scale(.7);
-    }
+    padding:10px 25px;
 
-    to {
-        opacity: 1;
-        transform: scale(1.3);
-    }
+    border-radius:8px;
+
+    letter-spacing:2px;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 6px 0 #752720;
 }
 
+.menu-card h2,
+.letter-card h2,
+.fortune-card h2,
+.question-card h2{
 
-/* =========================
-   PLAYER
-========================= */
+    font-family:'Playfair Display',serif;
 
-#player {
+    color:#7f2929;
 
-    position: absolute;
+    font-size:34px;
 
-    left: 50%;
-
-    bottom: 125px;
-
-    font-size: 58px;
-
-    color: #ffd83d;
-
-    text-shadow:
-        0 0 10px #ffd83d;
-
-    z-index: 4;
-
-    animation:
-        chomp .45s infinite alternate,
-        playerMove 6s ease-in-out infinite;
+    margin-bottom:10px;
 }
 
-
-@keyframes chomp {
-
-    from {
-        transform: scaleX(1);
-    }
-
-    to {
-        transform: scaleX(.7);
-    }
-}
-
-
-@keyframes playerMove {
-
-    0% {
-        left: 25%;
-    }
-
-    50% {
-        left: 70%;
-    }
-
-    100% {
-        left: 25%;
-    }
+.menu-subtitle{
+    color:#80655b;
+    margin-bottom:35px;
 }
 
 
 /* =========================
-   HEART GHOSTS
+   FOOD GRID
 ========================= */
 
-.ghost {
+.food-grid{
 
-    position: absolute;
+    display:grid;
 
-    font-size: 32px;
+    grid-template-columns:repeat(4,1fr);
 
-    animation: ghostMove 4s ease-in-out infinite alternate;
+    gap:15px;
 
+    margin:30px 0;
 }
 
+.food-item{
 
-.ghostPink {
+    padding:25px 12px;
 
-    top: 145px;
+    background:#fff5df;
 
-    left: 38%;
+    border-radius:20px;
 
-    color: #ff6fae;
+    border:1px solid #ead4af;
 
-    text-shadow: 0 0 12px #ff4f9a;
+    transition:.3s;
 }
 
-
-.ghostBlue {
-
-    bottom: 135px;
-
-    right: 35%;
-
-    color: #69c9ff;
-
-    text-shadow: 0 0 12px #4bbcff;
-
-    animation-delay: 1s;
+.food-item:hover{
+    transform:translateY(-8px) rotate(-1deg);
 }
 
-
-@keyframes ghostMove {
-
-    from {
-        transform: translateX(-25px);
-    }
-
-    to {
-        transform: translateX(25px);
-    }
+.food-icon{
+    font-size:42px;
+    margin-bottom:10px;
 }
 
-
-/* =========================
-   GAME MESSAGE
-========================= */
-
-.gameMessage {
-
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(9,7,20,.72),
-            rgba(9,7,20,.25)
-        );
-
-    z-index: 5;
+.food-item h3{
+    color:#71352f;
+    margin-bottom:5px;
 }
 
-
-.pixelSmall {
-
-    font-family: 'Press Start 2P', monospace;
-
-    font-size: 11px;
-
-    color: #ffdf4d;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 22px;
+.food-item p{
+    font-size:13px;
+    color:#92766a;
 }
 
-
-.gameMessage h1 {
-
-    font-family: 'Press Start 2P', monospace;
-
-    font-size: clamp(25px, 5vw, 48px);
-
-    line-height: 1.5;
-
-    color: #fff;
-
-    text-shadow:
-        4px 4px 0 #d74778,
-        0 0 15px rgba(255,100,160,.5);
-
-    margin-bottom: 25px;
-}
-
-
-.gameMessage p {
-
-    max-width: 600px;
-
-    color: #ddd8ed;
-
-    line-height: 1.8;
-
-    font-size: 16px;
-
-    margin-bottom: 30px;
-}
-
-
-/* =========================
-   BUTTON
-========================= */
-
-button {
-
-    font-family: 'Press Start 2P', monospace;
-
-    cursor: pointer;
-
-    border: none;
-
-}
-
-
-#startBtn {
-
-    background: #ff4f8b;
-
-    color: white;
-
-    padding: 18px 25px;
-
-    border-radius: 6px;
-
-    font-size: 12px;
-
-    box-shadow:
-        5px 5px 0 #8e2854,
-        0 0 20px rgba(255,79,139,.5);
-
-    transition: .2s;
-}
-
-
-#startBtn:hover {
-
-    transform: translate(3px, 3px);
-
-    box-shadow:
-        2px 2px 0 #8e2854,
-        0 0 25px rgba(255,79,139,.7);
-}
-
-
-/* =========================
-   COMPLETE
-========================= */
-
-#gameComplete {
-
-    width: min(700px, 92vw);
-
-    margin: 40px auto;
-
-    text-align: center;
-}
-
-
-.completeBox {
-
-    padding: 45px 25px;
-
-    border: 3px solid #ff4f8b;
-
-    border-radius: 12px;
-
-    background: rgba(22,15,39,.95);
-
-    box-shadow:
-        0 0 30px rgba(255,79,139,.3);
-}
-
-
-.completeBox h2 {
-
-    font-family: 'Press Start 2P', monospace;
-
-    font-size: clamp(20px, 4vw, 32px);
-
-    line-height: 1.7;
-
-    color: #fff;
-
-    margin-bottom: 25px;
-}
-
-
-.completeBox p {
-
-    font-family: 'Press Start 2P', monospace;
-
-    color: #ffe35c;
-
-    margin-bottom: 30px;
-}
-
-
-#letterBtn {
-
-    padding: 17px 20px;
-
-    background: #ff4f8b;
-
-    color: white;
-
-    font-size: 11px;
-
-    border-radius: 5px;
-
-    box-shadow: 4px 4px 0 #8e2854;
+.divider{
+    margin:35px 0;
+    color:#b46b4f;
+    letter-spacing:8px;
 }
 
 
@@ -611,142 +311,156 @@ button {
    LETTER
 ========================= */
 
-#letterSection {
-
-    padding: 90px 20px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #160d27,
-            #26112e
-        );
-
-    min-height: 100vh;
-
-    position: relative;
+#letterSection{
+    max-width:850px;
+    margin:40px auto;
 }
 
+.letter-card{
 
-.letterCard {
+    background:#fff9ed;
 
-    max-width: 760px;
+    padding:55px;
 
-    margin: auto;
+    border-radius:28px;
 
-    padding: 55px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff6fa,
-            #ffe8f1
-        );
-
-    color: #633b51;
-
-    border-radius: 25px;
+    border:1px solid #dfc59e;
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.4);
+        0 25px 60px rgba(70,35,20,.15);
 
-    text-align: center;
+    position:relative;
+}
 
-    border: 3px solid #ff9fc1;
+.letter-stamp{
 
-    animation: letterAppear 1s ease;
+    position:absolute;
+
+    top:25px;
+    right:30px;
+
+    font-family:'Patrick Hand',cursive;
+
+    color:#a53f36;
+
+    transform:rotate(5deg);
+}
+
+.letter-card p{
+
+    white-space:pre-line;
+
+    font-family:'Patrick Hand',cursive;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#563b34;
+
+    margin:35px auto;
+
+    max-width:700px;
+}
+
+.signature{
+
+    font-family:'Patrick Hand',cursive;
+
+    font-size:23px;
+
+    color:#a53f36;
+
+    margin-bottom:30px;
 }
 
 
-.pixelHeart {
+/* =========================
+   LETTER BUTTON
+========================= */
 
-    font-size: 45px;
+#letterBtn,
+#fortuneBtn,
+#revealFortune{
 
-    color: #f25c92;
+    background:#a53f36;
 
-    text-shadow: 0 0 15px rgba(242,92,146,.5);
+    color:white;
 
-    margin-bottom: 10px;
+    padding:15px 28px;
+
+    border-radius:50px;
+
+    font-size:16px;
+
+    box-shadow:0 8px 20px rgba(165,63,54,.2);
+}
+
+#letterBtn:hover,
+#fortuneBtn:hover,
+#revealFortune:hover{
+
+    transform:translateY(-4px);
+
+    background:#873029;
 }
 
 
-.letterLabel {
+/* =========================
+   FORTUNE
+========================= */
 
-    font-family: 'Press Start 2P', monospace;
+#fortuneSection{
 
-    font-size: 9px;
+    max-width:600px;
 
-    color: #a95b7c;
-
-    margin-bottom: 25px;
+    margin:40px auto;
 }
 
+.fortune-card{
 
-.letterCard h2 {
+    background:#f4ead7;
 
-    font-family: 'DM Sans', sans-serif;
+    border:2px dashed #c99d62;
 
-    font-size: 40px;
+    border-radius:25px;
 
-    line-height: 1.25;
+    padding:45px;
 
-    color: #713d58;
-
-    margin-bottom: 15px;
-
+    text-align:center;
 }
 
+.fortune-cookie{
 
-.pinkDivider {
+    font-size:75px;
 
-    color: #ed709d;
+    animation:cookieFloat 2s infinite ease-in-out;
 
-    letter-spacing: 8px;
-
-    margin: 20px 0 30px;
+    margin-bottom:15px;
 }
 
+@keyframes cookieFloat{
 
-.letterText {
+    0%,100%{
+        transform:rotate(-5deg) translateY(0);
+    }
 
-    text-align: left;
-
-    white-space: pre-line;
-
-    font-size: 18px;
-
-    line-height: 2;
-
-    color: #70485b;
+    50%{
+        transform:rotate(5deg) translateY(-10px);
+    }
 }
 
+#fortuneText{
 
-.signature {
+    font-family:'Patrick Hand',cursive;
 
-    font-family: 'DM Sans', sans-serif;
+    font-size:25px;
 
-    font-weight: 700;
+    color:#71352f;
 
-    color: #d85d8a;
+    margin:25px 0;
 
-    margin: 35px 0 25px;
-
-}
-
-
-#questionBtn {
-
-    padding: 16px 22px;
-
-    background: #e96998;
-
-    color: white;
-
-    border-radius: 6px;
-
-    font-size: 10px;
-
-    box-shadow: 4px 4px 0 #963b60;
+    min-height:40px;
 }
 
 
@@ -754,159 +468,138 @@ button {
    QUESTION
 ========================= */
 
-#questionSection {
+#questionSection{
 
-    min-height: 100vh;
+    max-width:700px;
 
-    padding: 80px 20px;
-
-    background: #090714;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
+    margin:60px auto;
 }
 
+.question-card{
 
-.questionCard {
+    background:#fffdf7;
 
-    width: min(650px, 95vw);
+    border-radius:30px;
 
-    text-align: center;
+    padding:50px;
 
-    padding: 55px 25px;
+    text-align:center;
 
-    border: 3px solid #5543b7;
+    border:2px solid #e2c39b;
 
-    border-radius: 12px;
-
-    background: #120c22;
-
-    box-shadow:
-        0 0 40px rgba(84,67,183,.35);
+    box-shadow:0 25px 60px rgba(70,35,20,.15);
 }
 
+.question-decoration{
 
-.questionCard h2 {
+    font-size:30px;
 
-    font-family: 'Press Start 2P', monospace;
-
-    color: #fff;
-
-    font-size: clamp(19px, 4vw, 28px);
-
-    line-height: 1.7;
-
-    margin-bottom: 25px;
+    margin-bottom:20px;
 }
 
+.questionText{
 
-.questionCard > p {
+    font-family:'Patrick Hand',cursive;
 
-    color: #c8c1db;
+    font-size:25px;
 
-    line-height: 1.8;
+    line-height:1.7;
 
-    margin-bottom: 35px;
+    color:#60453c;
+
+    margin:30px 0;
 }
 
+.buttons{
 
-.buttons {
+    display:flex;
 
-    height: 80px;
+    justify-content:center;
 
-    position: relative;
+    align-items:center;
 
-    display: flex;
+    gap:25px;
 
-    justify-content: center;
+    position:relative;
 
-    gap: 25px;
+    height:75px;
 }
 
+#yesBtn{
 
-#yesBtn {
+    background:#a53f36;
 
-    background: #ff4f8b;
+    color:white;
 
-    color: white;
+    padding:15px 30px;
 
-    height: 52px;
+    border-radius:50px;
 
-    padding: 0 25px;
-
-    font-size: 11px;
-
-    border-radius: 5px;
-
-    box-shadow: 4px 4px 0 #8e2854;
-
+    font-size:17px;
 }
 
+#noBtn{
 
-#noBtn {
+    background:#eee2d0;
 
-    position: absolute;
+    color:#694f45;
 
-    background: #312b40;
+    padding:15px 30px;
 
-    color: #aaa2bb;
+    border-radius:50px;
 
-    height: 52px;
+    font-size:17px;
 
-    padding: 0 25px;
-
-    font-size: 11px;
-
-    border-radius: 5px;
-
-    left: 55%;
-
+    position:relative;
 }
 
+#response{
 
-#response {
+    margin-top:25px;
 
-    margin-top: 25px;
+    font-family:'Patrick Hand',cursive;
 
-    color: #ff8fba;
+    font-size:27px;
 
-    font-family: 'Press Start 2P', monospace;
-
-    font-size: 11px;
-
-    line-height: 2;
+    color:#a53f36;
 }
 
 
 /* =========================
-   ANIMATIONS
+   STEAM
 ========================= */
 
-.hidden {
+.steam{
 
-    display: none;
+    position:fixed;
+
+    bottom:-30px;
+
+    font-size:28px;
+
+    opacity:.35;
+
+    pointer-events:none;
+
+    animation:steamUp 7s linear forwards;
+
+    z-index:0;
 }
 
+@keyframes steamUp{
 
-@keyframes letterAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform: translateY(50px) scale(.97);
-
+    0%{
+        transform:translateY(0) scale(.7);
+        opacity:0;
     }
 
-    to {
+    20%{
+        opacity:.4;
+    }
 
-        opacity: 1;
-
-        transform: translateY(0) scale(1);
-
+    100%{
+        transform:translateY(-110vh) translateX(80px) scale(1.5);
+        opacity:0;
     }
 }
 
@@ -915,108 +608,40 @@ button {
    MOBILE
 ========================= */
 
-@media (max-width: 600px) {
+@media(max-width:700px){
 
-    .gameScreen {
-
-        padding: 15px;
-
+    .hero{
+        padding:25px 18px;
     }
 
-
-    .arcadeHeader {
-
-        font-size: 9px;
-
+    h1{
+        font-size:48px;
     }
 
-
-    .scoreBoard {
-
-        font-size: 8px;
-
+    .intro{
+        font-size:17px;
     }
 
-
-    .maze {
-
-        height: 540px;
-
+    #countdown{
+        font-size:17px;
+        padding:15px 20px;
     }
 
-
-    .line3,
-    .line4 {
-
-        width: 65px;
-
+    .menu-card,
+    .letter-card,
+    .question-card{
+        padding:30px 20px;
     }
 
-
-    .line3 {
-
-        left: 35px;
-
+    .food-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-
-    .line4 {
-
-        right: 35px;
-
+    .letter-card p{
+        font-size:20px;
     }
 
-
-    .gameMessage h1 {
-
-        font-size: 22px;
-
+    .lantern{
+        font-size:30px;
     }
-
-
-    .gameMessage p {
-
-        font-size: 14px;
-
-        padding: 0 25px;
-
-    }
-
-
-    #startBtn {
-
-        font-size: 9px;
-
-    }
-
-
-    .letterCard {
-
-        padding: 35px 23px;
-
-    }
-
-
-    .letterCard h2 {
-
-        font-size: 31px;
-
-    }
-
-
-    .letterText {
-
-        font-size: 16px;
-
-        line-height: 1.9;
-
-    }
-
-
-    #noBtn {
-
-        left: 58%;
-
-    }
-
 }

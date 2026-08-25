@@ -5,18 +5,16 @@
 const targetDate =
     new Date("September 6, 2026 00:00:00").getTime();
 
-const countdown = document.getElementById("countdown");
-
-function updateCountdown(){
+function updateCountdown() {
 
     const now = new Date().getTime();
 
     const distance = targetDate - now;
 
-    if(distance <= 0){
+    if (distance <= 0) {
 
-        countdown.innerHTML =
-            "🎂 IT'S YOUR BIRTHDAY! 🎂";
+        document.getElementById("countdown").innerHTML =
+            "Today is your birthday ❤️";
 
         return;
     }
@@ -42,209 +40,199 @@ function updateCountdown(){
             / 1000
         );
 
-    countdown.innerHTML =
+    document.getElementById("countdown").innerHTML =
         `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
 }
 
 updateCountdown();
 
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
 
 /* =========================
-   START GAME
+   OPEN LETTER
 ========================= */
 
 const startBtn =
     document.getElementById("startBtn");
 
-const mainContent =
-    document.getElementById("mainContent");
-
-startBtn.addEventListener("click",function(){
-
-    mainContent.classList.remove("hidden");
-
-    mainContent.scrollIntoView({
-        behavior:"smooth"
-    });
-
-    startBtn.style.display="none";
-
-});
-
-
-/* =========================
-   LETTER
-========================= */
-
-const letterBtn =
-    document.getElementById("letterBtn");
+const welcome =
+    document.getElementById("welcome");
 
 const letterSection =
     document.getElementById("letterSection");
 
-letterBtn.addEventListener("click",function(){
+startBtn.addEventListener("click", () => {
+
+    welcome.classList.add("hidden");
 
     letterSection.classList.remove("hidden");
 
-    letterSection.scrollIntoView({
-        behavior:"smooth"
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
-
 });
 
 
 /* =========================
-   FORTUNE COOKIE
+   OPEN QUESTION
 ========================= */
 
-const fortuneBtn =
-    document.getElementById("fortuneBtn");
+const questionBtn =
+    document.getElementById("questionBtn");
 
-const fortuneSection =
-    document.getElementById("fortuneSection");
+const questionSection =
+    document.getElementById("questionSection");
 
-const revealFortune =
-    document.getElementById("revealFortune");
+questionBtn.addEventListener("click", () => {
 
-const fortuneText =
-    document.getElementById("fortuneText");
+    questionSection.classList.remove("hidden");
 
-fortuneBtn.addEventListener("click",function(){
+    setTimeout(() => {
 
-    fortuneSection.classList.remove("hidden");
+        questionSection.scrollIntoView({
+            behavior: "smooth"
+        });
 
-    fortuneSection.scrollIntoView({
-        behavior:"smooth"
-    });
-
-});
-
-revealFortune.addEventListener("click",function(){
-
-    fortuneText.innerHTML =
-        "🥟 Your fortune says: There are many meals ahead, many places to discover, and someone who would happily share every single one with you. ❤️";
-
-    revealFortune.innerHTML =
-        "✨ Fortune Revealed ✨";
-
-    document.getElementById("questionSection")
-        .classList.remove("hidden");
-
+    }, 100);
 });
 
 
 /* =========================
-   YES / NO QUESTION
+   YES BUTTON
 ========================= */
 
 const yesBtn =
     document.getElementById("yesBtn");
 
-const noBtn =
-    document.getElementById("noBtn");
-
 const response =
     document.getElementById("response");
 
-
-yesBtn.addEventListener("click",function(){
+yesBtn.addEventListener("click", () => {
 
     response.innerHTML =
-        "🥟❤️ Then it is officially a food date. No take-backs.";
+        "Then you are home. Always. ❤️";
 
-    createSteam();
+    createHearts(15);
 });
 
 
-/* NO BUTTON RUNS AWAY */
+/* =========================
+   RUNAWAY NO BUTTON
+========================= */
 
-noBtn.addEventListener("mouseenter",function(){
+const noBtn =
+    document.getElementById("noBtn");
 
-    const x =
-        Math.random() * 180 - 90;
+noBtn.addEventListener("mouseenter", moveNoButton);
 
-    const y =
-        Math.random() * 100 - 50;
+noBtn.addEventListener("touchstart", moveNoButton);
+
+function moveNoButton() {
+
+    const container =
+        document.querySelector(".buttons");
+
+    const maxX =
+        container.clientWidth - noBtn.offsetWidth;
+
+    const maxY =
+        container.clientHeight - noBtn.offsetHeight;
+
+    const randomX =
+        Math.random() * maxX - maxX / 2;
+
+    const randomY =
+        Math.random() * maxY - maxY / 2;
 
     noBtn.style.transform =
-        `translate(${x}px,${y}px)`;
-
-});
-
-
-/* =========================
-   FLOATING STEAM
-========================= */
-
-function createSteam(){
-
-    const steam =
-        document.createElement("div");
-
-    steam.className="steam";
-
-    steam.innerHTML =
-        ["♨️","☁️","〰️","♨️"][Math.floor(Math.random()*4)];
-
-    steam.style.left =
-        Math.random()*100+"vw";
-
-    steam.style.animationDuration =
-        (5 + Math.random()*4)+"s";
-
-    document.body.appendChild(steam);
-
-    setTimeout(()=>{
-        steam.remove();
-    },9000);
+        `translate(${randomX}px, ${randomY}px)`;
 }
 
 
-/* CONSTANT STEAM */
+/* =========================
+   FLOATING HEARTS
+========================= */
 
-setInterval(createSteam,900);
+const heartsContainer =
+    document.getElementById("hearts");
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        Math.random() > .5 ? "♡" : "♥";
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+
+    heart.style.animationDuration =
+        (7 + Math.random() * 7) + "s";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 14000);
+}
+
+setInterval(createHeart, 650);
 
 
 /* =========================
-   EXTRA FOOD FLOATIES
+   SPARKLES
 ========================= */
 
-const foods =
-    ["🥟","🥢","🍜","❤️","🥠"];
+const sparkleContainer =
+    document.getElementById("sparkles");
 
-function foodFloat(){
+function createSparkle() {
 
-    const item =
+    const sparkle =
         document.createElement("div");
 
-    item.style.position="fixed";
-    item.style.left=Math.random()*100+"vw";
-    item.style.bottom="-30px";
-    item.style.fontSize="20px";
-    item.style.opacity=".22";
-    item.style.pointerEvents="none";
-    item.style.zIndex="0";
+    sparkle.className = "sparkle";
 
-    item.innerHTML =
-        foods[Math.floor(Math.random()*foods.length)];
+    sparkle.innerHTML = "✦";
 
-    item.style.transition="transform 8s linear, opacity 8s";
+    sparkle.style.left =
+        Math.random() * 100 + "%";
 
-    document.body.appendChild(item);
+    sparkle.style.top =
+        Math.random() * 100 + "%";
 
-    requestAnimationFrame(()=>{
+    sparkle.style.fontSize =
+        (8 + Math.random() * 10) + "px";
 
-        item.style.transform =
-            `translateY(-110vh) rotate(${Math.random()*360}deg)`;
+    sparkle.style.animationDelay =
+        Math.random() * 3 + "s";
 
-        item.style.opacity="0";
-    });
-
-    setTimeout(()=>{
-        item.remove();
-    },8000);
+    sparkleContainer.appendChild(sparkle);
 }
 
-setInterval(foodFloat,1400);
+for (let i = 0; i < 25; i++) {
+    createSparkle();
+}
+
+
+/* =========================
+   EXTRA HEART BURST
+========================= */
+
+function createHearts(amount) {
+
+    for (let i = 0; i < amount; i++) {
+
+        setTimeout(() => {
+            createHeart();
+        }, i * 100);
+    }
+}

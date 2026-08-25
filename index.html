@@ -1,210 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thirty Days, One Heart 🥟❤️</title>
+    <title>A Little Place Made Just For You ❤️</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- FLOATING DECOR -->
-<div class="lantern lantern1">🏮</div>
-<div class="lantern lantern2">🏮</div>
-<div class="lantern lantern3">🏮</div>
+    <!-- FLOATING HEARTS -->
+    <div id="hearts"></div>
 
-<div id="steam"></div>
+    <!-- SPARKLES -->
+    <div id="sparkles"></div>
 
-<!-- HERO -->
-<section class="hero">
+    <!-- =========================
+         WELCOME
+    ========================== -->
 
-    <div class="tiny-title">
-        🥟 A Little Foodie Reminder For You 🍜
-    </div>
+    <section class="hero" id="welcome">
 
-    <h1>
-        Thirteen Sunsets,<br>
-        Until Your Birthday
-    </h1>
-
-    <p class="intro">
-        Some people share meals.<br>
-        We somehow turned food into one of our love languages.
-    </p>
-
-    <div id="countdown">
-        Loading...
-    </div>
-
-    <button id="startBtn">
-        🥢 Enter Our Little Food Street
-    </button>
-
-</section>
-
-
-<!-- MAIN CONTENT -->
-<section id="mainContent" class="hidden">
-
-    <!-- MENU -->
-    <div class="menu-card">
-
-        <div class="restaurant-sign">
-            <span>✦</span>
-            OUR LITTLE FOOD STREET
-            <span>✦</span>
+        <div class="littleTitle">
+            A little place made just for you 🏡
         </div>
 
-        <h2>Tonight's Special Menu 🥟</h2>
+        <h1>
+            Some Places<br>
+            Feel Like Home
+        </h1>
 
-        <p class="menu-subtitle">
-            Carefully prepared for two very serious foodies.
+        <p class="subtitle">
+            And sometimes, home is simply<br>
+            where your heart feels safe.
         </p>
 
-        <div class="food-grid">
-
-            <div class="food-item">
-                <div class="food-icon">🥟</div>
-                <h3>Momos</h3>
-                <p>Because obviously.</p>
-            </div>
-
-            <div class="food-item">
-                <div class="food-icon">🍜</div>
-                <h3>Noodles</h3>
-                <p>Extra slurpy, please.</p>
-            </div>
-
-            <div class="food-item">
-                <div class="food-icon">🥢</div>
-                <h3>Shared Bites</h3>
-                <p>One plate. Two people.</p>
-            </div>
-
-            <div class="food-item">
-                <div class="food-icon">🧋</div>
-                <h3>Something Sweet</h3>
-                <p>Because we deserve it.</p>
-            </div>
-
+        <div id="countdown">
+            Loading...
         </div>
 
-        <div class="divider">🥢 ✦ 🥢</div>
-
-        <button id="letterBtn">
-            🥟 Open Today's Little Note
+        <button id="startBtn">
+            🏡 Open Today's Little Home
         </button>
 
-    </div>
+    </section>
 
 
-    <!-- LETTER -->
-    <div id="letterSection" class="hidden">
+    <!-- =========================
+         LETTER
+    ========================== -->
 
-        <div class="letter-card">
+    <section id="letterSection" class="hidden">
 
-            <div class="letter-stamp">今日 · TODAY</div>
+        <div class="letterCard">
 
-            <h2>A Note Between Two Foodies ❤️</h2>
+            <div class="homeIcon">♡</div>
 
-            <p>
-                I think one of my favourite things about us is how easily
-                something as simple as food becomes a memory with you.
-
-                A plate of momos. A random café. Walking around looking for
-                something we both want to eat. Not being able to decide what to order.
-                Stealing a bite from each other's plate.
-
-                Somehow, those little things become some of my favourite
-                parts of us.
-
-                I don't just love the big moments with you.
-
-                I love the ordinary ones too.
-
-                The silly ones. The hungry ones. The “let's just try this
-                place” ones.
-
-                Because when it is with you, even a simple meal feels like
-                something I want to remember.
-
-                So here's to all the food we haven't eaten yet,
-                all the places we haven't discovered,
-                and all the little meals that are still waiting to become
-                memories.
-
-                ❤️
-            </p>
-
-            <div class="signature">
-                — Your forever food partner 🥢
+            <div class="letterLabel">
+                A little letter for you
             </div>
 
-            <button id="fortuneBtn">
-                🥠 Open Your Fortune Cookie
+            <h2>
+                To the person who feels like home
+            </h2>
+
+            <div class="divider"></div>
+
+            <p class="letterText">
+There are some people who enter your life and somehow make it feel a little warmer.
+
+A little softer.
+
+A little more like home.
+
+You are that person for me.
+
+I don't think home has always been a place. Sometimes it is a laugh you know by heart. Sometimes it is a hand you want to hold. Sometimes it is a person beside whom you can finally let the whole world become quiet.
+
+And for me, so much of that feeling has become you.
+
+I love the little things about us. The conversations, the stupid jokes, the walks, the food, the dates, the difficult days, the beautiful ones and all the ordinary moments in between.
+
+Because somehow, even the ordinary feels special when it is ours.
+
+I hope you always know that you have a place where you don't have to be strong.
+
+You don't have to have everything figured out.
+
+You can simply be you.
+
+And you will always be loved there.
+
+I am grateful for every version of you that I have had the privilege of knowing, and for every version of you that I am yet to meet.
+
+Maybe that is what home really means.
+
+Not a perfect place.
+
+Just a place where your heart knows it belongs.
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="oneLastThing">
+
+                <span>♡ One last thing ♡</span>
+
+                <p>
+                    If life ever becomes too loud,
+                    I hope you remember that you never have to
+                    carry everything alone.
+                </p>
+
+            </div>
+
+            <button id="questionBtn">
+                💌 Today's Question
             </button>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- FORTUNE -->
-    <div id="fortuneSection" class="hidden">
+    <!-- =========================
+         QUESTION
+    ========================== -->
 
-        <div class="fortune-card">
+    <section id="questionSection" class="hidden">
 
-            <div class="fortune-cookie">🥠</div>
+        <div class="questionCard">
 
-            <h2>Your Fortune</h2>
+            <div class="questionHeart">♡</div>
 
-            <p id="fortuneText">
-                Click the cookie to find out...
-            </p>
-
-            <button id="revealFortune">
-                ✨ Crack It Open
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- QUESTION -->
-    <div id="questionSection" class="hidden">
-
-        <div class="question-card">
-
-            <div class="question-decoration">
-                🥟 ❤️ 🥟
-            </div>
-
-            <h2>And Before You Leave...</h2>
+            <h2>
+                One tiny question...
+            </h2>
 
             <p class="questionText">
-                If we had an unlimited food budget<br>
-                and an entire day together...
-                <br><br>
-                Would you go on a food adventure with me?
+                Would you let me be your home,
+                through all the beautiful days
+                and all the difficult ones too?
             </p>
 
             <div class="buttons">
 
                 <button id="yesBtn">
-                    YES 🥟❤️
+                    Yes, always ❤️
                 </button>
 
                 <button id="noBtn">
-                    NO 🙈
+                    No 🙈
                 </button>
 
             </div>
@@ -213,12 +167,10 @@
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>

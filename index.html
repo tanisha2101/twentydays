@@ -10,164 +10,209 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- FLOATING HEARTS -->
-    <div id="hearts"></div>
+    <!-- FLOATING FOOD -->
+    <div class="food-float">🍗</div>
+    <div class="food-float">🥟</div>
+    <div class="food-float">🍜</div>
+    <div class="food-float">🍗</div>
+    <div class="food-float">🥟</div>
 
-    <!-- SPARKLES -->
-    <div id="sparkles"></div>
+    <!-- HERO -->
+    <section class="hero">
 
-    <!-- =========================
-         WELCOME
-    ========================== -->
-
-    <section class="hero" id="welcome">
-
-        <div class="littleTitle">
-            A little place made just for you 🏡
+        <div class="small-title">
+            A Little Food Report For You 🍴
         </div>
 
         <h1>
-            Some Places<br>
-            Feel Like Home
+            Ten Days Until<br>
+            Your Birthday
         </h1>
 
         <p class="subtitle">
-            And sometimes, home is simply<br>
-            where your heart feels safe.
+            And apparently, we have a very serious food agenda to prepare for.
         </p>
 
-        <div id="countdown">
+        <div id="countdown" class="countdown">
             Loading...
         </div>
 
-        <button id="startBtn">
-            🏡 Open Today's Little Home
+        <button class="main-button" onclick="goToSection('menu')">
+            🍗 Enter Today's Menu
         </button>
 
     </section>
 
 
-    <!-- =========================
-         LETTER
-    ========================== -->
+    <!-- FOOD MENU -->
+    <section id="menu" class="menu-section">
+        <p class="section-label">TODAY'S SPECIAL</p>
 
-    <section id="letterSection" class="hidden">
+        <h2>
+            A Preview Of<br>
+            Your Birthday Menu 🍽️
+        </h2>
 
-        <div class="letterCard">
+        <p class="menu-intro">
+            Because apparently one birthday celebration is not enough.
+            We need enough food to make questionable decisions.
+        </p>
 
-            <div class="homeIcon">♡</div>
+        <div class="menu-grid">
 
-            <div class="letterLabel">
-                A little letter for you
+            <div class="food-card">
+                <div class="food-icon">🍗</div>
+                <h3>Fried Chicken</h3>
+                <p>
+                    Crispy outside, juicy inside and absolutely necessary.
+                </p>
             </div>
 
-            <h2>
-                To the person who feels like home
-            </h2>
+            <div class="food-card">
+                <div class="food-icon">🍗</div>
+                <h3>Chicken Wings</h3>
+                <p>
+                    The kind where we order more because obviously we didn't order enough.
+                </p>
+            </div>
 
-            <div class="divider"></div>
+            <div class="food-card">
+                <div class="food-icon">🥟</div>
+                <h3>Chicken Momos</h3>
+                <p>
+                    Because some things in life are simply non-negotiable.
+                </p>
+            </div>
 
-            <p class="letterText">
-There are some people who enter your life and somehow make it feel a little warmer.
+            <div class="food-card">
+                <div class="food-icon">🍜</div>
+                <h3>Ramen</h3>
+                <p>
+                    Warm, comforting and perfect for eating together.
+                </p>
+            </div>
 
-A little softer.
+        </div>
+        <button class="next-button" onclick="goToSection('quote')">
+            🥟 See Today's Thought
+        </button>
+    </section>
 
-A little more like home.
 
-You are that person for me.
+    <!-- QUOTE -->
+    <section id="quote" class="quote-section">
+        <div class="quote-card">
 
-I don't think home has always been a place. Sometimes it is a laugh you know by heart. Sometimes it is a hand you want to hold. Sometimes it is a person beside whom you can finally let the whole world become quiet.
+            <div class="quote-icon">🍗</div>
 
-And for me, so much of that feeling has become you.
-
-I love the little things about us. The conversations, the stupid jokes, the walks, the food, the dates, the difficult days, the beautiful ones and all the ordinary moments in between.
-
-Because somehow, even the ordinary feels special when it is ours.
-
-I hope you always know that you have a place where you don't have to be strong.
-
-You don't have to have everything figured out.
-
-You can simply be you.
-
-And you will always be loved there.
-
-I am grateful for every version of you that I have had the privilege of knowing, and for every version of you that I am yet to meet.
-
-Maybe that is what home really means.
-
-Not a perfect place.
-
-Just a place where your heart knows it belongs.
+            <p>
+                “Even though some days are hard, always remember that
+                in this world there is no problem that a big bucket of
+                fried chicken or a plate of chicken momos cannot solve.”
             </p>
 
-            <div class="divider"></div>
+            <span>
+                — A very scientifically proven fact
+            </span>
 
-            <div class="oneLastThing">
+        </div>
+        <button class="next-button" onclick="goToSection('letter')">
+            💌 Open Today's Food Note
+        </button>
+    </section>
 
-                <span>♡ One last thing ♡</span>
 
-                <p>
-                    If life ever becomes too loud,
-                    I hope you remember that you never have to
-                    carry everything alone.
-                </p>
+    <!-- LETTER -->
+    <section id="letter" class="letter-section">
 
-            </div>
+        <div class="letter-card">
 
-            <button id="questionBtn">
-                💌 Today's Question
+            <p class="section-label">A LITTLE LETTER FOR YOU</p>
+
+            <h2>
+                To My Favourite Foodie ❤️
+            </h2>
+
+            <p>
+                I think one of my favourite things about us is how easily
+                food became one of our little languages.
+            </p>
+
+            <p>
+                We can turn a simple meal into an entire adventure.
+                We can talk about what we want to eat, decide what we
+                absolutely need to order, and somehow still end up saying,
+                “Should we get something else?”
+            </p>
+
+            <p>
+                And honestly, I wouldn't have it any other way.
+            </p>
+
+            <p>
+                So whenever life gets a little difficult, remember that
+                there is always something delicious waiting around the corner.
+                And there is a whole birthday menu waiting for us too. 🍗🥟🍜
+            </p>
+
+            <p>
+                I can't wait to eat far too much food with you,
+                explore new places with you, and make more of those
+                silly little food memories that somehow become our
+                favourite memories.
+            </p>
+
+            <p class="signature">
+                Your forever food partner ❤️
+            </p>
+
+        </div>
+        <button class="next-button" onclick="goToSection('question')">
+            ❤️ Today's Question
+        </button>
+    </section>
+
+
+    <!-- QUESTION -->
+    <section id="question" class="question-section">
+        <p class="section-label">ONE LAST THING...</p>
+
+        <h2>
+            Today's Question 💭
+        </h2>
+
+        <p class="question">
+            Will you save a LOT of room for food on your birthday
+            because we have an extremely important menu to conquer? 🍗
+        </p>
+
+        <div class="question-buttons">
+
+            <button class="yes-button" onclick="yesAnswer()">
+                YES 🍜
+            </button>
+
+            <button class="no-button" id="noButton">
+                NO 🙃
             </button>
 
         </div>
 
-    </section>
-
-
-    <!-- =========================
-         QUESTION
-    ========================== -->
-
-    <section id="questionSection" class="hidden">
-
-        <div class="questionCard">
-
-            <div class="questionHeart">♡</div>
-
-            <h2>
-                One tiny question...
-            </h2>
-
-            <p class="questionText">
-                Would you let me be your home,
-                through all the beautiful days
-                and all the difficult ones too?
-            </p>
-
-            <div class="buttons">
-
-                <button id="yesBtn">
-                    Yes, always ❤️
-                </button>
-
-                <button id="noBtn">
-                    No 🙈
-                </button>
-
-            </div>
-
-            <div id="response"></div>
-
-        </div>
+        <p id="answer" class="answer"></p>
 
     </section>
+
+
+    <footer>
+        Made with love, food and questionable amounts of chicken ❤️🍗
+    </footer>
 
 
     <script src="script.js"></script>

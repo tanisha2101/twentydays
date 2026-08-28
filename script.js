@@ -5,11 +5,15 @@
 const targetDate =
     new Date("September 6, 2026 00:00:00").getTime();
 
+
 function updateCountdown() {
 
-    const now = new Date().getTime();
+    const now =
+        new Date().getTime();
 
-    const difference = targetDate - now;
+    const difference =
+        targetDate - now;
+
 
     if (difference <= 0) {
 
@@ -17,35 +21,50 @@ function updateCountdown() {
             "🎂 IT'S YOUR BIRTHDAY! 🎂";
 
         return;
+
     }
+
 
     const days =
         Math.floor(
-            difference / (1000 * 60 * 60 * 24)
+            difference /
+            (1000 * 60 * 60 * 24)
         );
+
 
     const hours =
         Math.floor(
-            (difference / (1000 * 60 * 60)) % 24
+            (difference /
+            (1000 * 60 * 60)) % 24
         );
+
 
     const minutes =
         Math.floor(
-            (difference / (1000 * 60)) % 60
+            (difference /
+            (1000 * 60)) % 60
         );
+
 
     const seconds =
         Math.floor(
             (difference / 1000) % 60
         );
 
+
     document.getElementById("countdown").innerHTML =
         `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
+
 }
+
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);
+
 
 
 /* =========================
@@ -57,15 +76,80 @@ function goToSection(sectionId) {
     const section =
         document.getElementById(sectionId);
 
+
     if (section) {
 
         section.scrollIntoView({
+
             behavior: "smooth",
+
             block: "start"
+
         });
 
     }
+
 }
+
+
+
+/* =========================
+   MAGIC PARTICLES
+========================= */
+
+const magic =
+    document.getElementById("magic");
+
+
+function createMagicParticle() {
+
+    const particle =
+        document.createElement("div");
+
+
+    particle.className =
+        "magic-particle";
+
+
+    particle.innerHTML =
+        ["✦", "✧", "✨", "·"][
+            Math.floor(
+                Math.random() * 4
+            )
+        ];
+
+
+    particle.style.left =
+        Math.random() * 100 + "vw";
+
+
+    particle.style.top =
+        (70 + Math.random() * 30) + "vh";
+
+
+    particle.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+
+    magic.appendChild(
+        particle
+    );
+
+
+    setTimeout(() => {
+
+        particle.remove();
+
+    }, 6000);
+
+}
+
+
+setInterval(
+    createMagicParticle,
+    450
+);
+
 
 
 /* =========================
@@ -75,11 +159,14 @@ function goToSection(sectionId) {
 function yesAnswer() {
 
     document.getElementById("answer").innerHTML =
-        "Then tonight, just breathe. 🌙❤️<br>" +
-        "You are loved more than you know.";
+        "Then let's keep exploring. ✨❤️<br>" +
+        "One little adventure at a time.";
+
 
     createHeartBurst();
+
 }
+
 
 
 /* =========================
@@ -89,54 +176,90 @@ function yesAnswer() {
 function createHeartBurst() {
 
     const hearts = [
+
         "❤️",
         "💗",
         "💕",
         "💖",
         "💜",
         "✨",
-        "🌙"
+        "⭐"
+
     ];
 
-    for (let i = 0; i < 40; i++) {
+
+    for (
+        let i = 0;
+        i < 40;
+        i++
+    ) {
 
         const heart =
             document.createElement("div");
 
-        heart.className = "heart-burst";
+
+        heart.className =
+            "heart-burst";
+
 
         heart.innerHTML =
             hearts[
                 Math.floor(
-                    Math.random() * hearts.length
+                    Math.random() *
+                    hearts.length
                 )
             ];
 
-        heart.style.left = "50%";
-        heart.style.top = "65%";
+
+        heart.style.left =
+            "50%";
+
+
+        heart.style.top =
+            "65%";
+
 
         const angle =
-            Math.random() * Math.PI * 2;
+            Math.random() *
+            Math.PI * 2;
+
 
         const distance =
-            100 + Math.random() * 300;
+            100 +
+            Math.random() * 300;
+
 
         heart.style.setProperty(
+
             "--x",
+
             `${Math.cos(angle) * distance}px`
+
         );
+
 
         heart.style.setProperty(
+
             "--y",
+
             `${Math.sin(angle) * distance}px`
+
         );
 
-        document.body.appendChild(heart);
+
+        document.body.appendChild(
+            heart
+        );
+
 
         setTimeout(() => {
+
             heart.remove();
+
         }, 1800);
+
     }
+
 }
 
 
@@ -144,23 +267,27 @@ function createHeartBurst() {
    DANCING NO BUTTON
 ========================= */
 
-const noButton =
-    document.getElementById("noButton");
+const noButton = document.getElementById("noButton");
+const questionSection = document.getElementById("question");
+
 
 noButton.addEventListener(
     "mouseenter",
     moveNoButton
 );
 
+
 noButton.addEventListener(
     "touchstart",
-    function (event) {
+    function(event) {
 
         event.preventDefault();
 
         moveNoButton();
+
     }
 );
+
 
 function moveNoButton() {
 
@@ -186,11 +313,52 @@ function moveNoButton() {
             Math.random() * maxY
         );
 
+
     noButton.style.position = "fixed";
 
-    noButton.style.left =
-        x + "px";
+    noButton.style.left = x + "px";
 
-    noButton.style.top =
-        y + "px";
+    noButton.style.top = y + "px";
+
 }
+
+
+/* =========================
+   RESET NO BUTTON
+   WHEN LEAVING QUESTION
+========================= */
+
+function resetNoButton() {
+
+    noButton.style.position = "static";
+
+    noButton.style.left = "";
+
+    noButton.style.top = "";
+
+}
+
+
+/* Check where the user is */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const rect =
+            questionSection.getBoundingClientRect();
+
+
+        const isVisible =
+            rect.top < window.innerHeight &&
+            rect.bottom > 0;
+
+
+        if (!isVisible) {
+
+            resetNoButton();
+
+        }
+
+    }
+);

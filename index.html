@@ -2,98 +2,217 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> Thirty Days, One Heart ❤️</title>
+    <title>Thirty Days, One Heart ❤️</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- STARS -->
-    <div class="stars"></div>
-    <div class="stars stars-two"></div>
-    <div class="stars stars-three"></div>
+    <!-- MAGIC PARTICLES -->
+    <div id="magic"></div>
 
-    <!-- MOON -->
-    <div class="moon"></div>
+    <!-- LANTERNS -->
+    <div class="lantern lantern-one">🏮</div>
+    <div class="lantern lantern-two">🏮</div>
+    <div class="lantern lantern-three">🏮</div>
 
-    <!-- SHOOTING STARS -->
-    <div class="shooting-star star-one"></div>
-    <div class="shooting-star star-two"></div>
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
+
     <section class="hero">
 
-        <div class="eyebrow">
-            A Little Night Sky For You 🌙
-        </div>
+        <div class="wardrobe-glow"></div>
+
+        <p class="eyebrow">
+            Somewhere beyond the ordinary...
+        </p>
 
         <h1>
-            Nine More Sunsets<br>
-            Until Your Birthday
+            Eight More Sunsets<br>
+            Till Your Birthday
         </h1>
 
         <p class="subtitle">
-            For the girl who carries so much during the day,
-            here's a little place to rest tonight.
+            And somehow, the most magical person in it
+            has always been you.
         </p>
 
         <div id="countdown" class="countdown">
             Loading...
         </div>
 
-        <button class="main-button" onclick="goToSection('night')">
-            ✨ Come A Little Closer
+        <button class="main-button"
+                onclick="goToSection('magicWorld')">
+
+            ✨ Enter The Wardrobe
+
         </button>
 
     </section>
 
 
-    <!-- NIGHT THOUGHT -->
-    <section id="night" class="night-section">
+
+    <!-- ================= MAGIC WORLD ================= -->
+
+    <section id="magicWorld" class="magic-section">
 
         <p class="section-label">
-            FOR TONIGHT
+            BEYOND THE WARDROBE
         </p>
 
         <h2>
-            You Don't Have To<br>
-            Be Strong Every Second.
+            A World Where<br>
+            Kindness Is Magic
         </h2>
 
-        <p class="night-text">
-            The stars don't disappear when the sky gets dark.
-            They simply wait for us to look up.
+        <p class="world-text">
+
+            If there were a place where kindness could be seen,
+            I think yours would light up the entire forest.
+
         </p>
 
-        <div class="constellation">
-            <span>✦</span>
-            <span>·</span>
-            <span>✦</span>
-            <span>·</span>
-            <span>✦</span>
+
+        <div class="magic-cards">
+
+            <div class="magic-card">
+
+                <div class="card-icon">🦁</div>
+
+                <h3>
+                    Your Courage
+                </h3>
+
+                <p>
+                    You handle things that would overwhelm most people
+                    and somehow still find the strength to care about
+                    everyone around you.
+                </p>
+
+            </div>
+
+
+            <div class="magic-card">
+
+                <div class="card-icon">🕯️</div>
+
+                <h3>
+                    Your Little Things
+                </h3>
+
+                <p>
+                    You remember the tiny things people say,
+                    notice when something feels different,
+                    and care about things most people wouldn't even notice.
+                </p>
+
+            </div>
+
+
+            <div class="magic-card">
+
+                <div class="card-icon">🌲</div>
+
+                <h3>
+                    Your Heart
+                </h3>
+
+                <p>
+                    You protect the people you love with a kind of
+                    quiet determination that makes them feel safe.
+                </p>
+
+            </div>
+
+
+            <div class="magic-card">
+
+                <div class="card-icon">✨</div>
+
+                <h3>
+                    Your Magic
+                </h3>
+
+                <p>
+                    Maybe magic isn't spells or enchanted kingdoms.
+                    Maybe it's simply making people feel cared for.
+                </p>
+
+            </div>
+
         </div>
 
-        <p class="small-note">
-            And maybe tonight, you can just breathe.
-        </p>
 
-        <button class="next-button" onclick="goToSection('letter')">
-            🌙 A Little Letter For You
+        <button class="next-button"
+                onclick="goToSection('thought')">
+
+            🕯️ There's Something I Want You To Know
+
         </button>
 
     </section>
 
 
-    <!-- LETTER -->
+
+    <!-- ================= THOUGHT ================= -->
+
+    <section id="thought" class="thought-section">
+
+        <div class="lantern-large">
+            🏮
+        </div>
+
+        <p class="section-label">
+            ONE LITTLE THOUGHT
+        </p>
+
+        <h2>
+            You Make The World<br>
+            Softer.
+        </h2>
+
+        <p class="thought-text">
+
+            Some people enter a room and change the atmosphere.
+
+            You entered my life and made me feel
+            like I have somewhere safe to belong.
+
+        </p>
+
+
+        <div class="constellation">
+
+            ✦ ─── ✦ ─── ✦
+
+        </div>
+
+
+        <button class="next-button"
+                onclick="goToSection('letter')">
+
+            💌 Open Tonight's Letter
+
+        </button>
+
+    </section>
+
+
+
+    <!-- ================= LETTER ================= -->
+
     <section id="letter" class="letter-section">
 
         <div class="letter-card">
@@ -103,89 +222,126 @@
             </p>
 
             <h2>
-                When The World Gets Quiet
+                To The Girl With The Kindest Heart
             </h2>
+
 
             <div class="letter-body">
 
                 <p>
-                    I know there are days when everything feels like a little
-                    too much. Days when the stress piles up, when your mind
-                    refuses to slow down, and when being strong starts feeling
-                    like something you have to do rather than something you
-                    simply are.
+                    There is something about you that I don't think
+                    I tell you enough.
                 </p>
 
                 <p>
-                    And I want you to know that I see you.
+                    You care.
                 </p>
 
                 <p>
-                    I see how hard you try. I see everything you carry,
-                    everything you handle, and everything you still manage
-                    to do even when you're tired. And I couldn't be more
-                    proud of you for the person you are.
+                    You care about people, about the things they feel,
+                    about the little details they mention once and
+                    probably forget about themselves. You notice when
+                    someone isn't okay. You remember the smallest things.
+                    You worry. You protect. You give pieces of yourself
+                    to the people you love without even making a big deal
+                    about it.
                 </p>
 
                 <p>
-                    But when the day finally ends, when the world becomes
-                    quiet and you don't have to be anything for anyone,
-                    I hope you remember that you have somewhere to rest.
+                    And I have been lucky enough to experience that
+                    kindness myself.
                 </p>
 
                 <p class="highlight">
-                    If you ever come to me tired, I won't ask you to be
-                    strong. I'll simply open my arms and let you rest there.
+                    You have protected me from parts of the world that
+                    felt too heavy, sometimes without even realising
+                    that you were doing it.
                 </p>
 
                 <p>
-                    You can bring me your difficult days. You can bring me
-                    your worries, your silence, your tiredness, your tears,
-                    or simply nothing at all. You never have to make yourself
-                    smaller or hide the parts of you that are hurting.
+                    There have been so many moments where you
+                    cared for me, looked after me, understood something
+                    I couldn't explain, or simply made life feel a little
+                    easier.
                 </p>
 
                 <p>
-                    I want to be the place where you can finally breathe.
-                    The place where you don't have to fight the whole world
-                    by yourself.
+                    And those little things mean more to me than I think
+                    you will ever know.
                 </p>
 
                 <p>
-                    Because loving you isn't something I want to do only
-                    when everything is beautiful. I want to love you through
-                    the quiet nights, the difficult mornings, the uncertain
-                    days and every little moment in between.
+                    I think that's what makes you so incredibly special.
+                    Not just one grand thing. Not just one perfect quality.
+                    It's the thousand tiny ways in which your heart
+                    chooses to care.
                 </p>
 
                 <p>
-                    You are so incredibly precious to me. More than I think
-                    words will ever be able to explain.
+                    Sometimes I imagine our future and I see a home filled with laughter, ridiculous little
+                    arguments, sleepy mornings, celebrations, ordinary
+                    evenings and a family that knows just how lucky they
+                    are to have you.
+                </p>
+
+                <p>
+                    And I can't help but think that our children would
+                    have the most beautiful childhood simply because
+                    they would have you.
+                </p>
+
+                <p>
+                    They would have someone who notices when they're
+                    quiet. Someone who remembers their favourite little
+                    things. Someone who protects them when the world
+                    feels frightening and teaches them kindness when
+                    it doesn't.
+                </p>
+
+                <p>
+                    And honestly, I think they would be the most adorable
+                    little humans in the world.
+                </p>
+
+                <p>
+                    Because they would carry a little bit of your heart
+                    with them.
                 </p>
 
                 <p class="final-line">
-                    I love you more than I know how to put into words.
-                    And somehow, every day, I find myself loving you
-                    a little more than the day before.
+                    If this world ever feels too big or too cruel,
+                    I hope you always remember that there is someone
+                    who sees the goodness in you, notices everything
+                    you do, and feels incredibly lucky to love you.
+                </p>
+
+                <p class="final-line">
+                    You are my favourite kind of magic.
                 </p>
 
                 <p class="signature">
-                    So when tonight gets quiet,<br>
-                    come rest for a while. ❤️
+                    And if I could choose a world to live in again,<br>
+                    I'd choose the one where I get to find you. ❤️
                 </p>
 
             </div>
 
         </div>
 
-        <button class="next-button" onclick="goToSection('question')">
+
+        <button class="next-button"
+                onclick="goToSection('question')">
+
             ⭐ Today's Question
+
         </button>
 
     </section>
 
 
-    <!-- QUESTION -->
+
+    <!-- ================= QUESTION ================= -->
+
     <section id="question" class="question-section">
 
         <p class="section-label">
@@ -197,33 +353,52 @@
         </h2>
 
         <p class="question">
-            When the world gets a little too heavy,
-            will you remember that you never have to carry it all alone? ❤️
+
+            If there really were a magical world hidden
+            behind a wardrobe...
+
+            would you let me come exploring it with you? ❤️
+
         </p>
+
 
         <div class="question-buttons">
 
-            <button class="yes-button" onclick="yesAnswer()">
+            <button class="yes-button"
+                    onclick="yesAnswer()">
+
                 YES ❤️
+
             </button>
 
-            <button class="no-button" id="noButton">
+
+            <button class="no-button"
+                    id="noButton">
+
                 NO 🙈
+
             </button>
 
         </div>
+
 
         <p id="answer" class="answer"></p>
 
     </section>
 
 
+
     <footer>
-        Somewhere beneath the same sky, always. 🌙❤️
+
+        Somewhere beyond the wardrobe,
+        under the same stars. ✨❤️
+
     </footer>
+
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

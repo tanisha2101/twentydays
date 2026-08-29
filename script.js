@@ -68,7 +68,7 @@ setInterval(
 
 
 /* =========================
-   SECTION NAVIGATION
+   NAVIGATION
 ========================= */
 
 function goToSection(sectionId) {
@@ -94,27 +94,27 @@ function goToSection(sectionId) {
 
 
 /* =========================
-   MAGIC PARTICLES
+   FLOATING PARTICLES
 ========================= */
 
-const magic =
-    document.getElementById("magic");
+const particleContainer =
+    document.getElementById("particles");
 
 
-function createMagicParticle() {
+function createParticle() {
 
     const particle =
         document.createElement("div");
 
 
     particle.className =
-        "magic-particle";
+        "particle";
 
 
     particle.innerHTML =
-        ["✦", "✧", "✨", "·"][
+        ["✦", "✧", "·", "☀", "✨"][
             Math.floor(
-                Math.random() * 4
+                Math.random() * 5
             )
         ];
 
@@ -131,7 +131,7 @@ function createMagicParticle() {
         (3 + Math.random() * 3) + "s";
 
 
-    magic.appendChild(
+    particleContainer.appendChild(
         particle
     );
 
@@ -146,8 +146,8 @@ function createMagicParticle() {
 
 
 setInterval(
-    createMagicParticle,
-    450
+    createParticle,
+    500
 );
 
 
@@ -159,77 +159,78 @@ setInterval(
 function yesAnswer() {
 
     document.getElementById("answer").innerHTML =
-        "Then let's keep exploring. ✨❤️<br>" +
-        "One little adventure at a time.";
+        "Scientific conclusion accepted. ☀️❤️<br>" +
+        "The sunshine may continue shining.";
 
-
-    createHeartBurst();
+    createBurst();
 
 }
 
 
 
 /* =========================
-   HEART BURST
+   SUN + HEART BURST
 ========================= */
 
-function createHeartBurst() {
+function createBurst() {
 
-    const hearts = [
+    const symbols = [
 
         "❤️",
         "💗",
-        "💕",
+        "💛",
         "💖",
-        "💜",
+        "☀️",
         "✨",
-        "⭐"
+        "✦"
 
     ];
 
 
     for (
         let i = 0;
-        i < 40;
+        i < 50;
         i++
     ) {
 
-        const heart =
+        const burst =
             document.createElement("div");
 
 
-        heart.className =
-            "heart-burst";
+        burst.className =
+            "burst";
 
 
-        heart.innerHTML =
-            hearts[
+        burst.innerHTML =
+            symbols[
                 Math.floor(
                     Math.random() *
-                    hearts.length
+                    symbols.length
                 )
             ];
 
 
-        heart.style.left =
+        burst.style.left =
             "50%";
 
 
-        heart.style.top =
+        burst.style.top =
             "65%";
 
 
         const angle =
             Math.random() *
-            Math.PI * 2;
+            Math.PI *
+            2;
 
 
         const distance =
             100 +
-            Math.random() * 300;
+            Math.random() *
+            320;
 
 
-        heart.style.setProperty(
+        burst.style.setProperty(
 
             "--x",
 
@@ -238,7 +239,7 @@ function createHeartBurst() {
         );
 
 
-        heart.style.setProperty(
+        burst.style.setProperty(
 
             "--y",
 
@@ -248,13 +249,13 @@ function createHeartBurst() {
 
 
         document.body.appendChild(
-            heart
+            burst
         );
 
 
         setTimeout(() => {
 
-            heart.remove();
+            burst.remove();
 
         }, 1800);
 
@@ -263,12 +264,16 @@ function createHeartBurst() {
 }
 
 
+
 /* =========================
    DANCING NO BUTTON
 ========================= */
 
-const noButton = document.getElementById("noButton");
-const questionSection = document.getElementById("question");
+const noButton =
+    document.getElementById("noButton");
+
+const questionSection =
+    document.getElementById("question");
 
 
 noButton.addEventListener(
@@ -296,16 +301,19 @@ function moveNoButton() {
         noButton.offsetWidth -
         25;
 
+
     const maxY =
         window.innerHeight -
         noButton.offsetHeight -
         25;
+
 
     const x =
         Math.max(
             20,
             Math.random() * maxX
         );
+
 
     const y =
         Math.max(
@@ -314,13 +322,19 @@ function moveNoButton() {
         );
 
 
-    noButton.style.position = "fixed";
+    noButton.style.position =
+        "fixed";
 
-    noButton.style.left = x + "px";
 
-    noButton.style.top = y + "px";
+    noButton.style.left =
+        x + "px";
+
+
+    noButton.style.top =
+        y + "px";
 
 }
+
 
 
 /* =========================
@@ -330,16 +344,17 @@ function moveNoButton() {
 
 function resetNoButton() {
 
-    noButton.style.position = "static";
+    noButton.style.position =
+        "static";
 
-    noButton.style.left = "";
+    noButton.style.left =
+        "";
 
-    noButton.style.top = "";
+    noButton.style.top =
+        "";
 
 }
 
-
-/* Check where the user is */
 
 window.addEventListener(
     "scroll",

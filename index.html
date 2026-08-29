@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
@@ -20,43 +20,55 @@
 
 <body>
 
-    <!-- MAGIC PARTICLES -->
-    <div id="magic"></div>
+    <!-- SUN RAYS -->
+    <div class="sun-rays"></div>
 
-    <!-- LANTERNS -->
-    <div class="lantern lantern-one">🏮</div>
-    <div class="lantern lantern-two">🏮</div>
-    <div class="lantern lantern-three">🏮</div>
+    <!-- FLOATING PARTICLES -->
+    <div id="particles"></div>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- =========================
+         HERO / CASE FILE
+    ========================== -->
 
     <section class="hero">
 
-        <div class="wardrobe-glow"></div>
+        <div class="case-stamp">
+            CASE FILE #30
+        </div>
 
         <p class="eyebrow">
-            Somewhere beyond the ordinary...
+            An Extremely Serious Investigation
         </p>
 
         <h1>
-            Eight More Sunsets<br>
-            Till Your Birthday
+            The Mystery<br>
+            Of Her
         </h1>
 
-        <p class="subtitle">
-            In a world full of magic, the most magical person
-            has always been you.
+        <p class="hero-text">
+
+            How can one person possibly be this
+            extraordinarily wonderful?
+
         </p>
+
+        <div class="case-details">
+
+            <span>SUBJECT: HER</span>
+            <span>STATUS: EXTRAORDINARY</span>
+            <span>RESULT: INCONCLUSIVE</span>
+
+        </div>
 
         <div id="countdown" class="countdown">
             Loading...
         </div>
 
         <button class="main-button"
-                onclick="goToSection('magicWorld')">
+                onclick="goToSection('findings')">
 
-            ✨ Enter The Wardrobe
+            ☀ BEGIN OBSERVATION
 
         </button>
 
@@ -64,90 +76,134 @@
 
 
 
-    <!-- ================= MAGIC WORLD ================= -->
+    <!-- =========================
+         FINDINGS
+    ========================== -->
 
-    <section id="magicWorld" class="magic-section">
+    <section id="findings" class="findings-section">
 
         <p class="section-label">
-            BEYOND THE WARDROBE
+            OBSERVATION REPORT
         </p>
 
         <h2>
-            A World Where<br>
-            Kindness Is Magic
+            The Findings
         </h2>
 
-        <p class="world-text">
+        <p class="section-intro">
 
-            If there were a place where kindness could be seen,
-            I think yours would light up the entire forest.
+            After several years of extremely thorough
+            observation, the evidence is becoming suspicious.
 
         </p>
 
 
-        <div class="magic-cards">
+        <div class="findings-grid">
 
-            <div class="magic-card">
 
-                <div class="card-icon">🦁</div>
+            <div class="finding">
+
+                <div class="finding-number">
+                    01
+                </div>
+
+                <div class="finding-icon">
+                    ✦
+                </div>
 
                 <h3>
-                    Your Courage
+                    Kindness
                 </h3>
 
+                <div class="measurement">
+                    UNREASONABLY HIGH
+                </div>
+
                 <p>
-                    You handle things that would overwhelm most people
-                    and somehow still find the strength to care about
-                    everyone around you.
+                    Subject has an unusual tendency to care about
+                    people, remember little things and worry about
+                    everyone around her.
                 </p>
 
             </div>
 
 
-            <div class="magic-card">
 
-                <div class="card-icon">🕯️</div>
+            <div class="finding">
+
+                <div class="finding-number">
+                    02
+                </div>
+
+                <div class="finding-icon">
+                    ☀
+                </div>
 
                 <h3>
-                    Your Little Things
+                    Warmth
                 </h3>
 
+                <div class="measurement">
+                    SUNLIGHT LEVELS
+                </div>
+
                 <p>
-                    You remember the tiny things people say,
-                    notice when something feels different,
-                    and care about things most people wouldn't even notice.
+                    Presence of subject consistently makes ordinary
+                    days feel warmer and considerably better.
                 </p>
 
             </div>
 
 
-            <div class="magic-card">
 
-                <div class="card-icon">🌲</div>
+            <div class="finding">
+
+                <div class="finding-number">
+                    03
+                </div>
+
+                <div class="finding-icon">
+                    ♡
+                </div>
 
                 <h3>
-                    Your Heart
+                    Smile Induction
                 </h3>
 
+                <div class="measurement">
+                    HIGHLY EFFECTIVE
+                </div>
+
                 <p>
-                    You protect the people you love with a kind of
-                    quiet determination that makes them feel safe.
+                    Subject appears capable of making one particular
+                    person smile without even trying.
                 </p>
 
             </div>
 
 
-            <div class="magic-card">
 
-                <div class="card-icon">✨</div>
+            <div class="finding">
+
+                <div class="finding-number">
+                    04
+                </div>
+
+                <div class="finding-icon">
+                    ✨
+                </div>
 
                 <h3>
-                    Your Magic
+                    Magic
                 </h3>
 
+                <div class="measurement">
+                    NO EXPLANATION
+                </div>
+
                 <p>
-                    Maybe magic isn't spells or enchanted kingdoms.
-                    Maybe it's simply making people feel cared for.
+                    Despite extensive research, no scientific
+                    explanation has been discovered.
                 </p>
 
             </div>
@@ -156,9 +212,9 @@
 
 
         <button class="next-button"
-                onclick="goToSection('thought')">
+                onclick="goToSection('theory')">
 
-            🕯️ There's Something I Want You To Know
+            ☀ Examine The Sunshine Theory
 
         </button>
 
@@ -166,36 +222,50 @@
 
 
 
-    <!-- ================= THOUGHT ================= -->
+    <!-- =========================
+         SUNSHINE THEORY
+    ========================== -->
 
-    <section id="thought" class="thought-section">
+    <section id="theory" class="theory-section">
 
-        <div class="lantern-large">
-            🏮
+        <div class="sun-container">
+
+            <div class="sun">
+
+                <div class="sun-core">
+                    YOU
+                </div>
+
+            </div>
+
         </div>
 
+
         <p class="section-label">
-            ONE LITTLE THOUGHT
+            THEORY #01
         </p>
 
         <h2>
-            You Make The World<br>
-            Softer.
+            The Sunshine<br>
+            Theory
         </h2>
 
-        <p class="thought-text">
+        <p class="theory-text">
 
-            Some people enter a room and change the atmosphere.
+            Some people brighten a room.
 
-            You entered my life and made me feel
-            like I have somewhere safe to belong.
+            <br><br>
+
+            You somehow brighten
+            the people inside it.
 
         </p>
 
+        <div class="formula">
 
-        <div class="constellation">
-
-            ✦ ─── ✦ ─── ✦
+            HER + HER HEART + HER KINDNESS
+            <span>=</span>
+            A LOT OF SUNSHINE
 
         </div>
 
@@ -203,7 +273,7 @@
         <button class="next-button"
                 onclick="goToSection('letter')">
 
-            💌 Open Tonight's Letter
+            💌 Read The Researcher's Note
 
         </button>
 
@@ -211,117 +281,127 @@
 
 
 
-    <!-- ================= LETTER ================= -->
+    <!-- =========================
+         LETTER
+    ========================== -->
 
     <section id="letter" class="letter-section">
 
-        <div class="letter-card">
+        <div class="letter-paper">
+
+            <div class="paper-corner"></div>
 
             <p class="section-label">
-                TONIGHT'S LETTER
+                PERSONAL OBSERVATION
             </p>
 
             <h2>
-                To The Girl With The Kindest Heart
+                There Is Something<br>
+                About You
             </h2>
 
 
             <div class="letter-body">
 
                 <p>
-                    There is something about you that I don't think
-                    I tell you enough.
+                    I sometimes wonder if you realise just how
+                    extraordinarily good you are.
                 </p>
 
                 <p>
-                    You care.
+                    Not because you're perfect. Not because you
+                    never have difficult days or moments when
+                    everything feels like too much.
                 </p>
 
                 <p>
-                    You care about people, about the things they feel,
-                    about the little details they mention once and
-                    probably forget about themselves. You notice when
-                    someone isn't okay. You remember the smallest things.
-                    You worry. You protect. You give pieces of yourself
-                    to the people you love without even making a big deal
-                    about it.
+                    It's because even with all of that, there is
+                    still so much goodness in you.
                 </p>
 
                 <p>
-                    And I have been lucky enough to experience that
-                    kindness myself.
+                    You care about people. You notice things that
+                    other people overlook. You remember the tiny
+                    details. You worry about the people you love.
+                    You give so much of yourself without even
+                    realising how much it means.
                 </p>
 
                 <p class="highlight">
-                    You have protected me from parts of the world that
-                    felt too heavy, sometimes without even realising
-                    that you were doing it.
+                    And somehow, you have brought that same warmth
+                    into my life.
                 </p>
 
                 <p>
-                    There have been so many moments where you
-                    cared for me, looked after me, understood something
-                    I couldn't explain, or simply made life feel a little
-                    easier.
+                    You make ordinary moments feel special.
+                    You make difficult days a little easier.
+                    Sometimes you don't even have to do anything.
+                    Just knowing that you are there changes something.
                 </p>
 
                 <p>
-                    And those little things mean more to me than I think
-                    you will ever know.
+                    I think that's why I call you sunshine in my head.
                 </p>
 
                 <p>
-                    I think that's what makes you so incredibly special.
-                    Not just one grand thing. Not just one perfect quality.
-                    It's the thousand tiny ways in which your heart
-                    chooses to care.
+                    Not because you're happy every second of every
+                    day, but because even when you're dealing with
+                    your own storms, there is something about you
+                    that makes the world around you feel warmer.
                 </p>
 
                 <p>
-                    Sometimes I imagine our future and I see a home filled with laughter, ridiculous little
-                    arguments, sleepy mornings, celebrations, ordinary
-                    evenings and a family that knows just how lucky they
-                    are to have you.
+                    And I hope you know how rare that is.
                 </p>
 
                 <p>
-                    And I can't help but think that our children would
-                    have the most beautiful childhood simply because
-                    they would have you.
+                    I love the person you are. I love the way your
+                    mind works, the way your heart works, the way
+                    you care about little things that most people
+                    wouldn't even notice.
                 </p>
 
                 <p>
-                    They would have someone who notices when they're
-                    quiet. Someone who remembers their favourite little
-                    things. Someone who protects them when the world
-                    feels frightening and teaches them kindness when
-                    it doesn't.
+                    I love all those tiny pieces of you that make
+                    you, simply, you.
                 </p>
 
                 <p>
-                    And honestly, I think they would be the most adorable
-                    little humans in the world.
+                    And if I could give you one thing in return
+                    for all the warmth you've brought into my life,
+                    it would be the ability to see yourself through
+                    my eyes for just one day.
                 </p>
 
                 <p>
-                    Because they would carry a little bit of your heart
-                    with them.
+                    Maybe then you'd understand why I look at you
+                    and think that somehow I got incredibly lucky.
+                </p>
+
+                <p class="highlight">
+                    You are not just someone I love.
+                    You are one of the brightest things that
+                    ever happened to my life.
+                </p>
+
+                <p>
+                    So whenever you doubt yourself, whenever life
+                    becomes heavy, or whenever you forget just how
+                    amazing you are...
                 </p>
 
                 <p class="final-line">
-                    If this world ever feels too big or too cruel,
-                    I hope you always remember that there is someone
-                    who sees the goodness in you, notices everything
-                    you do, and feels incredibly lucky to love you.
-                </p>
-
-                <p class="final-line">
-                    You are my favourite kind of magic.
+                    Please remember this:
+                    somewhere in this world, there is someone
+                    looking at you and thinking,
+                    <br><br>
+                    <strong>
+                        "How did I get so lucky to love her?"
+                    </strong>
                 </p>
 
                 <p class="signature">
-                    And if I could choose a world to live in again,<br>
-                    I'd choose the one where I get to find you. ❤️
+                    You are my favourite ray of sunshine. ☀️
                 </p>
 
             </div>
@@ -340,24 +420,28 @@
 
 
 
-    <!-- ================= QUESTION ================= -->
+    <!-- =========================
+         QUESTION
+    ========================== -->
 
     <section id="question" class="question-section">
 
         <p class="section-label">
-            ONE LAST THING...
+            FINAL EXPERIMENT
         </p>
 
         <h2>
-            Today's Question 🌙
+            One Last Question
         </h2>
 
         <p class="question">
 
-            If there really were a magical world hidden
-            behind a wardrobe...
+            If you're the sunshine...
 
-            would you let me come exploring it with you? ❤️
+            <br><br>
+
+            can I keep being the silly little person
+            who follows the light? ☀️
 
         </p>
 
@@ -367,10 +451,9 @@
             <button class="yes-button"
                     onclick="yesAnswer()">
 
-                YES ❤️
+                YES ☀️
 
             </button>
-
 
             <button class="no-button"
                     id="noButton">
@@ -388,13 +471,45 @@
 
 
 
+    <!-- =========================
+         FINAL CONCLUSION
+    ========================== -->
+
+    <section class="conclusion">
+
+        <div class="conclusion-line"></div>
+
+        <p class="section-label">
+            FINAL SCIENTIFIC CONCLUSION
+        </p>
+
+        <h2>
+            Case Closed.
+        </h2>
+
+        <p>
+            After considerable observation,
+            extensive research,
+            and absolutely no useful scientific evidence...
+        </p>
+
+        <strong>
+            She is, in fact, ridiculously wonderful.
+        </strong>
+
+        <span>
+            ☀️
+        </span>
+
+    </section>
+
+
+
     <footer>
 
-        Somewhere beyond the wardrobe,
-        under the same stars. ✨❤️
+        Thirty Days, One Heart ❤️
 
     </footer>
-
 
 
     <script src="script.js"></script>

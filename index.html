@@ -3,517 +3,533 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Thirty Days, One Heart ❤️</title>
+<title>Thirty Days, One Heart ❤️</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 
 <body>
 
-    <!-- SUN RAYS -->
-    <div class="sun-rays"></div>
+<!-- =========================
+     SKY BACKGROUND
+========================= -->
 
-    <!-- FLOATING PARTICLES -->
-    <div id="particles"></div>
+<div class="sky">
+
+    <div class="sun"></div>
+
+    <div class="sun-glow"></div>
+
+    <div class="moon"></div>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="cloud cloud-three"></div>
+
+    <div class="birds">
+        <span>⌁</span>
+        <span>⌁</span>
+        <span>⌁</span>
+    </div>
+
+</div>
 
 
-    <!-- =========================
-         HERO / CASE FILE
-    ========================== -->
+<!-- =========================
+     FLOATING PARTICLES
+========================= -->
 
-    <section class="hero">
+<div id="particles"></div>
 
-        <div class="case-stamp">
-            CASE FILE #30
-        </div>
 
-        <p class="eyebrow">
-            An Extremely Serious Investigation
+<!-- =========================
+     SCROLL PROGRESS
+========================= -->
+
+<div class="progress-bar" id="progressBar"></div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="tiny-title">
+            ANOTHER DAY • ANOTHER LITTLE UNIVERSE
         </p>
 
         <h1>
-            The Mystery<br>
-            Of Her
+            Where The<br>
+            Day Comes Home
         </h1>
 
-        <p class="hero-text">
-
-            How can one person possibly be this
-            extraordinarily wonderful?
-
+        <p class="hero-subtitle">
+            From the first light of morning<br>
+            to the quiet of the sunset.
         </p>
 
-        <div class="case-details">
-
-            <span>SUBJECT: HER</span>
-            <span>STATUS: EXTRAORDINARY</span>
-            <span>RESULT: INCONCLUSIVE</span>
-
-        </div>
-
-        <div id="countdown" class="countdown">
+        <div class="countdown" id="countdown">
             Loading...
         </div>
+            
+        <button class="begin-button"
+                onclick="goTo('morning')">
 
-        <button class="main-button"
-                onclick="goToSection('findings')">
-
-            ☀ BEGIN OBSERVATION
+            Begin the day ☀️
 
         </button>
 
-    </section>
+    </div>
+
+    <div class="scroll-hint">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+
+</section>
 
 
 
-    <!-- =========================
-         FINDINGS
-    ========================== -->
+<!-- =========================
+     MORNING
+========================= -->
 
-    <section id="findings" class="findings-section">
+<section class="morning section" id="morning">
 
-        <p class="section-label">
-            OBSERVATION REPORT
-        </p>
+    <div class="time-label">
+        07:00 AM
+    </div>
+
+    <h2>
+        Every day<br>
+        begins somewhere.
+    </h2>
+
+    <p>
+        The world wakes up slowly.
+        The sky turns blue.
+        The sun begins its journey.
+    </p>
+
+    <button onclick="goTo('day')">
+        Watch the day unfold →
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     DAY
+========================= -->
+
+<section class="day section" id="day">
+
+    <div class="floating-sun-icon">
+        ☀
+    </div>
+
+    <div class="time-label">
+        01:00 PM
+    </div>
+
+    <h2>
+        And then the day<br>
+        gets busy.
+    </h2>
+
+    <p>
+        Things happen.
+        People rush around.
+        Life becomes loud.
+    </p>
+
+    <p class="small-note">
+        But somewhere underneath all of it,
+        there is always something worth coming home to.
+    </p>
+
+    <button onclick="goTo('golden')">
+        Keep going →
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     GOLDEN HOUR
+========================= -->
+
+<section class="golden section" id="golden">
+
+    <div class="time-label">
+        05:30 PM
+    </div>
+
+    <div class="golden-sun"></div>
+
+    <h2>
+        Then everything<br>
+        slows down.
+    </h2>
+
+    <p>
+        The light becomes softer.
+        The world becomes quieter.
+        And somehow...
+        everything feels a little more beautiful.
+    </p>
+
+    <div class="golden-line"></div>
+
+    <button onclick="goTo('sunset')">
+        Stay for sunset 🌅
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     SUNSET
+========================= -->
+
+<section class="sunset section" id="sunset">
+
+    <div class="sunset-horizon">
+
+        <div class="horizon-sun"></div>
+
+        <div class="mountain mountain-one"></div>
+        <div class="mountain mountain-two"></div>
+        <div class="mountain mountain-three"></div>
+
+    </div>
+
+    <div class="time-label">
+        06:15 PM
+    </div>
+
+    <h2>
+        And then...
+    </h2>
+
+    <p class="sunset-quote">
+        the day comes home.
+    </p>
+
+    <p>
+        After everything it has been through,
+        the sky doesn't rush anymore.
+    </p>
+
+    <button onclick="goTo('letter')">
+        Stay a little longer →
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     LETTER
+========================= -->
+
+<section class="letter-section" id="letter">
+
+    <div class="letter-card">
+
+        <div class="letter-top">
+
+            <span>
+                A LITTLE NOTE
+            </span>
+
+            <span>
+                🌅
+            </span>
+
+        </div>
 
         <h2>
-            The Findings
+            My World<br>
+            Comes Back To You
         </h2>
 
-        <p class="section-intro">
 
-            After several years of extremely thorough
-            observation, the evidence is becoming suspicious.
+        <div class="letter-body">
 
-        </p>
-
-
-        <div class="findings-grid">
-
-
-            <div class="finding">
-
-                <div class="finding-number">
-                    01
-                </div>
-
-                <div class="finding-icon">
-                    ✦
-                </div>
-
-                <h3>
-                    Kindness
-                </h3>
-
-                <div class="measurement">
-                    UNREASONABLY HIGH
-                </div>
-
-                <p>
-                    Subject has an unusual tendency to care about
-                    people, remember little things and worry about
-                    everyone around her.
-                </p>
-
-            </div>
-
-
-
-            <div class="finding">
-
-                <div class="finding-number">
-                    02
-                </div>
-
-                <div class="finding-icon">
-                    ☀
-                </div>
-
-                <h3>
-                    Warmth
-                </h3>
-
-                <div class="measurement">
-                    SUNLIGHT LEVELS
-                </div>
-
-                <p>
-                    Presence of subject consistently makes ordinary
-                    days feel warmer and considerably better.
-                </p>
-
-            </div>
-
-
-
-            <div class="finding">
-
-                <div class="finding-number">
-                    03
-                </div>
-
-                <div class="finding-icon">
-                    ♡
-                </div>
-
-                <h3>
-                    Smile Induction
-                </h3>
-
-                <div class="measurement">
-                    HIGHLY EFFECTIVE
-                </div>
-
-                <p>
-                    Subject appears capable of making one particular
-                    person smile without even trying.
-                </p>
-
-            </div>
-
-
-
-            <div class="finding">
-
-                <div class="finding-number">
-                    04
-                </div>
-
-                <div class="finding-icon">
-                    ✨
-                </div>
-
-                <h3>
-                    Magic
-                </h3>
-
-                <div class="measurement">
-                    NO EXPLANATION
-                </div>
-
-                <p>
-                    Despite extensive research, no scientific
-                    explanation has been discovered.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <button class="next-button"
-                onclick="goToSection('theory')">
-
-            ☀ Examine The Sunshine Theory
-
-        </button>
-
-    </section>
-
-
-
-    <!-- =========================
-         SUNSHINE THEORY
-    ========================== -->
-
-    <section id="theory" class="theory-section">
-
-        <div class="sun-container">
-
-            <div class="sun">
-
-                <div class="sun-core">
-                    YOU
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <p class="section-label">
-            THEORY #01
-        </p>
-
-        <h2>
-            The Sunshine<br>
-            Theory
-        </h2>
-
-        <p class="theory-text">
-
-            Some people brighten a room.
-
-            <br><br>
-
-            You somehow brighten
-            the people inside it.
-
-        </p>
-
-        <div class="formula">
-
-            HER + HER HEART + HER KINDNESS
-            <span>=</span>
-            A LOT OF SUNSHINE
-
-        </div>
-
-
-        <button class="next-button"
-                onclick="goToSection('letter')">
-
-            💌 Read The Researcher's Note
-
-        </button>
-
-    </section>
-
-
-
-    <!-- =========================
-         LETTER
-    ========================== -->
-
-    <section id="letter" class="letter-section">
-
-        <div class="letter-paper">
-
-            <div class="paper-corner"></div>
-
-            <p class="section-label">
-                PERSONAL OBSERVATION
+            <p>
+                Sometimes I think my world has quietly
+                learned to revolve around you.
             </p>
 
-            <h2>
-                There Is Something<br>
-                About You
-            </h2>
+            <p>
+                Not in some grand, dramatic way.
+                It happened slowly.
+                In little pieces.
+            </p>
 
+            <p>
+                In the things I look forward to.
+                In the people I want to tell things to.
+                In the moments I wish you were beside me.
+                In the places I want to explore with you.
+                In the future I catch myself imagining.
+            </p>
 
-            <div class="letter-body">
+            <p>
+                Somewhere along the way,
+                loving you stopped being something
+                I simply do.
+            </p>
 
-                <p>
-                    I sometimes wonder if you realise just how
-                    extraordinarily good you are.
-                </p>
+            <p class="emphasis">
+                It became a part of who I am.
+            </p>
 
-                <p>
-                    Not because you're perfect. Not because you
-                    never have difficult days or moments when
-                    everything feels like too much.
-                </p>
+            <p>
+                I think I have built so many little pieces
+                of myself around the idea of always loving you.
+            </p>
 
-                <p>
-                    It's because even with all of that, there is
-                    still so much goodness in you.
-                </p>
+            <p>
+                And honestly, I am grateful for that.
+            </p>
 
-                <p>
-                    You care about people. You notice things that
-                    other people overlook. You remember the tiny
-                    details. You worry about the people you love.
-                    You give so much of yourself without even
-                    realising how much it means.
-                </p>
+            <p>
+                Grateful that you exist.
+            </p>
 
-                <p class="highlight">
-                    And somehow, you have brought that same warmth
-                    into my life.
-                </p>
+            <p>
+                Grateful that in this enormous world,
+                somehow our lives crossed.
+            </p>
 
-                <p>
-                    You make ordinary moments feel special.
-                    You make difficult days a little easier.
-                    Sometimes you don't even have to do anything.
-                    Just knowing that you are there changes something.
-                </p>
+            <p>
+                Grateful for every ordinary day that became
+                special simply because you were part of it.
+            </p>
 
-                <p>
-                    I think that's why I call you sunshine in my head.
-                </p>
+            <p>
+                Grateful for every laugh,
+                every conversation,
+                every walk,
+                every stupid little moment,
+                every memory that I know I will carry
+                for a very long time.
+            </p>
 
-                <p>
-                    Not because you're happy every second of every
-                    day, but because even when you're dealing with
-                    your own storms, there is something about you
-                    that makes the world around you feel warmer.
-                </p>
+            <p>
+                I don't think I could ever properly explain
+                what your existence has done to my life.
+            </p>
 
-                <p>
-                    And I hope you know how rare that is.
-                </p>
+            <p>
+                You have given me the best reason to look forward
+                to tomorrow.
+            </p>
 
-                <p>
-                    I love the person you are. I love the way your
-                    mind works, the way your heart works, the way
-                    you care about little things that most people
-                    wouldn't even notice.
-                </p>
+            <p>
+                Best person to dream with.
+            </p>
 
-                <p>
-                    I love all those tiny pieces of you that make
-                    you, simply, you.
-                </p>
+            <p>
+                Best place that feels like home.
+            </p>
 
-                <p>
-                    And if I could give you one thing in return
-                    for all the warmth you've brought into my life,
-                    it would be the ability to see yourself through
-                    my eyes for just one day.
-                </p>
+            <p class="emphasis">
+                You.
+            </p>
 
-                <p>
-                    Maybe then you'd understand why I look at you
-                    and think that somehow I got incredibly lucky.
-                </p>
+            <p>
+                And maybe that is why I love sunsets.
+            </p>
 
-                <p class="highlight">
-                    You are not just someone I love.
-                    You are one of the brightest things that
-                    ever happened to my life.
-                </p>
+            <p>
+                Because after an entire day of everything —
+                the noise, the rush, the stress, the chaos —
+                the world eventually becomes quiet.
+            </p>
 
-                <p>
-                    So whenever you doubt yourself, whenever life
-                    becomes heavy, or whenever you forget just how
-                    amazing you are...
-                </p>
+            <p>
+                The light softens.
+                Everything slows down.
+                And for a little while,
+                nothing needs to be anything more than
+                exactly what it is.
+            </p>
 
-                <p class="final-line">
-                    Please remember this:
-                    somewhere in this world, there is someone
-                    looking at you and thinking,
-                    <br><br>
-                    <strong>
-                        "How did I get so lucky to love her?"
-                    </strong>
-                </p>
+            <p>
+                That's what loving you feels like to me.
+            </p>
 
-                <p class="signature">
-                    You are my favourite ray of sunshine. ☀️
-                </p>
+            <p class="emphasis">
+                Coming home.
+            </p>
 
-            </div>
+            <p>
+                So tonight, I just want you to know one thing.
+            </p>
+
+            <p>
+                I am unbelievably grateful that you are in my life.
+            </p>
+
+            <p>
+                Grateful that I get to know you.
+                Grateful that I get to love you.
+                Grateful that I get to make memories with you.
+            </p>
+
+            <p>
+                And no matter how many sunsets I see,
+                I think a part of me will always be amazed
+                that my favourite person is real.
+            </p>
+
+            <p class="final-message">
+                My world may be enormous...
+
+                <br><br>
+
+                but somehow,
+                it always finds its way back to you.
+            </p>
 
         </div>
 
 
-        <button class="next-button"
-                onclick="goToSection('question')">
+        <div class="signature">
 
-            ⭐ Today's Question
+            With all my love,<br>
+
+            <span>
+                Bui ❤️
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button class="letter-button"
+            onclick="goTo('question')">
+
+        🌅 Today's Question
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     QUESTION
+========================= -->
+
+<section class="question-section" id="question">
+
+    <div class="question-sky">
+
+        <div class="question-stars"></div>
+
+    </div>
+
+    <p class="question-label">
+        BEFORE THE NIGHT BEGINS
+    </p>
+
+    <h2>
+        One last thing...
+    </h2>
+
+    <p class="question">
+
+        When the day finally comes home
+        to the sunset...
+
+        <br><br>
+
+        can I come home to you too? 🌅
+
+    </p>
+
+
+    <div class="buttons">
+
+        <button class="yes-button"
+                onclick="yesAnswer()">
+
+            YES ❤️
 
         </button>
 
-    </section>
+        <button class="no-button"
+                id="noButton">
+
+            NO 🙈
+
+        </button>
+
+    </div>
+
+    <p id="answer"></p>
+
+</section>
 
 
 
-    <!-- =========================
-         QUESTION
-    ========================== -->
+<!-- =========================
+     NIGHT
+========================= -->
 
-    <section id="question" class="question-section">
+<section class="night">
 
-        <p class="section-label">
-            FINAL EXPERIMENT
-        </p>
+    <div id="nightStars"></div>
 
-        <h2>
-            One Last Question
-        </h2>
+    <div class="night-moon"></div>
 
-        <p class="question">
+    <p>
+        And when the day is finally over...
+    </p>
 
-            If you're the sunshine...
+    <h2>
+        I'll still be here.
+    </h2>
 
-            <br><br>
+    <span>
+        Goodnight, sunshine. 🌙❤️
+    </span>
 
-            can I keep being the silly little person
-            who follows the light? ☀️
-
-        </p>
-
-
-        <div class="question-buttons">
-
-            <button class="yes-button"
-                    onclick="yesAnswer()">
-
-                YES ☀️
-
-            </button>
-
-            <button class="no-button"
-                    id="noButton">
-
-                NO 🙈
-
-            </button>
-
-        </div>
-
-
-        <p id="answer" class="answer"></p>
-
-    </section>
+</section>
 
 
 
-    <!-- =========================
-         FINAL CONCLUSION
-    ========================== -->
+<footer>
 
-    <section class="conclusion">
+    Thirty Days, One Heart ❤️
 
-        <div class="conclusion-line"></div>
-
-        <p class="section-label">
-            FINAL SCIENTIFIC CONCLUSION
-        </p>
-
-        <h2>
-            Case Closed.
-        </h2>
-
-        <p>
-            After considerable observation,
-            extensive research,
-            and absolutely no useful scientific evidence...
-        </p>
-
-        <strong>
-            She is, in fact, ridiculously wonderful.
-        </strong>
-
-        <span>
-            ☀️
-        </span>
-
-    </section>
+</footer>
 
 
-
-    <footer>
-
-        Thirty Days, One Heart ❤️
-
-    </footer>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>

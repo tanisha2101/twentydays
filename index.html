@@ -1,535 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thirty Days, One Heart ❤️</title>
 
-<title>Thirty Days, One Heart ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-<!-- =========================
-     SKY BACKGROUND
-========================= -->
+  <!-- Rain -->
+  <div class="rain" id="rain"></div>
 
-<div class="sky">
+  <!-- Floating warmth -->
+  <div class="steam steam-one"></div>
+  <div class="steam steam-two"></div>
+  <div class="steam steam-three"></div>
 
-    <div class="sun"></div>
+  <main class="page">
 
-    <div class="sun-glow"></div>
-
-    <div class="moon"></div>
-
-    <div class="stars" id="stars"></div>
-
-    <div class="cloud cloud-one"></div>
-    <div class="cloud cloud-two"></div>
-    <div class="cloud cloud-three"></div>
-
-    <div class="birds">
-        <span>⌁</span>
-        <span>⌁</span>
-        <span>⌁</span>
+    <!-- TOP LABEL -->
+    <div class="day-label">
+      DAY <span id="dayNumber">27</span> · OF US
     </div>
 
-</div>
+    <!-- HERO -->
+    <section class="hero">
 
+      <div class="ambient-glow"></div>
 
-<!-- =========================
-     FLOATING PARTICLES
-========================= -->
+      <p class="eyebrow">for my favourite person</p>
 
-<div id="particles"></div>
+      <h1>
+        Some things<br>
+        just feel like <span>home.</span>
+      </h1>
 
+      <p class="hero-text">
+        Like a warm bowl of ramen when the rain won't stop.
+        Like lemonade on a summer afternoon.
+        Like hot chocolate when the world feels cold.
+      </p>
 
-<!-- =========================
-     SCROLL PROGRESS
-========================= -->
-
-<div class="progress-bar" id="progressBar"></div>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <p class="tiny-title">
-            ANOTHER DAY • ANOTHER LITTLE UNIVERSE
-        </p>
-
-        <h1>
-            Where The<br>
-            Day Comes Home
-        </h1>
-
-        <p class="hero-subtitle">
-            From the first light of morning<br>
-            to the quiet of the sunset.
-        </p>
-
-        <div class="countdown" id="countdown">
-            Loading...
+      <div class="cup">
+        <div class="cup-steam"></div>
+        <div class="cup-steam steam-b"></div>
+        <div class="cup-steam steam-c"></div>
+        <div class="cup-body">
+          <span>♡</span>
         </div>
-            
-        <button class="begin-button"
-                onclick="goTo('morning')">
+        <div class="cup-handle"></div>
+        <div class="cup-shadow"></div>
+      </div>
 
-            Begin the day ☀️
+      <div class="scroll-note">
+        <span>there's something I want you to know</span>
+        <div class="arrow">↓</div>
+      </div>
 
-        </button>
-
-    </div>
-
-    <div class="scroll-hint">
-        <span>SCROLL</span>
-        <div class="scroll-line"></div>
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- FEELING -->
+    <section class="feeling-section">
 
-<!-- =========================
-     MORNING
-========================= -->
+      <div class="section-tag">01 — THE FEELING</div>
 
-<section class="morning section" id="morning">
+      <h2>
+        You know that feeling<br>
+        when something makes<br>
+        <em>everything better?</em>
+      </h2>
 
-    <div class="time-label">
-        07:00 AM
-    </div>
+      <p class="section-text">
+        When you're tired and you finally get that first sip.
+        When you've been cold and wrap yourself in a blanket.
+        When it's raining outside and you're holding something
+        warm between your hands.
+      </p>
 
-    <h2>
-        Every day<br>
-        begins somewhere.
-    </h2>
+      <div class="little-note">
+        <span class="dot"></span>
+        That's what you feel like to me.
+      </div>
 
-    <p>
-        The world wakes up slowly.
-        The sky turns blue.
-        The sun begins its journey.
-    </p>
-
-    <button onclick="goTo('day')">
-        Watch the day unfold →
-    </button>
-
-</section>
+    </section>
 
 
+    <!-- THREE LITTLE THINGS -->
+    <section class="comfort-section">
 
-<!-- =========================
-     DAY
-========================= -->
+      <div class="section-tag">02 — MY KIND OF COMFORT</div>
 
-<section class="day section" id="day">
+      <div class="comfort-grid">
 
-    <div class="floating-sun-icon">
-        ☀
-    </div>
+        <div class="comfort-card ramen-card">
+          <div class="illustration ramen">
+            <div class="bowl"></div>
+            <div class="broth"></div>
+            <div class="noodles"></div>
+            <div class="egg"></div>
+            <div class="chopstick"></div>
+            <div class="mini-steam"></div>
+          </div>
 
-    <div class="time-label">
-        01:00 PM
-    </div>
-
-    <h2>
-        And then the day<br>
-        gets busy.
-    </h2>
-
-    <p>
-        Things happen.
-        People rush around.
-        Life becomes loud.
-    </p>
-
-    <p class="small-note">
-        But somewhere underneath all of it,
-        there is always something worth coming home to.
-    </p>
-
-    <button onclick="goTo('golden')">
-        Keep going →
-    </button>
-
-</section>
+          <h3>On rainy days</h3>
+          <p>
+            You're the warm bowl of ramen
+            I'd want waiting for me.
+          </p>
+        </div>
 
 
+        <div class="comfort-card lemon-card">
+          <div class="illustration lemonade">
+            <div class="glass"></div>
+            <div class="lemon"></div>
+            <div class="straw"></div>
+            <div class="ice"></div>
+          </div>
 
-<!-- =========================
-     GOLDEN HOUR
-========================= -->
-
-<section class="golden section" id="golden">
-
-    <div class="time-label">
-        05:30 PM
-    </div>
-
-    <div class="golden-sun"></div>
-
-    <h2>
-        Then everything<br>
-        slows down.
-    </h2>
-
-    <p>
-        The light becomes softer.
-        The world becomes quieter.
-        And somehow...
-        everything feels a little more beautiful.
-    </p>
-
-    <div class="golden-line"></div>
-
-    <button onclick="goTo('sunset')">
-        Stay for sunset 🌅
-    </button>
-
-</section>
+          <h3>On sunny days</h3>
+          <p>
+            You're that first cold sip of lemonade
+            after a ridiculously hot day.
+          </p>
+        </div>
 
 
+        <div class="comfort-card cocoa-card">
+          <div class="illustration cocoa">
+            <div class="mug"></div>
+            <div class="mug-handle"></div>
+            <div class="cocoa-steam"></div>
+            <div class="marshmallow m1"></div>
+            <div class="marshmallow m2"></div>
+          </div>
 
-<!-- =========================
-     SUNSET
-========================= -->
+          <h3>On difficult days</h3>
+          <p>
+            You're the hot chocolate that makes
+            everything feel a little less heavy.
+          </p>
+        </div>
 
-<section class="sunset section" id="sunset">
+      </div>
 
-    <div class="sunset-horizon">
-
-        <div class="horizon-sun"></div>
-
-        <div class="mountain mountain-one"></div>
-        <div class="mountain mountain-two"></div>
-        <div class="mountain mountain-three"></div>
-
-    </div>
-
-    <div class="time-label">
-        06:15 PM
-    </div>
-
-    <h2>
-        And then...
-    </h2>
-
-    <p class="sunset-quote">
-        the day comes home.
-    </p>
-
-    <p>
-        After everything it has been through,
-        the sky doesn't rush anymore.
-    </p>
-
-    <button onclick="goTo('letter')">
-        Stay a little longer →
-    </button>
-
-</section>
+    </section>
 
 
+    <!-- MAIN LETTER -->
+    <section class="letter-section">
 
-<!-- =========================
-     LETTER
-========================= -->
+      <div class="envelope-glow"></div>
 
-<section class="letter-section" id="letter">
+      <div class="section-tag">03 — SOMETHING I MEAN</div>
 
-    <div class="letter-card">
+      <div class="letter">
 
         <div class="letter-top">
+          <span>♡</span>
+          <span>for Nushi</span>
+          <span>♡</span>
+        </div>
 
-            <span>
-                A LITTLE NOTE
-            </span>
+        <div class="letter-content">
 
-            <span>
-                🌅
-            </span>
+          <p class="opening">My love,</p>
+
+          <p>
+            I don't think I have ever told you this quite like this.
+          </p>
+
+          <p>
+            There are so many little things in life that make us feel
+            good without asking for anything in return.
+          </p>
+
+          <p>
+            A warm meal when you're hungry.
+            A cold drink when you're thirsty.
+            A blanket when you're cold.
+            A familiar song on a difficult day.
+          </p>
+
+          <p class="highlight">
+            And somehow, you have become all of those things to me.
+          </p>
+
+          <p>
+            You are the warmth I look for in a long day.
+            My bundle of happiness I didn't know I needed.
+            The person who can make an ordinary day feel special
+            simply by being the best part of it.
+          </p>
+
+          <p>
+            I don't need a perfect day to be happy anymore.
+            I just need you in it.
+          </p>
+
+          <p class="final-line">
+            You are everything that feels good about life. ❤️
+          </p>
+
+          <p class="signature">
+            Always,<br>
+            <span>Bui</span>
+          </p>
 
         </div>
 
-        <h2>
-            My World<br>
-            Comes Back To You
-        </h2>
+      </div>
+
+    </section>
 
 
-        <div class="letter-body">
+    <!-- QUESTION -->
+    <section class="question-section">
 
-            <p>
-                Sometimes I think my world has quietly
-                learned to revolve around you.
-            </p>
+      <div class="tiny-heart">♡</div>
 
-            <p>
-                Not in some grand, dramatic way.
-                It happened slowly.
-                In little pieces.
-            </p>
+      <p class="question-intro">
+        And since you're the person who makes<br>
+        ordinary things feel extraordinary...
+      </p>
 
-            <p>
-                In the things I look forward to.
-                In the people I want to tell things to.
-                In the moments I wish you were beside me.
-                In the places I want to explore with you.
-                In the future I catch myself imagining.
-            </p>
+      <h2>
+        Will you keep being<br>
+        my favourite kind of <span>comfort?</span>
+      </h2>
 
-            <p>
-                Somewhere along the way,
-                loving you stopped being something
-                I simply do.
-            </p>
+      <div class="buttons">
 
-            <p class="emphasis">
-                It became a part of who I am.
-            </p>
-
-            <p>
-                I think I have built so many little pieces
-                of myself around the idea of always loving you.
-            </p>
-
-            <p>
-                And honestly, I am grateful for that.
-            </p>
-
-            <p>
-                Grateful that you exist.
-            </p>
-
-            <p>
-                Grateful that in this enormous world,
-                somehow our lives crossed.
-            </p>
-
-            <p>
-                Grateful for every ordinary day that became
-                special simply because you were part of it.
-            </p>
-
-            <p>
-                Grateful for every laugh,
-                every conversation,
-                every walk,
-                every stupid little moment,
-                every memory that I know I will carry
-                for a very long time.
-            </p>
-
-            <p>
-                I don't think I could ever properly explain
-                what your existence has done to my life.
-            </p>
-
-            <p>
-                You have given me the best reason to look forward
-                to tomorrow.
-            </p>
-
-            <p>
-                Best person to dream with.
-            </p>
-
-            <p>
-                Best place that feels like home.
-            </p>
-
-            <p class="emphasis">
-                You.
-            </p>
-
-            <p>
-                And maybe that is why I love sunsets.
-            </p>
-
-            <p>
-                Because after an entire day of everything —
-                the noise, the rush, the stress, the chaos —
-                the world eventually becomes quiet.
-            </p>
-
-            <p>
-                The light softens.
-                Everything slows down.
-                And for a little while,
-                nothing needs to be anything more than
-                exactly what it is.
-            </p>
-
-            <p>
-                That's what loving you feels like to me.
-            </p>
-
-            <p class="emphasis">
-                Coming home.
-            </p>
-
-            <p>
-                So tonight, I just want you to know one thing.
-            </p>
-
-            <p>
-                I am unbelievably grateful that you are in my life.
-            </p>
-
-            <p>
-                Grateful that I get to know you.
-                Grateful that I get to love you.
-                Grateful that I get to make memories with you.
-            </p>
-
-            <p>
-                And no matter how many sunsets I see,
-                I think a part of me will always be amazed
-                that my favourite person is real.
-            </p>
-
-            <p class="final-message">
-                My world may be enormous...
-
-                <br><br>
-
-                but somehow,
-                it always finds its way back to you.
-            </p>
-
-        </div>
-
-
-        <div class="signature">
-
-            With all my love,<br>
-
-            <span>
-                Bui ❤️
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <button class="letter-button"
-            onclick="goTo('question')">
-
-        🌅 Today's Question
-
-    </button>
-
-</section>
-
-
-
-<!-- =========================
-     QUESTION
-========================= -->
-
-<section class="question-section" id="question">
-
-    <div class="question-sky">
-
-        <div class="question-stars"></div>
-
-    </div>
-
-    <p class="question-label">
-        BEFORE THE NIGHT BEGINS
-    </p>
-
-    <h2>
-        One last thing...
-    </h2>
-
-    <p class="question">
-
-        When the day finally comes home
-        to the sunset...
-
-        <br><br>
-
-        can I come home to you too? 🌅
-
-    </p>
-
-
-    <div class="buttons">
-
-        <button class="yes-button"
-                onclick="yesAnswer()">
-
-            YES ❤️
-
+        <button class="yes-btn" id="yesBtn">
+          Always ❤️
         </button>
 
-        <button class="no-button"
-                id="noButton">
-
-            NO 🙈
-
+        <button class="no-btn" id="noBtn">
+          Hmm... maybe
         </button>
 
-    </div>
+      </div>
 
-    <p id="answer"></p>
+      <div class="response" id="response">
+        <span>♡</span>
+        I knew you'd say that.
+        <span>♡</span>
+      </div>
 
-</section>
-
-
-
-<!-- =========================
-     NIGHT
-========================= -->
-
-<section class="night">
-
-    <div id="nightStars"></div>
-
-    <div class="night-moon"></div>
-
-    <p>
-        And when the day is finally over...
-    </p>
-
-    <h2>
-        I'll still be here.
-    </h2>
-
-    <span>
-        Goodnight, sunshine. 🌙❤️
-    </span>
-
-</section>
+    </section>
 
 
+    <!-- END -->
+    <footer>
 
-<footer>
+      <div class="footer-steam">
+        ☕
+      </div>
 
-    Thirty Days, One Heart ❤️
+      <p>
+        however the weather outside feels,
+        <br>
+        you will always be my warmth.
+      </p>
 
-</footer>
+      <span>— made with all my love, for Nushi ♡</span>
 
+    </footer>
 
-<script src="script.js"></script>
+  </main>
+
+  <script src="script.js"></script>
 
 </body>
 </html>

@@ -1,604 +1,338 @@
-/* =========================
-   COUNTDOWN
-========================= */
-
-const targetDate =
-    new Date("September 6, 2026 00:00:00").getTime();
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-    const difference =
-        targetDate - now;
-
-    if (difference <= 0) {
-
-        document.getElementById("countdown").innerHTML =
-            "🎂 IT'S YOUR BIRTHDAY! 🎂";
-
-        return;
-    }
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-    const hours =
-        Math.floor(
-            (difference /
-            (1000 * 60 * 60)) % 24
-        );
-
-    const minutes =
-        Math.floor(
-            (difference /
-            (1000 * 60)) % 60
-        );
-
-    const seconds =
-        Math.floor(
-            (difference / 1000) % 60
-        );
-
-    document.getElementById("countdown").innerHTML =
-        `${days} days · ${hours} hours · ${minutes} minutes · ${seconds} seconds`;
-}
-
-updateCountdown();
-
-setInterval(updateCountdown, 1000);
+/* =========================================
+   TODAY'S PAGE
+   Warmth & Comfort Theme ❤️
+========================================= */
 
 
+/* =========================================
+   DAY NUMBER
+========================================= */
 
-/* =========================
-   NAVIGATION
-========================= */
+const dayNumber = document.getElementById("dayNumber");
 
-function goTo(id) {
+const startDate = new Date("August 6, 2026");
+const today = new Date();
 
-    const section =
-        document.getElementById(id);
+const difference =
+  Math.floor(
+    (today - startDate) / (1000 * 60 * 60 * 24)
+  ) + 1;
 
-    if (section) {
-
-        section.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    }
-
+if (dayNumber) {
+  dayNumber.textContent = difference;
 }
 
 
+/* =========================================
+   RAIN
+========================================= */
 
-/* =========================
-   CREATE STARS
-========================= */
+const rainContainer = document.getElementById("rain");
 
-function createStars(containerId, amount) {
+function createRain() {
 
-    const container =
-        document.getElementById(containerId);
+  if (!rainContainer) return;
 
-    if (!container) return;
+  const amount = window.innerWidth < 600 ? 45 : 85;
 
-    for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < amount; i++) {
 
-        const star =
-            document.createElement("div");
+    const drop = document.createElement("div");
 
-        star.className = "star";
+    drop.classList.add("raindrop");
 
-        star.style.left =
-            Math.random() * 100 + "%";
+    drop.style.left = Math.random() * 100 + "%";
 
-        star.style.top =
-            Math.random() * 100 + "%";
+    drop.style.height =
+      Math.random() * 45 + 35 + "px";
 
-        star.style.animationDelay =
-            Math.random() * 3 + "s";
+    drop.style.animationDuration =
+      Math.random() * 0.8 + 0.7 + "s";
 
-        star.style.width =
-            Math.random() > .85
-            ? "3px"
-            : "2px";
+    drop.style.animationDelay =
+      Math.random() * 2 + "s";
 
-        star.style.height =
-            star.style.width;
+    drop.style.opacity =
+      Math.random() * 0.6 + 0.2;
 
-        container.appendChild(star);
-
-    }
-
+    rainContainer.appendChild(drop);
+  }
 }
 
-createStars("stars", 90);
-createStars("nightStars", 110);
+createRain();
 
 
+/* =========================================
+   SCROLL REVEALS
+========================================= */
 
-/* =========================
-   SCROLL EXPERIENCE
-========================= */
+const revealElements = document.querySelectorAll(
+  ".section-tag, h2, .section-text, .little-note, .comfort-card, .letter, .question-intro, .question-section h2"
+);
 
-const sky =
-    document.querySelector(".sky");
-
-const sun =
-    document.querySelector(".sun");
-
-const moon =
-    document.querySelector(".moon");
-
-const clouds =
-    document.querySelectorAll(".cloud");
-
-const progressBar =
-    document.getElementById("progressBar");
+revealElements.forEach(element => {
+  element.classList.add("reveal");
+});
 
 
-function updateScene() {
+const observer = new IntersectionObserver(
+  entries => {
 
-    const scrollTop =
-        window.scrollY;
+    entries.forEach(entry => {
 
-    const maxScroll =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    const progress =
-        Math.min(
-            1,
-            Math.max(
-                0,
-                scrollTop / maxScroll
-            )
-        );
-
-
-    /* Progress bar */
-
-    progressBar.style.width =
-        `${progress * 100}%`;
-
-
-    /* =========================
-       SKY TRANSITION
-    ========================= */
-
-    if (progress < .22) {
-
-        sky.style.background =
-            `linear-gradient(
-                180deg,
-                #8fc7e5,
-                #b6d9e6,
-                #f5d3a0
-            )`;
-
-    }
-
-    else if (progress < .45) {
-
-        sky.style.background =
-            `linear-gradient(
-                180deg,
-                #76afd1,
-                #e6bd9a,
-                #f4a66f
-            )`;
-
-    }
-
-    else if (progress < .68) {
-
-        sky.style.background =
-            `linear-gradient(
-                180deg,
-                #d98b83,
-                #ed9b79,
-                #9d718c
-            )`;
-
-    }
-
-    else if (progress < .84) {
-
-        sky.style.background =
-            `linear-gradient(
-                180deg,
-                #805d83,
-                #595476,
-                #3e4667
-            )`;
-
-    }
-
-    else {
-
-        sky.style.background =
-            `linear-gradient(
-                180deg,
-                #43496d,
-                #303956,
-                #252c49
-            )`;
-
-    }
-
-
-    /* =========================
-       SUN MOVEMENT
-    ========================= */
-
-    const sunProgress =
-        Math.min(
-            1,
-            progress / .72
-        );
-
-    const sunX =
-        12 + sunProgress * 68;
-
-    const sunY =
-        12 + sunProgress * 55;
-
-    sun.style.left =
-        `${sunX}vw`;
-
-    sun.style.top =
-        `${sunY}vh`;
-
-
-    /* Sunset sun gets smaller */
-
-    const sunSize =
-        110 - sunProgress * 30;
-
-    sun.style.width =
-        `${sunSize}px`;
-
-    sun.style.height =
-        `${sunSize}px`;
-
-
-    /* =========================
-       MOON APPEARS
-    ========================= */
-
-    if (progress > .67) {
-
-        moon.style.opacity =
-            Math.min(
-                1,
-                (progress - .67) * 4
-            );
-
-        moon.style.top =
-            `${72 - (progress - .67) * 20}vh`;
-
-    }
-    else {
-
-        moon.style.opacity = 0;
-
-    }
-
-
-    /* =========================
-       CLOUD FADE
-    ========================= */
-
-    clouds.forEach(cloud => {
-
-        cloud.style.opacity =
-            Math.max(
-                0,
-                1 - progress * 1.5
-            );
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
 
     });
 
-
-    /* =========================
-       STARS
-    ========================= */
-
-    document.querySelectorAll(".star")
-        .forEach(star => {
-
-            if (
-                star.parentElement.id === "stars"
-            ) {
-
-                star.style.opacity =
-                    progress > .55
-                    ? (progress - .55) * 2
-                    : 0;
-
-            }
-
-        });
-
-}
-
-window.addEventListener(
-    "scroll",
-    updateScene,
-    { passive: true }
-);
-
-updateScene();
-
-
-
-/* =========================
-   FLOATING GOLD PARTICLES
-========================= */
-
-const particleContainer =
-    document.getElementById("particles");
-
-function createParticle() {
-
-    const particle =
-        document.createElement("div");
-
-    particle.className =
-        "particle";
-
-    const symbols =
-        ["✦", "✧", "·", "✨", "☀"];
-
-    particle.innerHTML =
-        symbols[
-            Math.floor(
-                Math.random() *
-                symbols.length
-            )
-        ];
-
-    particle.style.left =
-        Math.random() * 100 + "vw";
-
-    particle.style.top =
-        (65 + Math.random() * 35) + "vh";
-
-    particle.style.animationDuration =
-        (3 + Math.random() * 3) + "s";
-
-    particleContainer.appendChild(
-        particle
-    );
-
-    setTimeout(
-        () => particle.remove(),
-        6000
-    );
-
-}
-
-setInterval(
-    createParticle,
-    650
+  },
+  {
+    threshold: 0.15
+  }
 );
 
 
+revealElements.forEach(element => {
+  observer.observe(element);
+});
 
-/* =========================
-   YES ANSWER
-========================= */
 
-function yesAnswer() {
+/* =========================================
+   HEART CREATOR
+========================================= */
 
-    document.getElementById("answer").innerHTML =
-        "I'll always find my way back to you. 🌅❤️";
+function createHeart(x, y) {
 
-    createBurst();
+  const heart = document.createElement("div");
 
+  heart.className = "heart";
+
+  heart.innerHTML =
+    Math.random() > 0.5 ? "♡" : "♥";
+
+  heart.style.left = x + "px";
+  heart.style.top = y + "px";
+
+  heart.style.fontSize =
+    Math.random() * 12 + 14 + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 2000);
 }
 
 
+/* =========================================
+   RANDOM HEARTS WHILE SCROLLING
+========================================= */
 
-/* =========================
-   HEART + SUNSET BURST
-========================= */
+let lastHeartTime = 0;
 
-function createBurst() {
+window.addEventListener("scroll", () => {
 
-    const symbols = [
-        "❤️",
-        "💗",
-        "💖",
-        "🌅",
-        "✨",
-        "🌟",
-        "☀️",
-        "💛"
-    ];
+  const now = Date.now();
 
-    for (
-        let i = 0;
-        i < 65;
-        i++
-    ) {
+  if (now - lastHeartTime < 350) return;
 
-        const burst =
-            document.createElement("div");
+  lastHeartTime = now;
 
-        burst.className =
-            "burst";
+  if (Math.random() < 0.25) {
 
-        burst.innerHTML =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
+    createHeart(
+      Math.random() * window.innerWidth,
+      window.innerHeight - 30
+    );
 
-        const angle =
-            Math.random() *
-            Math.PI *
-            2;
+  }
 
-        const distance =
-            100 +
-            Math.random() *
-            350;
+});
 
-        burst.style.setProperty(
-            "--x",
-            `${Math.cos(angle) * distance}px`
+
+/* =========================================
+   YES BUTTON
+========================================= */
+
+const yesBtn = document.getElementById("yesBtn");
+const response = document.getElementById("response");
+
+if (yesBtn) {
+
+  yesBtn.addEventListener("click", () => {
+
+    response.classList.add("show");
+
+    /*
+      Little celebration.
+    */
+
+    for (let i = 0; i < 18; i++) {
+
+      setTimeout(() => {
+
+        createHeart(
+          window.innerWidth / 2 +
+          (Math.random() - 0.5) * 250,
+
+          window.innerHeight / 2 +
+          (Math.random() - 0.5) * 100
         );
 
-        burst.style.setProperty(
-            "--y",
-            `${Math.sin(angle) * distance}px`
-        );
-
-        document.body.appendChild(
-            burst
-        );
-
-        setTimeout(
-            () => burst.remove(),
-            1800
-        );
+      }, i * 70);
 
     }
 
+    yesBtn.textContent = "Always & forever ❤️";
+
+    yesBtn.style.transform = "scale(1.05)";
+
+    setTimeout(() => {
+      yesBtn.style.transform = "scale(1)";
+    }, 300);
+
+  });
+
 }
 
 
+/* =========================================
+   RUNAWAY NO BUTTON
+========================================= */
 
-/* =========================
-   DANCING NO BUTTON
-========================= */
+const noBtn = document.getElementById("noBtn");
 
-const noButton =
-    document.getElementById("noButton");
+if (noBtn) {
 
-const questionSection =
-    document.getElementById("question");
+  function moveNoButton() {
 
-
-noButton.addEventListener(
-    "mouseenter",
-    moveNoButton
-);
-
-
-noButton.addEventListener(
-    "touchstart",
-    function(event) {
-
-        event.preventDefault();
-
-        moveNoButton();
-
-    }
-);
-
-
-function moveNoButton() {
+    const padding = 20;
 
     const maxX =
-        window.innerWidth -
-        noButton.offsetWidth -
-        20;
+      window.innerWidth -
+      noBtn.offsetWidth -
+      padding;
 
     const maxY =
-        window.innerHeight -
-        noButton.offsetHeight -
-        20;
+      window.innerHeight -
+      noBtn.offsetHeight -
+      padding;
 
     const x =
-        Math.max(
-            20,
-            Math.random() * maxX
-        );
+      Math.max(
+        padding,
+        Math.random() * maxX
+      );
 
     const y =
-        Math.max(
-            20,
-            Math.random() * maxY
-        );
+      Math.max(
+        padding,
+        Math.random() * maxY
+      );
 
-    noButton.style.position =
-        "fixed";
+    noBtn.style.position = "fixed";
 
-    noButton.style.left =
-        x + "px";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 
-    noButton.style.top =
-        y + "px";
+    noBtn.style.zIndex = "999";
 
-    noButton.style.zIndex =
-        "9999";
+  }
 
-}
+  noBtn.addEventListener(
+    "mouseenter",
+    moveNoButton
+  );
 
+  noBtn.addEventListener(
+    "touchstart",
+    event => {
 
+      event.preventDefault();
 
-/* =========================
-   RESET NO BUTTON
-========================= */
-
-function resetNoButton() {
-
-    noButton.style.position =
-        "static";
-
-    noButton.style.left =
-        "";
-
-    noButton.style.top =
-        "";
-
-    noButton.style.zIndex =
-        "";
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    function() {
-
-        const rect =
-            questionSection.getBoundingClientRect();
-
-        const visible =
-            rect.top < window.innerHeight &&
-            rect.bottom > 0;
-
-        if (!visible) {
-
-            resetNoButton();
-
-        }
+      moveNoButton();
 
     },
-    { passive: true }
-);
+    { passive: false }
+  );
 
+  noBtn.addEventListener(
+    "click",
+    event => {
 
+      event.preventDefault();
 
-/* =========================
-   INITIAL SCENE
-========================= */
-
-window.addEventListener(
-    "load",
-    () => {
-
-        updateScene();
+      moveNoButton();
 
     }
+  );
+
+}
+
+
+/* =========================================
+   CLICK ANYWHERE → TINY WARM HEART
+========================================= */
+
+document.addEventListener("click", event => {
+
+  if (
+    event.target.tagName === "BUTTON" ||
+    event.target.closest("button")
+  ) {
+    return;
+  }
+
+  createHeart(
+    event.clientX,
+    event.clientY
+  );
+
+});
+
+
+/* =========================================
+   GENTLE PARALLAX FOR HERO
+========================================= */
+
+const cup = document.querySelector(".cup");
+const hero = document.querySelector(".hero");
+
+if (cup && hero) {
+
+  hero.addEventListener("mousemove", event => {
+
+    const x =
+      (event.clientX / window.innerWidth - 0.5) * 10;
+
+    const y =
+      (event.clientY / window.innerHeight - 0.5) * 10;
+
+    cup.style.transform =
+      `translate(${x}px, ${y}px)`;
+
+  });
+
+  hero.addEventListener("mouseleave", () => {
+
+    cup.style.transform =
+      "translate(0, 0)";
+
+  });
+
+}
+
+
+/* =========================================
+   CONSOLE MESSAGE
+========================================= */
+
+console.log(
+  "%cFor Nushi ❤️",
+  "font-size: 20px; color: #a95043; font-family: serif;"
+);
+
+console.log(
+  "Some people are warmth. You found yours."
 );

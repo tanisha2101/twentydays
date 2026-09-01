@@ -1,6 +1,5 @@
 /* =========================================
-   TODAY'S PAGE
-   Warmth & Comfort Theme ❤️
+   CITY LIGHTS — DAY 27 ❤️
 ========================================= */
 
 
@@ -15,7 +14,8 @@ const today = new Date();
 
 const difference =
   Math.floor(
-    (today - startDate) / (1000 * 60 * 60 * 24)
+    (today - startDate) /
+    (1000 * 60 * 60 * 24)
   ) + 1;
 
 if (dayNumber) {
@@ -24,50 +24,26 @@ if (dayNumber) {
 
 
 /* =========================================
-   RAIN
-========================================= */
-
-const rainContainer = document.getElementById("rain");
-
-function createRain() {
-
-  if (!rainContainer) return;
-
-  const amount = window.innerWidth < 600 ? 45 : 85;
-
-  for (let i = 0; i < amount; i++) {
-
-    const drop = document.createElement("div");
-
-    drop.classList.add("raindrop");
-
-    drop.style.left = Math.random() * 100 + "%";
-
-    drop.style.height =
-      Math.random() * 45 + 35 + "px";
-
-    drop.style.animationDuration =
-      Math.random() * 0.8 + 0.7 + "s";
-
-    drop.style.animationDelay =
-      Math.random() * 2 + "s";
-
-    drop.style.opacity =
-      Math.random() * 0.6 + 0.2;
-
-    rainContainer.appendChild(drop);
-  }
-}
-
-createRain();
-
-
-/* =========================================
-   SCROLL REVEALS
+   SCROLL REVEAL
 ========================================= */
 
 const revealElements = document.querySelectorAll(
-  ".section-tag, h2, .section-text, .little-note, .comfort-card, .letter, .question-intro, .question-section h2"
+  `
+  .section-tag,
+  .chaos-section h2,
+  .chaos-section p,
+  .noise-box,
+  .still-circle,
+  .stillness-section h2,
+  .stillness-section p,
+  .handwritten,
+  .lights-section > h2,
+  .lights-intro,
+  .light-card,
+  .letter,
+  .question-intro,
+  .question-section h2
+  `
 );
 
 revealElements.forEach(element => {
@@ -81,14 +57,21 @@ const observer = new IntersectionObserver(
     entries.forEach(entry => {
 
       if (entry.isIntersecting) {
+
         entry.target.classList.add("visible");
+
+        /*
+          Once revealed, stop observing.
+        */
+
+        observer.unobserve(entry.target);
       }
 
     });
 
   },
   {
-    threshold: 0.15
+    threshold: 0.12
   }
 );
 
@@ -109,176 +92,31 @@ function createHeart(x, y) {
   heart.className = "heart";
 
   heart.innerHTML =
-    Math.random() > 0.5 ? "♡" : "♥";
+    Math.random() > 0.5
+      ? "♡"
+      : "♥";
 
-  heart.style.left = x + "px";
-  heart.style.top = y + "px";
+  heart.style.left = `${x}px`;
+  heart.style.top = `${y}px`;
 
   heart.style.fontSize =
-    Math.random() * 12 + 14 + "px";
+    `${Math.random() * 13 + 14}px`;
 
   document.body.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 2000);
+  }, 2100);
 }
 
 
 /* =========================================
-   RANDOM HEARTS WHILE SCROLLING
-========================================= */
-
-let lastHeartTime = 0;
-
-window.addEventListener("scroll", () => {
-
-  const now = Date.now();
-
-  if (now - lastHeartTime < 350) return;
-
-  lastHeartTime = now;
-
-  if (Math.random() < 0.25) {
-
-    createHeart(
-      Math.random() * window.innerWidth,
-      window.innerHeight - 30
-    );
-
-  }
-
-});
-
-
-/* =========================================
-   YES BUTTON
-========================================= */
-
-const yesBtn = document.getElementById("yesBtn");
-const response = document.getElementById("response");
-
-if (yesBtn) {
-
-  yesBtn.addEventListener("click", () => {
-
-    response.classList.add("show");
-
-    /*
-      Little celebration.
-    */
-
-    for (let i = 0; i < 18; i++) {
-
-      setTimeout(() => {
-
-        createHeart(
-          window.innerWidth / 2 +
-          (Math.random() - 0.5) * 250,
-
-          window.innerHeight / 2 +
-          (Math.random() - 0.5) * 100
-        );
-
-      }, i * 70);
-
-    }
-
-    yesBtn.textContent = "Always & forever ❤️";
-
-    yesBtn.style.transform = "scale(1.05)";
-
-    setTimeout(() => {
-      yesBtn.style.transform = "scale(1)";
-    }, 300);
-
-  });
-
-}
-
-
-/* =========================================
-   RUNAWAY NO BUTTON
-========================================= */
-
-const noBtn = document.getElementById("noBtn");
-
-if (noBtn) {
-
-  function moveNoButton() {
-
-    const padding = 20;
-
-    const maxX =
-      window.innerWidth -
-      noBtn.offsetWidth -
-      padding;
-
-    const maxY =
-      window.innerHeight -
-      noBtn.offsetHeight -
-      padding;
-
-    const x =
-      Math.max(
-        padding,
-        Math.random() * maxX
-      );
-
-    const y =
-      Math.max(
-        padding,
-        Math.random() * maxY
-      );
-
-    noBtn.style.position = "fixed";
-
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-
-    noBtn.style.zIndex = "999";
-
-  }
-
-  noBtn.addEventListener(
-    "mouseenter",
-    moveNoButton
-  );
-
-  noBtn.addEventListener(
-    "touchstart",
-    event => {
-
-      event.preventDefault();
-
-      moveNoButton();
-
-    },
-    { passive: false }
-  );
-
-  noBtn.addEventListener(
-    "click",
-    event => {
-
-      event.preventDefault();
-
-      moveNoButton();
-
-    }
-  );
-
-}
-
-
-/* =========================================
-   CLICK ANYWHERE → TINY WARM HEART
+   CLICK → LITTLE CITY LIGHT
 ========================================= */
 
 document.addEventListener("click", event => {
 
   if (
-    event.target.tagName === "BUTTON" ||
     event.target.closest("button")
   ) {
     return;
@@ -293,35 +131,271 @@ document.addEventListener("click", event => {
 
 
 /* =========================================
-   GENTLE PARALLAX FOR HERO
+   FLOATING HEARTS WHILE SCROLLING
 ========================================= */
 
-const cup = document.querySelector(".cup");
-const hero = document.querySelector(".hero");
+let lastHeart = 0;
 
-if (cup && hero) {
+window.addEventListener(
+  "scroll",
+  () => {
 
-  hero.addEventListener("mousemove", event => {
+    const now = Date.now();
 
-    const x =
-      (event.clientX / window.innerWidth - 0.5) * 10;
+    if (
+      now - lastHeart < 500
+    ) {
+      return;
+    }
 
-    const y =
-      (event.clientY / window.innerHeight - 0.5) * 10;
+    lastHeart = now;
 
-    cup.style.transform =
-      `translate(${x}px, ${y}px)`;
+    if (Math.random() < 0.22) {
 
-  });
+      createHeart(
+        Math.random() *
+        window.innerWidth,
 
-  hero.addEventListener("mouseleave", () => {
+        window.innerHeight - 25
+      );
 
-    cup.style.transform =
-      "translate(0, 0)";
+    }
 
-  });
+  },
+  { passive: true }
+);
+
+
+/* =========================================
+   YES BUTTON
+========================================= */
+
+const yesBtn =
+  document.getElementById("yesBtn");
+
+const response =
+  document.getElementById("response");
+
+
+if (yesBtn) {
+
+  yesBtn.addEventListener(
+    "click",
+    () => {
+
+      response.classList.add("show");
+
+      yesBtn.textContent =
+        "Always & forever ❤️";
+
+      /*
+        Celebration burst
+      */
+
+      for (
+        let i = 0;
+        i < 25;
+        i++
+      ) {
+
+        setTimeout(
+          () => {
+
+            createHeart(
+
+              window.innerWidth / 2 +
+              (Math.random() - 0.5) * 350,
+
+              window.innerHeight / 2 +
+              (Math.random() - 0.5) * 180
+
+            );
+
+          },
+
+          i * 65
+        );
+
+      }
+
+      yesBtn.animate(
+        [
+          {
+            transform: "scale(1)"
+          },
+
+          {
+            transform: "scale(1.12)"
+          },
+
+          {
+            transform: "scale(1)"
+          }
+        ],
+        {
+          duration: 500
+        }
+      );
+
+    }
+  );
 
 }
+
+
+/* =========================================
+   RUNAWAY NO BUTTON
+========================================= */
+
+const noBtn =
+  document.getElementById("noBtn");
+
+
+if (noBtn) {
+
+  function escapeButton() {
+
+    const padding = 15;
+
+    const maxX =
+      window.innerWidth -
+      noBtn.offsetWidth -
+      padding;
+
+    const maxY =
+      window.innerHeight -
+      noBtn.offsetHeight -
+      padding;
+
+    const x =
+      Math.random() *
+      Math.max(maxX, padding);
+
+    const y =
+      Math.random() *
+      Math.max(maxY, padding);
+
+    noBtn.style.position = "fixed";
+
+    noBtn.style.left =
+      `${Math.max(padding, x)}px`;
+
+    noBtn.style.top =
+      `${Math.max(padding, y)}px`;
+
+    noBtn.style.zIndex = "500";
+
+  }
+
+
+  noBtn.addEventListener(
+    "mouseenter",
+    escapeButton
+  );
+
+
+  noBtn.addEventListener(
+    "touchstart",
+    event => {
+
+      event.preventDefault();
+
+      escapeButton();
+
+    },
+    {
+      passive: false
+    }
+  );
+
+
+  noBtn.addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+
+      escapeButton();
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   GENTLE HERO PARALLAX
+========================================= */
+
+const hero =
+  document.querySelector(".hero");
+
+const windowElement =
+  document.querySelector(".window");
+
+
+if (
+  hero &&
+  windowElement &&
+  window.innerWidth > 800
+) {
+
+  hero.addEventListener(
+    "mousemove",
+    event => {
+
+      const x =
+        (
+          event.clientX /
+          window.innerWidth -
+          0.5
+        ) * 12;
+
+      const y =
+        (
+          event.clientY /
+          window.innerHeight -
+          0.5
+        ) * 8;
+
+      windowElement.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+    }
+  );
+
+
+  hero.addEventListener(
+    "mouseleave",
+    () => {
+
+      windowElement.style.transform =
+        "translate(0, 0)";
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   RANDOM WINDOW LIGHTS
+========================================= */
+
+const windowLights =
+  document.querySelectorAll(
+    ".window-city span"
+  );
+
+
+windowLights.forEach(
+  building => {
+
+    building.style.opacity =
+      Math.random() * 0.5 + 0.5;
+
+  }
+);
 
 
 /* =========================================
@@ -329,10 +403,14 @@ if (cup && hero) {
 ========================================= */
 
 console.log(
-  "%cFor Nushi ❤️",
-  "font-size: 20px; color: #a95043; font-family: serif;"
+  "%cFor Nushi ♡",
+  `
+    font-size: 22px;
+    color: #f2c47d;
+    font-family: serif;
+  `
 );
 
 console.log(
-  "Some people are warmth. You found yours."
+  "Among all the city lights, she is the one you look for."
 );

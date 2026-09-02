@@ -1,398 +1,826 @@
 /* =========================================
-   CITY LIGHTS — DAY 27 ❤️
+   NUSHI'S JOYBOX 🎮❤️
 ========================================= */
 
 
 /* =========================================
-   DAY NUMBER
+   START SCREEN
 ========================================= */
 
-const dayNumber = document.getElementById("dayNumber");
+const startScreen =
+  document.getElementById("startScreen");
 
-const startDate = new Date("August 6, 2026");
-const today = new Date();
+const startBtn =
+  document.getElementById("startBtn");
 
-const difference =
+const game =
+  document.getElementById("game");
+
+
+startBtn.addEventListener("click", () => {
+
+  startScreen.classList.add("hidden");
+
+  document.body.style.overflow = "auto";
+
+  createCelebration(25);
+
+});
+
+
+/* =========================================
+   COUNTDOWN
+   SEPTEMBER 6, 2026
+========================================= */
+
+const birthday =
+  new Date(
+    "September 6, 2026 00:00:00"
+  ).getTime();
+
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+
+  const distance = birthday - now;
+
+
+  if (distance <= 0) {
+
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+
+    return;
+
+  }
+
+
+  const days =
+    Math.floor(
+      distance /
+      (1000 * 60 * 60 * 24)
+    );
+
+  const hours =
+    Math.floor(
+      (distance %
+        (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
+    );
+
+  const minutes =
+    Math.floor(
+      (distance %
+        (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
+
+  const seconds =
+    Math.floor(
+      (distance %
+        (1000 * 60)) /
+      1000
+    );
+
+
+  document.getElementById("days").textContent =
+    String(days).padStart(2, "0");
+
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2, "0");
+
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2, "0");
+
+}
+
+
+updateCountdown();
+
+setInterval(
+  updateCountdown,
+  1000
+);
+
+
+/* =========================================
+   DAY / LEVEL
+========================================= */
+
+const startDate =
+  new Date("August 6, 2026");
+
+const today =
+  new Date();
+
+const dayDifference =
   Math.floor(
-    (today - startDate) /
+    (
+      today - startDate
+    ) /
     (1000 * 60 * 60 * 24)
   ) + 1;
 
-if (dayNumber) {
-  dayNumber.textContent = difference;
+
+const level =
+  document.getElementById("level");
+
+if (level) {
+
+  level.textContent =
+    Math.max(
+      1,
+      dayDifference
+    );
+
 }
 
 
 /* =========================================
-   SCROLL REVEAL
+   HEART COUNTER
 ========================================= */
 
-const revealElements = document.querySelectorAll(
-  `
-  .section-tag,
-  .chaos-section h2,
-  .chaos-section p,
-  .noise-box,
-  .still-circle,
-  .stillness-section h2,
-  .stillness-section p,
-  .handwritten,
-  .lights-section > h2,
-  .lights-intro,
-  .light-card,
-  .letter,
-  .question-intro,
-  .question-section h2
-  `
-);
+let hearts = 0;
 
-revealElements.forEach(element => {
-  element.classList.add("reveal");
-});
+const heartCount =
+  document.getElementById(
+    "heartCount"
+  );
 
 
-const observer = new IntersectionObserver(
-  entries => {
+function updateHeartCounter() {
 
-    entries.forEach(entry => {
+  heartCount.textContent =
+    String(hearts).padStart(2, "0");
 
-      if (entry.isIntersecting) {
+}
 
-        entry.target.classList.add("visible");
 
-        /*
-          Once revealed, stop observing.
-        */
+/* =========================================
+   PARTICLES
+========================================= */
 
-        observer.unobserve(entry.target);
-      }
+const particles =
+  document.getElementById(
+    "particles"
+  );
 
-    });
 
-  },
-  {
-    threshold: 0.12
+function createParticle(
+  x,
+  y,
+  symbol = "♥"
+) {
+
+  const particle =
+    document.createElement("div");
+
+  particle.className =
+    "particle";
+
+  particle.textContent =
+    symbol;
+
+  particle.style.left =
+    `${x}px`;
+
+  particle.style.top =
+    `${y}px`;
+
+  particle.style.color =
+    [
+      "#ff6f91",
+      "#ffd166",
+      "#5ec8ff",
+      "#a78bfa",
+      "#63e6d7"
+    ][
+      Math.floor(
+        Math.random() * 5
+      )
+    ];
+
+  particles.appendChild(
+    particle
+  );
+
+
+  setTimeout(
+    () => particle.remove(),
+    4000
+  );
+
+}
+
+
+function createCelebration(
+  amount = 15
+) {
+
+  for (
+    let i = 0;
+    i < amount;
+    i++
+  ) {
+
+    setTimeout(
+      () => {
+
+        createParticle(
+
+          Math.random() *
+          window.innerWidth,
+
+          window.innerHeight -
+
+          Math.random() * 100,
+
+          Math.random() > 0.5
+            ? "♥"
+            : "★"
+
+        );
+
+      },
+
+      i * 70
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   COLLECT JOY BUTTON
+========================================= */
+
+const collectBtn =
+  document.getElementById(
+    "collectBtn"
+  );
+
+const xpFill =
+  document.getElementById(
+    "xpFill"
+  );
+
+const xpText =
+  document.getElementById(
+    "xpText"
+  );
+
+let xp = 0;
+
+
+collectBtn.addEventListener(
+  "click",
+  () => {
+
+    xp =
+      Math.min(
+        xp + 10,
+        100
+      );
+
+    xpFill.style.width =
+      `${xp}%`;
+
+    xpText.textContent =
+      `${xp} / 100`;
+
+    hearts++;
+
+    updateHeartCounter();
+
+    createCelebration(8);
+
+
+    if (xp === 100) {
+
+      collectBtn.textContent =
+        "LEVEL COMPLETE! ❤️";
+
+      collectBtn.style.background =
+        "#79d98b";
+
+    }
+
   }
 );
 
 
-revealElements.forEach(element => {
-  observer.observe(element);
-});
+/* =========================================
+   COLLECTIBLES
+========================================= */
+
+const collectibleCards =
+  document.querySelectorAll(
+    ".collect-card"
+  );
+
+
+collectibleCards.forEach(
+  card => {
+
+    card.addEventListener(
+      "click",
+      () => {
+
+        if (
+          card.classList.contains(
+            "collected"
+          )
+        ) {
+          return;
+        }
+
+
+        card.classList.add(
+          "collected"
+        );
+
+
+        const value =
+          Number(
+            card.dataset.value
+          );
+
+
+        xp =
+          Math.min(
+            xp + value,
+            100
+          );
+
+
+        xpFill.style.width =
+          `${xp}%`;
+
+        xpText.textContent =
+          `${xp} / 100`;
+
+
+        hearts++;
+
+        updateHeartCounter();
+
+
+        card.querySelector(
+          "p"
+        ).textContent =
+          "COLLECTED! ❤️";
+
+
+        createCelebration(10);
+
+
+        if (xp === 100) {
+
+          document.querySelector(
+            ".collect-hint"
+          ).textContent =
+            "LEVEL COMPLETE! YOU FOUND ALL THE JOY. ✦";
+
+        }
+
+      }
+    );
+
+  }
+);
 
 
 /* =========================================
-   HEART CREATOR
+   MINI GAME
 ========================================= */
 
-function createHeart(x, y) {
+const miniStart =
+  document.getElementById(
+    "miniStart"
+  );
 
-  const heart = document.createElement("div");
+const fallingHeart =
+  document.getElementById(
+    "fallingHeart"
+  );
 
-  heart.className = "heart";
+const gameArea =
+  document.getElementById(
+    "gameArea"
+  );
 
-  heart.innerHTML =
-    Math.random() > 0.5
-      ? "♡"
-      : "♥";
+const gameScore =
+  document.getElementById(
+    "gameScore"
+  );
 
-  heart.style.left = `${x}px`;
-  heart.style.top = `${y}px`;
+let score = 0;
 
-  heart.style.fontSize =
-    `${Math.random() * 13 + 14}px`;
-
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 2100);
-}
+let gameRunning = false;
 
 
-/* =========================================
-   CLICK → LITTLE CITY LIGHT
-========================================= */
+miniStart.addEventListener(
+  "click",
+  () => {
 
-document.addEventListener("click", event => {
+    if (gameRunning) {
+      return;
+    }
 
-  if (
-    event.target.closest("button")
-  ) {
+    gameRunning = true;
+
+    score = 0;
+
+    gameScore.textContent =
+      score;
+
+    miniStart.textContent =
+      "CATCH THEM! ❤️";
+
+    spawnHeart();
+
+  }
+);
+
+
+function spawnHeart() {
+
+  if (!gameRunning) {
     return;
   }
 
-  createHeart(
-    event.clientX,
-    event.clientY
+
+  const maxX =
+    gameArea.clientWidth -
+    65;
+
+  const randomX =
+    Math.random() *
+    maxX;
+
+
+  fallingHeart.style.left =
+    `${randomX}px`;
+
+  fallingHeart.classList.remove(
+    "active"
   );
 
-});
+
+  /*
+    Force animation restart
+  */
+
+  void fallingHeart.offsetWidth;
+
+
+  fallingHeart.classList.add(
+    "active"
+  );
+
+
+  setTimeout(
+    () => {
+
+      if (gameRunning) {
+        spawnHeart();
+      }
+
+    },
+
+    2100
+  );
+
+}
+
+
+fallingHeart.addEventListener(
+  "click",
+  event => {
+
+    event.stopPropagation();
+
+
+    score++;
+
+
+    gameScore.textContent =
+      score;
+
+
+    hearts++;
+
+    updateHeartCounter();
+
+
+    createCelebration(5);
+
+
+    fallingHeart.classList.remove(
+      "active"
+    );
+
+
+    if (score >= 10) {
+
+      gameRunning = false;
+
+      miniStart.textContent =
+        "BONUS ROUND COMPLETE! ✦";
+
+      fallingHeart.style.display =
+        "none";
+
+      createCelebration(30);
+
+    }
+
+  }
+);
 
 
 /* =========================================
-   FLOATING HEARTS WHILE SCROLLING
+   FINAL YES BUTTON
 ========================================= */
 
-let lastHeart = 0;
+const yesBtn =
+  document.getElementById(
+    "yesBtn"
+  );
+
+const finalResponse =
+  document.getElementById(
+    "finalResponse"
+  );
+
+
+yesBtn.addEventListener(
+  "click",
+  () => {
+
+    finalResponse.classList.add(
+      "show"
+    );
+
+
+    yesBtn.textContent =
+      "GAME SAVED ❤️";
+
+
+    createCelebration(40);
+
+
+    yesBtn.animate(
+      [
+        {
+          transform:
+            "scale(1)"
+        },
+
+        {
+          transform:
+            "scale(1.15)"
+        },
+
+        {
+          transform:
+            "scale(1)"
+        }
+
+      ],
+
+      {
+        duration: 500
+      }
+
+    );
+
+  }
+);
+
+
+/* =========================================
+   RUNAWAY QUIT BUTTON
+========================================= */
+
+const noBtn =
+  document.getElementById(
+    "noBtn"
+  );
+
+
+function moveQuitButton() {
+
+  const padding = 15;
+
+
+  const maxX =
+    window.innerWidth -
+    noBtn.offsetWidth -
+    padding;
+
+
+  const maxY =
+    window.innerHeight -
+    noBtn.offsetHeight -
+    padding;
+
+
+  const x =
+    Math.random() *
+    Math.max(
+      maxX,
+      padding
+    );
+
+
+  const y =
+    Math.random() *
+    Math.max(
+      maxY,
+      padding
+    );
+
+
+  noBtn.style.position =
+    "fixed";
+
+  noBtn.style.left =
+    `${Math.max(
+      padding,
+      x
+    )}px`;
+
+  noBtn.style.top =
+    `${Math.max(
+      padding,
+      y
+    )}px`;
+
+  noBtn.style.zIndex =
+    "500";
+
+}
+
+
+noBtn.addEventListener(
+  "mouseenter",
+  moveQuitButton
+);
+
+
+noBtn.addEventListener(
+  "touchstart",
+  event => {
+
+    event.preventDefault();
+
+    moveQuitButton();
+
+  },
+  {
+    passive: false
+  }
+);
+
+
+noBtn.addEventListener(
+  "click",
+  event => {
+
+    event.preventDefault();
+
+    moveQuitButton();
+
+  }
+);
+
+
+/* =========================================
+   RANDOM HEARTS WHILE SCROLLING
+========================================= */
+
+let lastScrollParticle = 0;
+
 
 window.addEventListener(
   "scroll",
   () => {
 
-    const now = Date.now();
+    const now =
+      Date.now();
+
 
     if (
-      now - lastHeart < 500
+      now -
+      lastScrollParticle <
+      450
     ) {
       return;
     }
 
-    lastHeart = now;
 
-    if (Math.random() < 0.22) {
+    lastScrollParticle =
+      now;
 
-      createHeart(
+
+    if (
+      Math.random() <
+      0.3
+    ) {
+
+      createParticle(
+
         Math.random() *
         window.innerWidth,
 
-        window.innerHeight - 25
+        window.innerHeight,
+
+        Math.random() > 0.5
+          ? "♥"
+          : "✦"
+
       );
 
     }
 
   },
-  { passive: true }
+  {
+    passive: true
+  }
 );
 
 
 /* =========================================
-   YES BUTTON
+   CLICK ANYWHERE = PIXEL HEART
 ========================================= */
 
-const yesBtn =
-  document.getElementById("yesBtn");
+document.addEventListener(
+  "click",
+  event => {
 
-const response =
-  document.getElementById("response");
+    if (
+      event.target.closest(
+        "button"
+      )
+    ) {
+      return;
+    }
 
 
-if (yesBtn) {
+    createParticle(
+      event.clientX,
+      event.clientY,
+      "♥"
+    );
 
-  yesBtn.addEventListener(
-    "click",
-    () => {
+  }
+);
 
-      response.classList.add("show");
 
-      yesBtn.textContent =
-        "Always & forever ❤️";
+/* =========================================
+   CONSOLE CONTROLS
+========================================= */
 
-      /*
-        Celebration burst
-      */
+document.querySelectorAll(
+  ".game-button"
+).forEach(
+  button => {
 
-      for (
-        let i = 0;
-        i < 25;
-        i++
-      ) {
+    button.addEventListener(
+      "click",
+      () => {
+
+        const original =
+          button.textContent;
+
+
+        button.textContent =
+          "♥";
+
+
+        createCelebration(5);
+
 
         setTimeout(
           () => {
 
-            createHeart(
-
-              window.innerWidth / 2 +
-              (Math.random() - 0.5) * 350,
-
-              window.innerHeight / 2 +
-              (Math.random() - 0.5) * 180
-
-            );
+            button.textContent =
+              original;
 
           },
-
-          i * 65
+          600
         );
 
       }
-
-      yesBtn.animate(
-        [
-          {
-            transform: "scale(1)"
-          },
-
-          {
-            transform: "scale(1.12)"
-          },
-
-          {
-            transform: "scale(1)"
-          }
-        ],
-        {
-          duration: 500
-        }
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================
-   RUNAWAY NO BUTTON
-========================================= */
-
-const noBtn =
-  document.getElementById("noBtn");
-
-
-if (noBtn) {
-
-  function escapeButton() {
-
-    const padding = 15;
-
-    const maxX =
-      window.innerWidth -
-      noBtn.offsetWidth -
-      padding;
-
-    const maxY =
-      window.innerHeight -
-      noBtn.offsetHeight -
-      padding;
-
-    const x =
-      Math.random() *
-      Math.max(maxX, padding);
-
-    const y =
-      Math.random() *
-      Math.max(maxY, padding);
-
-    noBtn.style.position = "fixed";
-
-    noBtn.style.left =
-      `${Math.max(padding, x)}px`;
-
-    noBtn.style.top =
-      `${Math.max(padding, y)}px`;
-
-    noBtn.style.zIndex = "500";
-
-  }
-
-
-  noBtn.addEventListener(
-    "mouseenter",
-    escapeButton
-  );
-
-
-  noBtn.addEventListener(
-    "touchstart",
-    event => {
-
-      event.preventDefault();
-
-      escapeButton();
-
-    },
-    {
-      passive: false
-    }
-  );
-
-
-  noBtn.addEventListener(
-    "click",
-    event => {
-
-      event.preventDefault();
-
-      escapeButton();
-
-    }
-  );
-
-}
-
-
-/* =========================================
-   GENTLE HERO PARALLAX
-========================================= */
-
-const hero =
-  document.querySelector(".hero");
-
-const windowElement =
-  document.querySelector(".window");
-
-
-if (
-  hero &&
-  windowElement &&
-  window.innerWidth > 800
-) {
-
-  hero.addEventListener(
-    "mousemove",
-    event => {
-
-      const x =
-        (
-          event.clientX /
-          window.innerWidth -
-          0.5
-        ) * 12;
-
-      const y =
-        (
-          event.clientY /
-          window.innerHeight -
-          0.5
-        ) * 8;
-
-      windowElement.style.transform =
-        `translate(${x}px, ${y}px)`;
-
-    }
-  );
-
-
-  hero.addEventListener(
-    "mouseleave",
-    () => {
-
-      windowElement.style.transform =
-        "translate(0, 0)";
-
-    }
-  );
-
-}
-
-
-/* =========================================
-   RANDOM WINDOW LIGHTS
-========================================= */
-
-const windowLights =
-  document.querySelectorAll(
-    ".window-city span"
-  );
-
-
-windowLights.forEach(
-  building => {
-
-    building.style.opacity =
-      Math.random() * 0.5 + 0.5;
+    );
 
   }
 );
@@ -403,14 +831,14 @@ windowLights.forEach(
 ========================================= */
 
 console.log(
-  "%cFor Nushi ♡",
+  "%cPLAYER 2: NUSHI ❤️",
   `
     font-size: 22px;
-    color: #f2c47d;
-    font-family: serif;
+    font-weight: bold;
+    color: #ff6f91;
   `
 );
 
 console.log(
-  "Among all the city lights, she is the one you look for."
+  "The best part of the game is getting to talk to her at the end of the day."
 );

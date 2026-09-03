@@ -9,215 +9,131 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       FLOATING GAME PARTICLES
-  ========================== -->
+  <!-- FLOATING LEAVES -->
+  <div id="leaves"></div>
 
-  <div class="particles" id="particles"></div>
+  <!-- INTRO -->
+  <section class="intro" id="intro">
+    <div class="intro-coffee">☕</div>
 
-  <!-- =========================
-       START SCREEN
-  ========================== -->
+    <p class="intro-small">
+      WELCOME TO A LITTLE TOWN
+    </p>
 
-  <div class="start-screen" id="startScreen">
+    <h1>Stars Hollow</h1>
 
-    <div class="start-console">
+    <p>
+      Where the coffee is hot,<br>
+      the conversations never end,<br>
+      and there's always somewhere warm to go home to.
+    </p>
 
-      <div class="start-brand">
-        LITTLE JOY
-      </div>
-
-      <div class="start-screen-display">
-
-        <div class="pixel-heart">♥</div>
-
-        <p>PLAYER 2</p>
-
-        <h1>NUSHI</h1>
-
-        <span>PRESS START</span>
-
-      </div>
-
-      <button id="startBtn">
-        START GAME
-      </button>
-
-      <small>
-        A game about finding joy in ordinary days
-      </small>
-
-    </div>
-
-  </div>
+    <button id="enterBtn">
+      WALK INTO TOWN
+    </button>
+  </section>
 
 
-  <!-- =========================
-       MAIN GAME
-  ========================== -->
+  <!-- MAIN WEBSITE -->
+  <main id="mainContent">
 
-  <main id="game">
-
-    <!-- TOP HUD -->
-
-    <header class="hud">
-
-      <div class="hud-item">
-        <span>PLAYER</span>
-        <strong>BUI</strong>
-      </div>
-
-      <div class="hud-item">
-        <span>LEVEL</span>
-        <strong id="level">27</strong>
-      </div>
-
-      <div class="hud-item">
-        <span>HEARTS</span>
-        <strong id="heartCount">00</strong>
-      </div>
-
+    <!-- HEADER -->
+    <header class="top-bar">
+      <div class="town-name">STARS HOLLOW</div>
+      <div class="date">SEPTEMBER 3</div>
     </header>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
-
+    <!-- HERO -->
     <section class="hero">
 
-      <div class="hero-copy">
+      <div class="moon"></div>
 
-        <div class="pixel-label">
-          ★ TODAY'S QUEST ★
-        </div>
+      <div class="stars">
+        <span>✦</span>
+        <span>·</span>
+        <span>✦</span>
+        <span>·</span>
+        <span>✧</span>
+        <span>·</span>
+      </div>
 
-        <h1>
-          FIND THE<br>
-          <span>JOY</span>
-        </h1>
+      <div class="coffee-shop">
+        <div class="shop-window"></div>
+        <div class="shop-door"></div>
+        <div class="shop-sign">☕</div>
+      </div>
 
-        <p>
-          Somewhere between the chaos,
-          the deadlines, the bad days,
-          and everything life throws at us...
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          COFFEE • CONVERSATIONS • AUTUMN
         </p>
 
-        <p class="hero-highlight">
-          I somehow got lucky enough<br>
-          to find you.
+        <h2>
+          Coffee,<br>
+          conversations<br>
+          <span>& you.</span>
+        </h2>
+
+        <p class="hero-text">
+          If life were a little town, I think I'd want mine
+          to look something like this.
         </p>
 
       </div>
 
-
-      <!-- HANDHELD CONSOLE -->
-
-      <div class="console-wrapper">
-
-        <div class="console">
-
-          <div class="console-top">
-            <span>JOYBOX</span>
-            <span>♡</span>
-          </div>
-
-          <div class="screen">
-
-            <div class="screen-sky"></div>
-
-            <div class="pixel-cloud cloud-one"></div>
-            <div class="pixel-cloud cloud-two"></div>
-
-            <div class="pixel-character">
-              <div class="character-head"></div>
-              <div class="character-body"></div>
-              <div class="character-feet"></div>
-            </div>
-
-            <div class="screen-ground"></div>
-
-            <div class="screen-message">
-              HI NUSHI ♡
-            </div>
-
-          </div>
-
-          <div class="console-controls">
-
-            <div class="dpad">
-              <span class="up">▲</span>
-              <span class="left">◀</span>
-              <span class="center"></span>
-              <span class="right">▶</span>
-              <span class="down">▼</span>
-            </div>
-
-            <div class="console-buttons">
-
-              <button class="game-button b">B</button>
-              <button class="game-button a">A</button>
-
-            </div>
-
-          </div>
-
-          <div class="console-bottom">
-            PLAYER 2 CONNECTED ♡
-          </div>
-
-        </div>
-
-      </div>
+    </section>
 
 
-      <!-- COUNTDOWN -->
+    <!-- COUNTDOWN -->
+    <section class="countdown-section">
 
       <div class="countdown-card">
 
-        <div class="countdown-title">
-          NEXT LEVEL UNLOCKS IN
+        <p class="countdown-label">
+          THE NEXT EPISODE BEGINS IN
+        </p>
+
+        <div class="timer">
+
+          <div class="time-box">
+            <span id="days">00</span>
+            <small>DAYS</small>
+          </div>
+
+          <div class="colon">:</div>
+
+          <div class="time-box">
+            <span id="hours">00</span>
+            <small>HOURS</small>
+          </div>
+
+          <div class="colon">:</div>
+
+          <div class="time-box">
+            <span id="minutes">00</span>
+            <small>MINUTES</small>
+          </div>
+
+          <div class="colon">:</div>
+
+          <div class="time-box">
+            <span id="seconds">00</span>
+            <small>SECONDS</small>
+          </div>
+
         </div>
 
-        <div class="countdown">
-
-          <div>
-            <strong id="days">00</strong>
-            <span>DAYS</span>
-          </div>
-
-          <b>:</b>
-
-          <div>
-            <strong id="hours">00</strong>
-            <span>HOURS</span>
-          </div>
-
-          <b>:</b>
-
-          <div>
-            <strong id="minutes">00</strong>
-            <span>MINUTES</span>
-          </div>
-
-          <b>:</b>
-
-          <div>
-            <strong id="seconds">00</strong>
-            <span>SECONDS</span>
-          </div>
-
-        </div>
-
-        <p>
-          Until your birthday adventure begins 🎮
+        <p class="until">
+          Until September 6th ♡
         </p>
 
       </div>
@@ -225,443 +141,335 @@
     </section>
 
 
-    <!-- =========================
-         QUEST INTRO
-    ========================== -->
+    <!-- TOWN -->
+    <section class="town-section">
 
-    <section class="quest-section">
-
-      <div class="pixel-label">
-        LEVEL 01 — THE QUEST
-      </div>
+      <p class="eyebrow">A LITTLE IMAGINARY TOWN</p>
 
       <h2>
-        Life is basically<br>
-        one giant game.
+        Imagine we lived<br>
+        in a little town.
+      </h2>
+
+      <p class="section-intro">
+        There would be one little coffee shop,
+        one bookstore we'd disappear into for hours,
+        and one bench that somehow always belonged to us.
+      </p>
+
+
+      <div class="town-map">
+
+        <div class="building book-building">
+          <div class="building-roof"></div>
+          <div class="building-body">
+            <span>BOOKS</span>
+            <small>stories live here</small>
+          </div>
+        </div>
+
+        <div class="building coffee-building">
+          <div class="building-roof"></div>
+          <div class="building-body">
+            <span>COFFEE</span>
+            <small>stay a little longer</small>
+          </div>
+        </div>
+
+        <div class="building home-building">
+          <div class="building-roof"></div>
+          <div class="building-body">
+            <span>HOME</span>
+            <small>where you are</small>
+          </div>
+        </div>
+
+        <div class="town-tree tree-one">🌳</div>
+        <div class="town-tree tree-two">🌳</div>
+
+        <div class="town-road"></div>
+
+        <div class="tiny-heart">♥</div>
+
+      </div>
+
+      <p class="town-caption">
+        I'd still choose the bench next to you.
+      </p>
+
+    </section>
+
+
+    <!-- COFFEE SHOP -->
+    <section class="coffee-section">
+
+      <div class="section-heading">
+        <p class="eyebrow">OUR USUAL TABLE</p>
+
+        <h2>
+          One coffee.<br>
+          One story.<br>
+          One person.
+        </h2>
+
+        <p>
+          Tap the little things.
+        </p>
+      </div>
+
+
+      <div class="coffee-cards">
+
+        <button class="coffee-card" data-message="Maybe coffee tastes better when you're sitting across from me.">
+          <span class="card-icon">☕</span>
+          <strong>ONE COFFEE</strong>
+          <small>because every story needs one</small>
+        </button>
+
+        <button class="coffee-card" data-message="I could listen to you tell me stories for hours and still ask you what happened next.">
+          <span class="card-icon">📖</span>
+          <strong>ONE STORY</strong>
+          <small>and then another</small>
+        </button>
+
+        <button class="coffee-card" data-message="This seat has officially been reserved for Nushi. Permanently.">
+          <span class="card-icon">♡</span>
+          <strong>ONE PERSON</strong>
+          <small>my favourite one</small>
+        </button>
+
+      </div>
+
+      <div id="coffeeMessage" class="coffee-message"></div>
+
+    </section>
+
+
+    <!-- BOOKS -->
+    <section class="books-section">
+
+      <div class="bookshelf">
+
+        <div class="book book1">US</div>
+        <div class="book book2">YOU</div>
+        <div class="book book3">BUI</div>
+        <div class="book book4">NUSHI</div>
+        <div class="book book5">HOME</div>
+        <div class="book book6">LOVE</div>
+
+      </div>
+
+      <p class="eyebrow">A BOOK I'D NEVER FINISH</p>
+
+      <h2>
+        I'd read our story<br>
+        a thousand times.
       </h2>
 
       <p>
-        Some levels are easy.
-        Some make absolutely no sense.
-        Some feel impossible.
-        And sometimes you lose all your lives
-        before lunchtime.
-      </p>
-
-      <div class="xp-bar">
-
-        <div class="xp-info">
-          <span>HAPPINESS XP</span>
-          <span id="xpText">0 / 100</span>
-        </div>
-
-        <div class="xp-track">
-          <div class="xp-fill" id="xpFill"></div>
-        </div>
-
-      </div>
-
-      <button class="collect-btn" id="collectBtn">
-        COLLECT JOY ✦
-      </button>
-
-    </section>
-
-
-    <!-- =========================
-         COLLECTIBLES
-    ========================== -->
-
-    <section class="collect-section">
-
-      <div class="pixel-label">
-        LEVEL 02 — COLLECTIBLES
-      </div>
-
-      <h2>
-        Things that make<br>
-        my days better.
-      </h2>
-
-      <div class="collect-grid">
-
-        <button class="collect-card" data-value="20">
-
-          <div class="collect-icon">
-            ☀
-          </div>
-
-          <h3>
-            Your laugh
-          </h3>
-
-          <p>
-            +20 happiness
-          </p>
-
-        </button>
-
-
-        <button class="collect-card" data-value="20">
-
-          <div class="collect-icon">
-            ♡
-          </div>
-
-          <h3>
-            Your messages
-          </h3>
-
-          <p>
-            +20 happiness
-          </p>
-
-        </button>
-
-
-        <button class="collect-card" data-value="20">
-
-          <div class="collect-icon">
-            ★
-          </div>
-
-          <h3>
-            Our nonsense
-          </h3>
-
-          <p>
-            +20 happiness
-          </p>
-
-        </button>
-
-
-        <button class="collect-card" data-value="20">
-
-          <div class="collect-icon">
-            ☁
-          </div>
-
-          <h3>
-            Talking to you
-          </h3>
-
-          <p>
-            +20 happiness
-          </p>
-
-        </button>
-
-
-        <button class="collect-card" data-value="20">
-
-          <div class="collect-icon">
-            🎮
-          </div>
-
-          <h3>
-            Just us
-          </h3>
-
-          <p>
-            +20 happiness
-          </p>
-
-        </button>
-
-      </div>
-
-      <p class="collect-hint">
-        Tap every collectible to complete the level.
+        Not because everything is perfect.
+        But because every chapter has you in it.
       </p>
 
     </section>
 
 
-    <!-- =========================
-         MINI GAME
-    ========================== -->
+    <!-- AUTUMN -->
+    <section class="autumn-section">
 
-    <section class="mini-game-section">
-
-      <div class="pixel-label">
-        BONUS ROUND
+      <div class="autumn-circle">
+        🍂
       </div>
 
+      <p class="eyebrow">MAYBE IT'S THE SEASON</p>
+
       <h2>
-        Catch the hearts! ❤️
+        Warm drinks.<br>
+        Autumn walks.<br>
+        Long conversations.
       </h2>
+
+      <div class="autumn-pills">
+        <span>cozy evenings</span>
+        <span>little cafés</span>
+        <span>cold weather</span>
+        <span>your hand in mine</span>
+      </div>
+
+      <p class="big-line">
+        Or maybe it's just you.
+      </p>
+
+    </section>
+
+
+    <!-- NIGHT -->
+    <section class="night-section">
+
+      <div class="night-stars">✦ · ✧ · ✦ · ✧ · ✦</div>
+
+      <p class="eyebrow">
+        WHEN THE TOWN GETS QUIET
+      </p>
+
+      <h2>
+        And then<br>
+        the town gets quiet.
+      </h2>
+
+      <div class="night-line"></div>
+
+      <h3>
+        And I get to talk to you.
+      </h3>
 
       <p>
-        Every little bit of happiness counts.
+        Somehow, hearing your voice at the end of the day
+        makes everything feel softer.
       </p>
 
-      <div class="game-area" id="gameArea">
-
-        <div class="game-score">
-          SCORE: <span id="gameScore">0</span>
-        </div>
-
-        <button class="falling-heart" id="fallingHeart">
-          ♥
-        </button>
-
-        <div class="game-ground"></div>
-
-      </div>
-
-      <button class="start-mini-game" id="miniStart">
-        START BONUS ROUND
-      </button>
-
-    </section>
-
-
-    <!-- =========================
-         PEACE SECTION
-    ========================== -->
-
-    <section class="peace-section">
-
-      <div class="pixel-label">
-        FINAL LEVEL
-      </div>
-
-      <div class="peace-console">
-
-        <div class="peace-screen">
-
-          <div class="peace-stars">
-            ✦ &nbsp; · &nbsp; ✦ &nbsp; · &nbsp; ✦
-          </div>
-
-          <div class="peace-heart">
-            ♡
-          </div>
-
-          <p>
-            GAME PAUSED
-          </p>
-
-          <small>
-            because talking to Nushi
-            is more important
-          </small>
-
-        </div>
-
-      </div>
-
-      <h2>
-        And at the end<br>
-        of the day...
-      </h2>
-
-      <p class="peace-intro">
-        after everything is done,
-        after all the noise finally settles,
-        after the world has exhausted
-        every last bit of energy...
-      </p>
-
-      <div class="peace-line">
-        I get to talk to you.
-      </div>
-
-      <p class="peace-description">
-        And somehow,
-        that's when everything feels okay.
+      <p>
+        The noise disappears.
+        The chaos becomes a little less chaotic.
+        And for a while, it's just us.
       </p>
 
     </section>
 
 
-    <!-- =========================
-         LETTER
-    ========================== -->
-
+    <!-- LETTER -->
     <section class="letter-section">
-
-      <div class="pixel-label">
-        SECRET MESSAGE UNLOCKED
-      </div>
 
       <div class="letter">
 
-        <div class="letter-header">
-          <span>♡</span>
-          <span>PLAYER 2</span>
-          <span>♡</span>
-        </div>
+        <p class="letter-date">
+          SEPTEMBER 3, 2026
+        </p>
 
-        <div class="letter-body">
+        <h2>
+          Dear Nushi,
+        </h2>
 
-          <p class="opening">
-            My Nushi,
-          </p>
+        <p>
+          If you asked me what my favourite part of
+          <i>your favourite series</i> is, I don't think I'd be able
+          to give you one answer.
+        </p>
 
-          <p>
-            You know what I think is funny?
-          </p>
+        <p>
+          It's the coffee.
+          The little town.
+          The autumn.
+          The ridiculous conversations.
+          The books.
+          The warmth.
+        </p>
 
-          <p>
-            Life is basically a game that nobody gave us
-            the instructions for.
-          </p>
+        <p>
+          But mostly, I think I love it because it feels
+          like a place where ordinary life is worth paying
+          attention to.
+        </p>
 
-          <p>
-            We wake up, go through our little quests,
-            fight random evils, complete pointless side missions,
-            get tired, get annoyed, laugh at stupid things,
-            and somehow do it all again the next day.
-          </p>
+        <p>
+          And that's exactly what you do for me.
+        </p>
 
-          <p>
-            And honestly,
-            some days are really hard.
-          </p>
+        <p>
+          You make ordinary things feel special.
+        </p>
 
-          <p class="highlight">
-            But you make mine so much more fun.
-          </p>
+        <p>
+          You somehow bring this ridiculous amount of fun
+          and warmth into my life without even trying.
+        </p>
 
-          <p>
-            You bring this ridiculous amount of joy
-            into the most ordinary moments.
-          </p>
+        <p>
+          And then there's the end of the day.
+        </p>
 
-          <p>
-            A random conversation with you.
-            A stupid joke.
-            You telling me something about your day.
-            Us laughing about something that probably
-            isn't even funny to anyone else.
-          </p>
+        <p>
+          I get to talk to you.
+        </p>
 
-          <p>
-            Somehow, those tiny things become
-            my favourite parts of the day.
-          </p>
+        <p>
+          And suddenly, everything feels peaceful.
+        </p>
 
-          <p class="big-line">
-            And then comes my favourite part.
-          </p>
+        <p>
+          Maybe that's what home actually is.
+        </p>
 
-          <p>
-            The day ends.
-          </p>
+        <p>
+          Not a place.
+          Not a town.
+          Not four walls.
+        </p>
 
-          <p>
-            Everything finally gets quiet.
-          </p>
+        <p class="highlight">
+          Maybe home is simply the person
+          you always want to come back to.
+        </p>
 
-          <p>
-            And I get to talk to you.
-          </p>
+        <p>
+          You are that person for me.
+        </p>
 
-          <p class="highlight">
-            That's when the whole world feels peaceful.
-          </p>
+        <p>
+          I'd never want the conversation to end.
+        </p>
 
-          <p>
-            I don't need everything in my life
-            to be perfect.
-          </p>
-
-          <p>
-            I just need these little moments with you
-            to keep making everything worth it.
-          </p>
-
-          <p class="big-line">
-            You are my favourite part of the game. 🎮❤️
-          </p>
-
-          <p>
-            And if I get to keep playing life
-            with you beside me,
-            I think I've already won.
-          </p>
-
-          <p class="signature">
-            Player 1,<br>
-            <span>Bui ♡</span>
-          </p>
-
-        </div>
+        <p class="signature">
+          Always yours,<br>
+          Bui ♡
+        </p>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
-         FINAL QUESTION
-    ========================== -->
-
+    <!-- FINAL QUESTION -->
     <section class="final-section">
 
-      <div class="pixel-heart-large">
-        ♥
+      <div class="final-coffee">
+        ☕
       </div>
 
-      <p>
-        PLAYER 2 HAS UNLOCKED
+      <p class="eyebrow">
+        ONE LAST QUESTION
       </p>
 
       <h2>
-        My favourite<br>
-        person.
+        One more cup?<br>
+        One more conversation?<br>
+        One more lifetime with me?
       </h2>
-
-      <p class="final-question">
-        Will you keep playing<br>
-        this crazy little game of life<br>
-        with me?
-      </p>
 
       <div class="final-buttons">
 
         <button id="yesBtn">
-          START AGAIN ❤️
+          ALWAYS ☕❤️
         </button>
 
         <button id="noBtn">
-          QUIT
+          I'M BUSY
         </button>
 
       </div>
 
-      <div class="final-response" id="finalResponse">
-        GAME SAVED ❤️<br>
-        <small>
-          I'll choose you in every level.
-        </small>
+      <div id="yesMessage" class="yes-message">
+        TABLE RESERVED.<br>
+        FOREVER. ♡
       </div>
 
     </section>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
+    <!-- FOOTER -->
     <footer>
-
-      <div class="footer-console">
-        ♥
-      </div>
-
-      <p>
-        READY FOR ANOTHER ROUND?
-        <br>
-        Always with you.
-      </p>
-
-      <span>
-        Made with love for Nushi ♡
-      </span>
-
+      Goodnight, Nushi.<br>
+      Tomorrow, another little story. ♡
     </footer>
 
   </main>

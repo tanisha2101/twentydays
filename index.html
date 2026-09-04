@@ -1,480 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Thirty Days, One Heart ❤️</title>
+    <title>Thirty Days, One Heart ❤️</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- FLOATING LEAVES -->
-  <div id="leaves"></div>
+    <!-- Magical Background -->
+    <div class="stars"></div>
+    <div class="magic-particles"></div>
 
-  <!-- INTRO -->
-  <section class="intro" id="intro">
-    <div class="intro-coffee">☕</div>
+    <!-- =========================================================
+         INTRO
+    ========================================================== -->
 
-    <p class="intro-small">
-      WELCOME TO A LITTLE TOWN
-    </p>
+    <section class="intro screen-section" id="intro">
 
-    <h1>Stars Hollow</h1>
+        <div class="owl-container">
+            <div class="owl">🦉</div>
+        </div>
 
-    <p>
-      Where the coffee is hot,<br>
-      the conversations never end,<br>
-      and there's always somewhere warm to go home to.
-    </p>
+        <p class="eyebrow">AN OWL HAS ARRIVED</p>
 
-    <button id="enterBtn">
-      WALK INTO TOWN
-    </button>
-  </section>
+        <h1>
+            Nushi,
+            <span>something magical is coming.</span>
+        </h1>
 
-
-  <!-- MAIN WEBSITE -->
-  <main id="mainContent">
-
-    <!-- HEADER -->
-    <header class="top-bar">
-      <div class="town-name">STARS HOLLOW</div>
-      <div class="date">SEPTEMBER 3</div>
-    </header>
-
-
-    <!-- HERO -->
-    <section class="hero">
-
-      <div class="moon"></div>
-
-      <div class="stars">
-        <span>✦</span>
-        <span>·</span>
-        <span>✦</span>
-        <span>·</span>
-        <span>✧</span>
-        <span>·</span>
-      </div>
-
-      <div class="coffee-shop">
-        <div class="shop-window"></div>
-        <div class="shop-door"></div>
-        <div class="shop-sign">☕</div>
-      </div>
-
-      <div class="hero-content">
-
-        <p class="eyebrow">
-          COFFEE • CONVERSATIONS • AUTUMN
+        <p class="intro-text">
+            And no, you are not allowed to know everything yet.
         </p>
+
+        <button class="gold-button" id="openButton">
+            Open the letter
+        </button>
+
+        <div class="scroll-hint">
+            <span>✦</span>
+            <p>there's something waiting below</p>
+            <span>✦</span>
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         LETTER
+    ========================================================== -->
+
+    <section class="letter-section section" id="letter">
+
+        <div class="parchment">
+
+            <div class="wax-seal">N</div>
+
+            <p class="letter-small">
+                PERSONAL OWL POST
+            </p>
+
+            <h2>
+                Dear Nushi,
+            </h2>
+
+            <p>
+                There are only a few days left now.
+            </p>
+
+            <p>
+                And somehow, that makes me more excited than I think
+                I am allowed to be.
+            </p>
+
+            <p>
+                I keep thinking about how your birthday is almost here,
+                and how lucky I feel that I get to be one of the people
+                who gets to celebrate <em>you</em>.
+            </p>
+
+            <p>
+                From Xavier's to where we are right now, from the little
+                moments nobody else knows about to all the memories
+                we've collected since the day we met...
+            </p>
+
+            <p class="highlight">
+                You became the favourite part of my life.
+            </p>
+
+            <p>
+                So tonight, I have only one instruction for you:
+            </p>
+
+            <p class="handwritten">
+                Get excited, Nushi.
+            </p>
+
+            <p>
+                Because your birthday is getting closer.
+                And I have a feeling you're going to like what comes next.
+            </p>
+
+            <div class="letter-signature">
+                Always yours,<br>
+                <span>Bui ❤️</span>
+            </div>
+
+        </div>
+
+        <button class="outline-button next-button" data-target="countdown">
+            I want to see how close it is →
+        </button>
+
+    </section>
+
+
+    <!-- =========================================================
+         COUNTDOWN
+         IMPORTANT: TIMER IS COMPLETELY SEPARATE FROM TEXT
+    ========================================================== -->
+
+    <section class="countdown-section section" id="countdown">
+
+        <div class="countdown-heading">
+
+            <p class="eyebrow">THE WAITING ROOM</p>
+
+            <h2>
+                Two sleeps.
+            </h2>
+
+            <p>
+                That's all that's standing between you and your day.
+            </p>
+
+        </div>
+
+
+        <div class="countdown-card">
+
+            <div class="countdown-label">
+                UNTIL NUSHI'S BIRTHDAY
+            </div>
+
+            <div class="timer">
+
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <small>DAYS</small>
+                </div>
+
+                <div class="colon">:</div>
+
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <small>HOURS</small>
+                </div>
+
+                <div class="colon">:</div>
+
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <small>MINUTES</small>
+                </div>
+
+                <div class="colon">:</div>
+
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <small>SECONDS</small>
+                </div>
+
+            </div>
+
+            <div class="gold-line"></div>
+
+            <p class="countdown-bottom">
+                September 6, 2026
+            </p>
+
+        </div>
+
+
+        <button class="outline-button next-button" data-target="quest">
+            Begin today's quest ✦
+        </button>
+
+    </section>
+
+
+    <!-- =========================================================
+         QUEST INTRO
+    ========================================================== -->
+
+    <section class="quest-intro section" id="quest">
+
+        <p class="eyebrow">THE FINAL DAYS</p>
 
         <h2>
-          Coffee,<br>
-          conversations<br>
-          <span>& you.</span>
+            Before the birthday...
         </h2>
 
-        <p class="hero-text">
-          If life were a little town, I think I'd want mine
-          to look something like this.
+        <p class="section-description">
+            Every good Hogwarts story needs a little adventure.
+            So today, you have been given a mission.
         </p>
 
-      </div>
 
-    </section>
+        <div class="quest-scroll">
+
+            <div class="quest-card">
+                <div class="quest-icon">🦉</div>
+
+                <h3>Owl Post</h3>
+
+                <p>
+                    Your owl has one final message for you.
+                </p>
+
+                <button class="quest-button" data-quest="owl">
+                    Open
+                </button>
+
+                <div class="quest-result" id="owl-result">
+                    <span>✦</span>
+                    You are someone's favourite person.
+                </div>
+            </div>
 
 
-    <!-- COUNTDOWN -->
-    <section class="countdown-section">
+            <div class="quest-card">
+                <div class="quest-icon">🕯️</div>
 
-      <div class="countdown-card">
+                <h3>Lumos</h3>
 
-        <p class="countdown-label">
-          THE NEXT EPISODE BEGINS IN
-        </p>
+                <p>
+                    Light up a little memory from our story.
+                </p>
 
-        <div class="timer">
+                <button class="quest-button" data-quest="lumos">
+                    Cast Lumos
+                </button>
 
-          <div class="time-box">
-            <span id="days">00</span>
-            <small>DAYS</small>
-          </div>
+                <div class="quest-result" id="lumos-result">
+                    <span>✦</span>
+                    Xavier's → Every Big and Small Adventure → Us.
+                </div>
+            </div>
 
-          <div class="colon">:</div>
 
-          <div class="time-box">
-            <span id="hours">00</span>
-            <small>HOURS</small>
-          </div>
+            <div class="quest-card">
+                <div class="quest-icon">🗺️</div>
 
-          <div class="colon">:</div>
+                <h3>Memory Map</h3>
 
-          <div class="time-box">
-            <span id="minutes">00</span>
-            <small>MINUTES</small>
-          </div>
+                <p>
+                    Reveal a place that became part of our story.
+                </p>
 
-          <div class="colon">:</div>
+                <button class="quest-button" data-quest="map">
+                    Reveal
+                </button>
 
-          <div class="time-box">
-            <span id="seconds">00</span>
-            <small>SECONDS</small>
-          </div>
+                <div class="quest-result" id="map-result">
+                    <span>✦</span>
+                    First date unlocked: Gangtok Kitchen.
+                </div>
+            </div>
+
+
+            <div class="quest-card">
+                <div class="quest-icon">⚡</div>
+
+                <h3>Golden Snitch</h3>
+
+                <p>
+                    Catch it before it disappears.
+                </p>
+
+                <button class="quest-button snitch-button" data-quest="snitch">
+                    Catch ✦
+                </button>
+
+                <div class="quest-result" id="snitch-result">
+                    <span>✦</span>
+                    You caught it! One more sleep.
+                </div>
+            </div>
 
         </div>
 
-        <p class="until">
-          Until September 6th ♡
-        </p>
 
-      </div>
+        <div class="quest-progress">
 
-    </section>
+            <p>
+                QUEST PROGRESS
+            </p>
 
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
 
-    <!-- TOWN -->
-    <section class="town-section">
+            <span id="progressText">0 / 4 completed</span>
 
-      <p class="eyebrow">A LITTLE IMAGINARY TOWN</p>
-
-      <h2>
-        Imagine we lived<br>
-        in a little town.
-      </h2>
-
-      <p class="section-intro">
-        There would be one little coffee shop,
-        one bookstore we'd disappear into for hours,
-        and one bench that somehow always belonged to us.
-      </p>
-
-
-      <div class="town-map">
-
-        <div class="building book-building">
-          <div class="building-roof"></div>
-          <div class="building-body">
-            <span>BOOKS</span>
-            <small>stories live here</small>
-          </div>
         </div>
 
-        <div class="building coffee-building">
-          <div class="building-roof"></div>
-          <div class="building-body">
-            <span>COFFEE</span>
-            <small>stay a little longer</small>
-          </div>
+    </section>
+
+
+    <!-- =========================================================
+         PERSONAL MEMORY
+    ========================================================== -->
+
+    <section class="memory-section section" id="memory">
+
+        <div class="memory-container">
+
+            <p class="eyebrow">A LITTLE SECRET</p>
+
+            <h2>
+                Do you know what I realised?
+            </h2>
+
+            <div class="memory-card">
+
+                <div class="memory-number">
+                    01
+                </div>
+
+                <p class="memory-text">
+                    I don't actually need a magical map to find my
+                    favourite place.
+                </p>
+
+                <div class="memory-divider"></div>
+
+                <p>
+                    Somehow, it became wherever you are.
+                </p>
+
+                <span class="memory-heart">♥</span>
+
+            </div>
+
         </div>
 
-        <div class="building home-building">
-          <div class="building-roof"></div>
-          <div class="building-body">
-            <span>HOME</span>
-            <small>where you are</small>
-          </div>
+        <button class="gold-button next-button" data-target="final">
+            There's more? ✨
+        </button>
+
+    </section>
+
+
+    <!-- =========================================================
+         FINAL TEASER
+    ========================================================== -->
+
+    <section class="final-section section" id="final">
+
+        <div class="final-content">
+
+            <div class="candle-row">
+                <span>🕯️</span>
+                <span>🕯️</span>
+                <span>🕯️</span>
+            </div>
+
+            <p class="eyebrow">
+                CLASSIFIED UNTIL SEPTEMBER 6
+            </p>
+
+            <h2>
+                Your birthday surprise
+                <span>is almost ready.</span>
+            </h2>
+
+            <p class="final-text">
+                But I'm not telling you anything else today.
+            </p>
+
+            <p class="final-whisper">
+                Two sleeps, Nushi.
+            </p>
+
+            <div class="sealed-letter">
+                <div class="seal">N</div>
+
+                <p>
+                    OPEN ON<br>
+                    <strong>06 • 09 • 2026</strong>
+                </p>
+            </div>
+
+            <p class="signature">
+                Love,<br>
+                <span>Bui</span>
+            </p>
+
         </div>
 
-        <div class="town-tree tree-one">🌳</div>
-        <div class="town-tree tree-two">🌳</div>
-
-        <div class="town-road"></div>
-
-        <div class="tiny-heart">♥</div>
-
-      </div>
-
-      <p class="town-caption">
-        I'd still choose the bench next to you.
-      </p>
-
     </section>
 
 
-    <!-- COFFEE SHOP -->
-    <section class="coffee-section">
+    <!-- =========================================================
+         FLOATING NAV
+    ========================================================== -->
 
-      <div class="section-heading">
-        <p class="eyebrow">OUR USUAL TABLE</p>
+    <nav class="floating-nav">
 
-        <h2>
-          One coffee.<br>
-          One story.<br>
-          One person.
-        </h2>
-
-        <p>
-          Tap the little things.
-        </p>
-      </div>
-
-
-      <div class="coffee-cards">
-
-        <button class="coffee-card" data-message="Maybe coffee tastes better when you're sitting across from me.">
-          <span class="card-icon">☕</span>
-          <strong>ONE COFFEE</strong>
-          <small>because every story needs one</small>
+        <button data-target="intro" aria-label="Home">
+            ✦
         </button>
 
-        <button class="coffee-card" data-message="I could listen to you tell me stories for hours and still ask you what happened next.">
-          <span class="card-icon">📖</span>
-          <strong>ONE STORY</strong>
-          <small>and then another</small>
+        <button data-target="letter" aria-label="Letter">
+            ✉
         </button>
 
-        <button class="coffee-card" data-message="This seat has officially been reserved for Nushi. Permanently.">
-          <span class="card-icon">♡</span>
-          <strong>ONE PERSON</strong>
-          <small>my favourite one</small>
+        <button data-target="countdown" aria-label="Countdown">
+            ⏳
         </button>
 
-      </div>
-
-      <div id="coffeeMessage" class="coffee-message"></div>
-
-    </section>
-
-
-    <!-- BOOKS -->
-    <section class="books-section">
-
-      <div class="bookshelf">
-
-        <div class="book book1">US</div>
-        <div class="book book2">YOU</div>
-        <div class="book book3">BUI</div>
-        <div class="book book4">NUSHI</div>
-        <div class="book book5">HOME</div>
-        <div class="book book6">LOVE</div>
-
-      </div>
-
-      <p class="eyebrow">A BOOK I'D NEVER FINISH</p>
-
-      <h2>
-        I'd read our story<br>
-        a thousand times.
-      </h2>
-
-      <p>
-        Not because everything is perfect.
-        But because every chapter has you in it.
-      </p>
-
-    </section>
-
-
-    <!-- AUTUMN -->
-    <section class="autumn-section">
-
-      <div class="autumn-circle">
-        🍂
-      </div>
-
-      <p class="eyebrow">MAYBE IT'S THE SEASON</p>
-
-      <h2>
-        Warm drinks.<br>
-        Autumn walks.<br>
-        Long conversations.
-      </h2>
-
-      <div class="autumn-pills">
-        <span>cozy evenings</span>
-        <span>little cafés</span>
-        <span>cold weather</span>
-        <span>your hand in mine</span>
-      </div>
-
-      <p class="big-line">
-        Or maybe it's just you.
-      </p>
-
-    </section>
-
-
-    <!-- NIGHT -->
-    <section class="night-section">
-
-      <div class="night-stars">✦ · ✧ · ✦ · ✧ · ✦</div>
-
-      <p class="eyebrow">
-        WHEN THE TOWN GETS QUIET
-      </p>
-
-      <h2>
-        And then<br>
-        the town gets quiet.
-      </h2>
-
-      <div class="night-line"></div>
-
-      <h3>
-        And I get to talk to you.
-      </h3>
-
-      <p>
-        Somehow, hearing your voice at the end of the day
-        makes everything feel softer.
-      </p>
-
-      <p>
-        The noise disappears.
-        The chaos becomes a little less chaotic.
-        And for a while, it's just us.
-      </p>
-
-    </section>
-
-
-    <!-- LETTER -->
-    <section class="letter-section">
-
-      <div class="letter">
-
-        <p class="letter-date">
-          SEPTEMBER 3, 2026
-        </p>
-
-        <h2>
-          Dear Nushi,
-        </h2>
-
-        <p>
-          If you asked me what my favourite part of
-          <i>your favourite series</i> is, I don't think I'd be able
-          to give you one answer.
-        </p>
-
-        <p>
-          It's the coffee.
-          The little town.
-          The autumn.
-          The ridiculous conversations.
-          The books.
-          The warmth.
-        </p>
-
-        <p>
-          But mostly, I think I love it because it feels
-          like a place where ordinary life is worth paying
-          attention to.
-        </p>
-
-        <p>
-          And that's exactly what you do for me.
-        </p>
-
-        <p>
-          You make ordinary things feel special.
-        </p>
-
-        <p>
-          You somehow bring this ridiculous amount of fun
-          and warmth into my life without even trying.
-        </p>
-
-        <p>
-          And then there's the end of the day.
-        </p>
-
-        <p>
-          I get to talk to you.
-        </p>
-
-        <p>
-          And suddenly, everything feels peaceful.
-        </p>
-
-        <p>
-          Maybe that's what home actually is.
-        </p>
-
-        <p>
-          Not a place.
-          Not a town.
-          Not four walls.
-        </p>
-
-        <p class="highlight">
-          Maybe home is simply the person
-          you always want to come back to.
-        </p>
-
-        <p>
-          You are that person for me.
-        </p>
-
-        <p>
-          I'd never want the conversation to end.
-        </p>
-
-        <p class="signature">
-          Always yours,<br>
-          Bui ♡
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- FINAL QUESTION -->
-    <section class="final-section">
-
-      <div class="final-coffee">
-        ☕
-      </div>
-
-      <p class="eyebrow">
-        ONE LAST QUESTION
-      </p>
-
-      <h2>
-        One more cup?<br>
-        One more conversation?<br>
-        One more lifetime with me?
-      </h2>
-
-      <div class="final-buttons">
-
-        <button id="yesBtn">
-          ALWAYS ☕❤️
+        <button data-target="quest" aria-label="Quest">
+            ⚡
         </button>
 
-        <button id="noBtn">
-          I'M BUSY
-        </button>
-
-      </div>
-
-      <div id="yesMessage" class="yes-message">
-        TABLE RESERVED.<br>
-        FOREVER. ♡
-      </div>
-
-    </section>
+    </nav>
 
 
-    <!-- FOOTER -->
-    <footer>
-      Goodnight, Nushi.<br>
-      Tomorrow, another little story. ♡
-    </footer>
+    <!-- =========================================================
+         CELEBRATION OVERLAY
+    ========================================================== -->
 
-  </main>
+    <div class="celebration" id="celebration">
 
-  <script src="script.js"></script>
+        <div class="celebration-content">
+
+            <div class="celebration-icon">
+                ✨
+            </div>
+
+            <h2>
+                Quest Complete!
+            </h2>
+
+            <p>
+                The birthday magic is officially loading...
+            </p>
+
+            <button class="gold-button" id="closeCelebration">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>

@@ -1,386 +1,401 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-  /* =========================
-     INTRO
-  ========================= */
-
-  const intro = document.getElementById("intro");
-  const enterBtn = document.getElementById("enterBtn");
-
-  enterBtn.addEventListener("click", function () {
-    intro.classList.add("hide");
-  });
+/* =========================================================
+   SEPTEMBER 4 — NUSHI'S BIRTHDAY COUNTDOWN
+========================================================= */
 
 
-  /* =========================
-     COUNTDOWN
-  ========================= */
+/* =========================================================
+   SAFE ELEMENT HELPER
+========================================================= */
 
-  const targetDate = new Date(
+function getElement(id) {
+    return document.getElementById(id);
+}
+
+
+/* =========================================================
+   SMOOTH SCROLLING
+========================================================= */
+
+function scrollToSection(targetId) {
+
+    const target = getElement(targetId);
+
+    if (!target) {
+        console.warn("Section not found:", targetId);
+        return;
+    }
+
+    target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+
+/* =========================================================
+   ALL NAVIGATION BUTTONS
+========================================================= */
+
+document.querySelectorAll("[data-target]").forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        const target = this.getAttribute("data-target");
+
+        scrollToSection(target);
+
+    });
+
+});
+
+
+/* =========================================================
+   OPEN LETTER BUTTON
+========================================================= */
+
+const openButton = getElement("openButton");
+
+if (openButton) {
+
+    openButton.addEventListener("click", function () {
+
+        scrollToSection("letter");
+
+    });
+
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+const birthdayDate = new Date(
     "September 6, 2026 00:00:00"
-  ).getTime();
-
-  const daysElement = document.getElementById("days");
-  const hoursElement = document.getElementById("hours");
-  const minutesElement = document.getElementById("minutes");
-  const secondsElement = document.getElementById("seconds");
+).getTime();
 
 
-  function updateCountdown() {
+function updateCountdown() {
 
     const now = new Date().getTime();
 
-    const difference = targetDate - now;
+    const difference = birthdayDate - now;
 
+
+    /* Birthday has arrived */
 
     if (difference <= 0) {
 
-      daysElement.textContent = "00";
-      hoursElement.textContent = "00";
-      minutesElement.textContent = "00";
-      secondsElement.textContent = "00";
+        getElement("days").textContent = "00";
+        getElement("hours").textContent = "00";
+        getElement("minutes").textContent = "00";
+        getElement("seconds").textContent = "00";
 
-      return;
+        return;
     }
 
 
     const days = Math.floor(
-      difference / (1000 * 60 * 60 * 24)
+        difference / (1000 * 60 * 60 * 24)
     );
 
     const hours = Math.floor(
-      (difference % (1000 * 60 * 60 * 24))
-      / (1000 * 60 * 60)
+        (difference / (1000 * 60 * 60)) % 24
     );
 
     const minutes = Math.floor(
-      (difference % (1000 * 60 * 60))
-      / (1000 * 60)
+        (difference / (1000 * 60)) % 60
     );
 
     const seconds = Math.floor(
-      (difference % (1000 * 60))
-      / 1000
+        (difference / 1000) % 60
     );
 
 
-    daysElement.textContent =
-      String(days).padStart(2, "0");
+    getElement("days").textContent =
+        String(days).padStart(2, "0");
 
-    hoursElement.textContent =
-      String(hours).padStart(2, "0");
+    getElement("hours").textContent =
+        String(hours).padStart(2, "0");
 
-    minutesElement.textContent =
-      String(minutes).padStart(2, "0");
+    getElement("minutes").textContent =
+        String(minutes).padStart(2, "0");
 
-    secondsElement.textContent =
-      String(seconds).padStart(2, "0");
-  }
-
-
-  updateCountdown();
-
-  setInterval(updateCountdown, 1000);
+    getElement("seconds").textContent =
+        String(seconds).padStart(2, "0");
+}
 
 
-  /* =========================
-     FALLING AUTUMN LEAVES
-  ========================= */
+updateCountdown();
 
-  const leavesContainer =
-    document.getElementById("leaves");
-
-  const leafSymbols = [
-    "🍂",
-    "🍁",
-    "🍂",
-    "🍁"
-  ];
+setInterval(updateCountdown, 1000);
 
 
-  function createLeaf() {
+/* =========================================================
+   QUEST SYSTEM
+========================================================= */
 
-    const leaf = document.createElement("span");
+const questButtons =
+    document.querySelectorAll(".quest-button");
 
-    leaf.className = "leaf";
-
-    leaf.textContent =
-      leafSymbols[
-        Math.floor(
-          Math.random() * leafSymbols.length
-        )
-      ];
+const completedQuests = new Set();
 
 
-    leaf.style.left =
-      Math.random() * 100 + "vw";
+questButtons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        const quest = this.dataset.quest;
+
+        if (completedQuests.has(quest)) {
+            return;
+        }
 
 
-    leaf.style.fontSize =
-      (12 + Math.random() * 12) + "px";
+        completedQuests.add(quest);
+
+        this.classList.add("completed");
+
+        this.textContent = "✓ Complete";
 
 
-    leaf.style.animationDuration =
-      (6 + Math.random() * 8) + "s";
+        const result =
+            getElement(`${quest}-result`);
+
+        if (result) {
+            result.classList.add("show");
+        }
 
 
-    leaf.style.opacity =
-      0.25 + Math.random() * 0.6;
+        updateQuestProgress();
 
 
-    leavesContainer.appendChild(leaf);
+        /* When all four quests are complete */
 
+        if (completedQuests.size === 4) {
 
-    setTimeout(function () {
-      leaf.remove();
-    }, 15000);
-  }
+            setTimeout(() => {
 
+                showCelebration();
 
-  setInterval(createLeaf, 900);
+            }, 800);
 
-
-  for (let i = 0; i < 8; i++) {
-    setTimeout(createLeaf, i * 300);
-  }
-
-
-  /* =========================
-     COFFEE CARDS
-  ========================= */
-
-  const coffeeCards =
-    document.querySelectorAll(".coffee-card");
-
-  const coffeeMessage =
-    document.getElementById("coffeeMessage");
-
-
-  coffeeCards.forEach(function (card) {
-
-    card.addEventListener("click", function () {
-
-      const message =
-        card.getAttribute("data-message");
-
-      coffeeMessage.style.opacity = "0";
-
-      setTimeout(function () {
-
-        coffeeMessage.textContent = message;
-
-        coffeeMessage.style.opacity = "1";
-
-      }, 150);
+        }
 
     });
 
-  });
+});
 
 
-  /* =========================
-     FLOATING HEART
-  ========================= */
+/* =========================================================
+   QUEST PROGRESS
+========================================================= */
 
-  document.addEventListener("click", function (event) {
+function updateQuestProgress() {
+
+    const completed = completedQuests.size;
+
+    const percentage =
+        (completed / 4) * 100;
+
+
+    const progressFill =
+        getElement("progressFill");
+
+    const progressText =
+        getElement("progressText");
+
+
+    if (progressFill) {
+        progressFill.style.width =
+            `${percentage}%`;
+    }
+
+
+    if (progressText) {
+
+        progressText.textContent =
+            `${completed} / 4 completed`;
+
+    }
+
+}
+
+
+/* =========================================================
+   CELEBRATION
+========================================================= */
+
+const celebration =
+    getElement("celebration");
+
+const closeCelebration =
+    getElement("closeCelebration");
+
+
+function showCelebration() {
+
+    if (!celebration) {
+        return;
+    }
+
+    celebration.classList.add("show");
+
+    createSparkles();
+
+}
+
+
+if (closeCelebration) {
+
+    closeCelebration.addEventListener(
+        "click",
+        function () {
+
+            celebration.classList.remove("show");
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   MAGIC SPARKLES
+========================================================= */
+
+function createSparkles() {
+
+    const symbols = [
+        "✦",
+        "✧",
+        "⋆",
+        "✨"
+    ];
+
+
+    for (let i = 0; i < 25; i++) {
+
+        const sparkle =
+            document.createElement("span");
+
+
+        sparkle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() * symbols.length
+                )
+            ];
+
+
+        sparkle.style.position = "fixed";
+
+        sparkle.style.left =
+            `${Math.random() * 100}%`;
+
+        sparkle.style.top =
+            `${Math.random() * 100}%`;
+
+        sparkle.style.color =
+            "#d4af5a";
+
+        sparkle.style.fontSize =
+            `${10 + Math.random() * 18}px`;
+
+        sparkle.style.pointerEvents =
+            "none";
+
+        sparkle.style.zIndex =
+            "2000";
+
+        sparkle.style.animation =
+            `sparkleFloat ${
+                1.5 + Math.random() * 2
+            }s ease forwards`;
+
+
+        document.body.appendChild(sparkle);
+
+
+        setTimeout(() => {
+
+            sparkle.remove();
+
+        }, 4000);
+
+    }
+
+}
+
+
+/* =========================================================
+   SPARKLE ANIMATION
+========================================================= */
+
+const sparkleStyle =
+    document.createElement("style");
+
+sparkleStyle.textContent = `
+
+@keyframes sparkleFloat {
+
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-100px)
+            scale(1.4)
+            rotate(180deg);
+    }
+
+}
+`;
+
+document.head.appendChild(sparkleStyle);
+
+
+/* =========================================================
+   ESCAPE KEY — CLOSE CELEBRATION
+========================================================= */
+
+document.addEventListener("keydown", function(event) {
 
     if (
-      event.target.closest("button") ||
-      event.target.closest(".coffee-card")
+        event.key === "Escape" &&
+        celebration &&
+        celebration.classList.contains("show")
     ) {
 
-      const heart =
-        document.createElement("div");
-
-      heart.textContent = "♥";
-
-      heart.style.position = "fixed";
-
-      heart.style.left =
-        event.clientX + "px";
-
-      heart.style.top =
-        event.clientY + "px";
-
-      heart.style.zIndex = "999";
-
-      heart.style.pointerEvents = "none";
-
-      heart.style.color = "#c8796e";
-
-      heart.style.fontSize =
-        (12 + Math.random() * 15) + "px";
-
-      heart.style.transition =
-        "all 1s ease";
-
-      document.body.appendChild(heart);
-
-
-      requestAnimationFrame(function () {
-
-        heart.style.transform =
-          "translateY(-70px) scale(1.5)";
-
-        heart.style.opacity = "0";
-
-      });
-
-
-      setTimeout(function () {
-        heart.remove();
-      }, 1000);
-    }
-
-  });
-
-
-  /* =========================
-     YES BUTTON
-  ========================= */
-
-  const yesBtn =
-    document.getElementById("yesBtn");
-
-  const yesMessage =
-    document.getElementById("yesMessage");
-
-
-  yesBtn.addEventListener("click", function () {
-
-    yesMessage.classList.add("show");
-
-    createCelebration();
-
-  });
-
-
-  function createCelebration() {
-
-    for (let i = 0; i < 20; i++) {
-
-      const heart =
-        document.createElement("div");
-
-      heart.textContent =
-        Math.random() > 0.5 ? "♥" : "✦";
-
-      heart.style.position = "fixed";
-
-      heart.style.left =
-        Math.random() * 100 + "vw";
-
-      heart.style.top =
-        "70vh";
-
-      heart.style.zIndex = "9999";
-
-      heart.style.pointerEvents = "none";
-
-      heart.style.fontSize =
-        (15 + Math.random() * 20) + "px";
-
-      heart.style.color = "#d3a86c";
-
-      heart.style.transition =
-        "transform 2s ease, opacity 2s ease";
-
-
-      document.body.appendChild(heart);
-
-
-      setTimeout(function () {
-
-        heart.style.transform =
-          `translateY(-${200 + Math.random() * 400}px)
-           rotate(${Math.random() * 360}deg)`;
-
-        heart.style.opacity = "0";
-
-      }, 50);
-
-
-      setTimeout(function () {
-        heart.remove();
-      }, 2200);
+        celebration.classList.remove("show");
 
     }
-
-  }
-
-
-  /* =========================
-     RUNAWAY "NO" BUTTON
-  ========================= */
-
-  const noBtn =
-    document.getElementById("noBtn");
-
-
-  function moveNoButton() {
-
-    const maxX =
-      Math.min(window.innerWidth - 150, 250);
-
-    const maxY = 120;
-
-
-    const randomX =
-      (Math.random() * maxX) -
-      (maxX / 2);
-
-
-    const randomY =
-      (Math.random() * maxY) -
-      (maxY / 2);
-
-
-    noBtn.style.transform =
-      `translate(${randomX}px, ${randomY}px)`;
-
-  }
-
-
-  noBtn.addEventListener(
-    "mouseenter",
-    moveNoButton
-  );
-
-
-  noBtn.addEventListener(
-    "touchstart",
-    function (event) {
-
-      event.preventDefault();
-
-      moveNoButton();
-
-    }
-  );
-
-
-  noBtn.addEventListener(
-    "click",
-    function (event) {
-
-      event.preventDefault();
-
-      moveNoButton();
-
-    }
-  );
-
-
-  /* =========================
-     CONSOLE EASTER EGG
-  ========================= */
-
-  console.log(
-    "☕ Welcome to our little town, Nushi."
-  );
-
-  console.log(
-    "♥ Table permanently reserved for Bui + Nushi."
-  );
 
 });
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL FORM SUBMISSIONS
+========================================================= */
+
+document.querySelectorAll("button").forEach(button => {
+
+    button.setAttribute("type", "button");
+
+});
+
+
+/* =========================================================
+   CONSOLE CONFIRMATION
+========================================================= */
+
+console.log(
+    "✨ Nushi's September 4 birthday experience is ready."
+);
